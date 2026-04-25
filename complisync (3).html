@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompliSync — Jira, Sheets & Monday. In Sync. In Compliance.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #0a0f1e;
+    --paper:     #f5f3ee;
+    --teal:      #00c2a8;
+    --teal-dark: #009e88;
+    --teal-dim:  rgba(0,194,168,0.12);
+    --slate:     #1e2d40;
+    --mist:      #e8e5de;
+    --warn:      #f5a623;
+    --red:       #e8524a;
+    --green:     #2ecc71;
+    --radius:    12px;
+    --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(245,243,238,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--mist);
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--ink);
+    letter-spacing: -0.5px;
+    text-decoration: none;
+  }
+
+  .logo span { color: var(--teal); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 36px;
+    align-items: center;
+  }
+
+  nav ul a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity var(--transition);
+  }
+
+  nav ul a:hover { opacity: 1; }
+
+  .nav-cta {
+    background: var(--ink);
+    color: var(--paper) !important;
+    opacity: 1 !important;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 500 !important;
+    transition: background var(--transition) !important;
+  }
+
+  .nav-cta:hover { background: var(--teal) !important; color: var(--ink) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--teal-dim);
+    border: 1px solid rgba(0,194,168,0.25);
+    color: var(--teal-dark);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    width: fit-content;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(42px, 5vw, 68px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: var(--ink);
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--teal);
+    position: relative;
+  }
+
+  h1 em::after {
+    content: '';
+    position: absolute;
+    bottom: 2px; left: 0; right: 0;
+    height: 3px;
+    background: var(--teal);
+    opacity: 0.3;
+    border-radius: 2px;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--ink);
+    opacity: 0.65;
+    max-width: 480px;
+    margin-bottom: 40px;
+    line-height: 1.7;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-form {
+    display: flex;
+    gap: 12px;
+    max-width: 460px;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .hero-form input {
+    flex: 1;
+    padding: 14px 20px;
+    border: 1.5px solid var(--mist);
+    border-radius: var(--radius);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    background: white;
+    color: var(--ink);
+    outline: none;
+    transition: border-color var(--transition);
+  }
+
+  .hero-form input:focus { border-color: var(--teal); }
+  .hero-form input::placeholder { color: #aaa; }
+
+  .btn-primary {
+    padding: 14px 28px;
+    background: var(--teal);
+    color: var(--ink);
+    border: none;
+    border-radius: var(--radius);
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all var(--transition);
+    letter-spacing: -0.3px;
+  }
+
+  .btn-primary:hover {
+    background: var(--teal-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(0,194,168,0.3);
+  }
+
+  .hero-note {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--ink);
+    opacity: 0.45;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .hero-platforms {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 48px;
+    animation: fadeUp 0.6s 0.5s ease both;
+  }
+
+  .hero-platforms span {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.4;
+  }
+
+  .platform-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: white;
+    border: 1px solid var(--mist);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .platform-pill svg { width: 16px; height: 16px; }
+
+  /* ── HERO RIGHT (VISUAL) ── */
+  .hero-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 48px;
+    background: var(--ink);
+    overflow: hidden;
+  }
+
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,194,168,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-right::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(0,194,168,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Sync diagram */
+  .sync-diagram {
+    position: relative;
+    width: 420px;
+    height: 420px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .sync-node {
+    position: absolute;
+    width: 110px; height: 110px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    backdrop-filter: blur(8px);
+    transition: all var(--transition);
+    cursor: default;
+  }
+
+  .sync-node:hover {
+    background: rgba(0,194,168,0.1);
+    border-color: rgba(0,194,168,0.4);
+    transform: scale(1.05);
+  }
+
+  .sync-node .node-icon {
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .sync-node .node-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* Jira — top center */
+  .node-jira { top: 20px; left: 50%; transform: translateX(-50%); border-color: rgba(0,194,168,0.5); background: rgba(0,194,168,0.08); }
+  .node-jira .node-label { color: var(--teal); }
+
+  /* Sheets — bottom left */
+  .node-sheets { bottom: 20px; left: 20px; }
+
+  /* Monday — bottom right */
+  .node-monday { bottom: 20px; right: 20px; }
+
+  /* SVG connector lines */
+  .sync-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+  }
+
+  .sync-line {
+    stroke: rgba(0,194,168,0.25);
+    stroke-width: 1.5;
+    fill: none;
+    stroke-dasharray: 6 4;
+    animation: dash 3s linear infinite;
+  }
+
+  .sync-line-reverse {
+    stroke: rgba(0,194,168,0.15);
+    stroke-width: 1.5;
+    fill: none;
+    stroke-dasharray: 6 4;
+    animation: dash 3s linear infinite reverse;
+  }
+
+  @keyframes dash {
+    to { stroke-dashoffset: -40; }
+  }
+
+  .sync-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -20%);
+    width: 60px; height: 60px;
+    background: var(--teal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    animation: spin-slow 8s linear infinite;
+    box-shadow: 0 0 40px rgba(0,194,168,0.4);
+  }
+
+  @keyframes spin-slow {
+    from { transform: translate(-50%, -20%) rotate(0deg); }
+    to { transform: translate(-50%, -20%) rotate(360deg); }
+  }
+
+  /* ── SCROLL TICKER ── */
+  .ticker {
+    background: var(--teal);
+    padding: 12px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-track {
+    display: inline-flex;
+    gap: 48px;
+    animation: ticker 20s linear infinite;
+  }
+
+  .ticker-item {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .ticker-item::after {
+    content: '◆';
+    font-size: 8px;
+    opacity: 0.5;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 80px; }
+
+  .section-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--teal);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 24px; height: 1.5px;
+    background: var(--teal);
+  }
+
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .section-sub {
+    font-size: 17px;
+    opacity: 0.6;
+    max-width: 520px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── SYNC PATHS ── */
+  .paths-section { background: white; }
+
+  .paths-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+
+  .path-card {
+    padding: 36px 32px;
+    border: 1.5px solid var(--mist);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition);
+    background: var(--paper);
+  }
+
+  .path-card:hover {
+    border-color: var(--teal);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  }
+
+  .path-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--teal);
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+
+  .path-card:hover::before { opacity: 1; }
+
+  .path-platforms {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .path-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    background: var(--mist);
+  }
+
+  .path-arrow {
+    font-size: 18px;
+    color: var(--teal);
+    font-weight: 700;
+  }
+
+  .path-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+
+  .path-card p {
+    font-size: 14px;
+    opacity: 0.6;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .path-tag {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 4px 12px;
+    background: var(--teal-dim);
+    color: var(--teal-dark);
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── FEATURES ── */
+  .features-section { background: var(--paper); }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 64px;
+    border: 1.5px solid var(--mist);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .feature-item {
+    padding: 40px 44px;
+    border-right: 1.5px solid var(--mist);
+    border-bottom: 1.5px solid var(--mist);
+    transition: background var(--transition);
+    position: relative;
+  }
+
+  .feature-item:hover { background: white; }
+
+  .feature-item:nth-child(even) { border-right: none; }
+  .feature-item:nth-last-child(-n+2) { border-bottom: none; }
+
+  .feature-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--teal);
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+
+  .feature-item h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+
+  .feature-item p {
+    font-size: 14px;
+    opacity: 0.6;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .feature-icon {
+    position: absolute;
+    top: 40px; right: 40px;
+    font-size: 28px;
+    opacity: 0.15;
+  }
+
+  /* ── COMPLIANCE SECTION ── */
+  .compliance-section {
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .compliance-section::before {
+    content: 'HIPAA';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Syne', sans-serif;
+    font-size: 280px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.02);
+    pointer-events: none;
+    white-space: nowrap;
+    letter-spacing: -8px;
+  }
+
+  .compliance-section .section-label { color: var(--teal); }
+
+  .compliance-section h2 { color: var(--paper); }
+
+  .compliance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 64px;
+    align-items: start;
+  }
+
+  .compliance-features {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .compliance-feature {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 24px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    transition: all var(--transition);
+  }
+
+  .compliance-feature:hover {
+    background: rgba(0,194,168,0.08);
+    border-color: rgba(0,194,168,0.2);
+  }
+
+  .cf-icon {
+    width: 44px; height: 44px;
+    background: rgba(0,194,168,0.12);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .cf-text h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--paper);
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+
+  .cf-text p {
+    font-size: 13px;
+    color: rgba(245,243,238,0.5);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* PHI Wipe visual */
+  .phi-visual {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 32px;
+    position: relative;
+  }
+
+  .phi-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 24px;
+  }
+
+  .phi-table th {
+    background: rgba(255,255,255,0.06);
+    color: rgba(245,243,238,0.5);
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .phi-table td {
+    padding: 10px 12px;
+    color: rgba(245,243,238,0.7);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-family: 'DM Sans', monospace;
+  }
+
+  .phi-cell {
+    background: rgba(232,82,74,0.15);
+    color: var(--red);
+    border-radius: 4px;
+    padding: 2px 6px;
+    position: relative;
+  }
+
+  .phi-cell.wiped {
+    background: rgba(46,204,113,0.1);
+    color: var(--green);
+  }
+
+  .phi-cell.wiped::after {
+    content: '██████';
+    color: rgba(46,204,113,0.3);
+  }
+
+  .wipe-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px;
+    background: rgba(232,82,74,0.15);
+    border: 1px solid rgba(232,82,74,0.3);
+    border-radius: 10px;
+    color: var(--red);
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .wipe-btn:hover {
+    background: rgba(232,82,74,0.25);
+    border-color: var(--red);
+  }
+
+  .wipe-btn.wiped {
+    background: rgba(46,204,113,0.1);
+    border-color: rgba(46,204,113,0.3);
+    color: var(--green);
+  }
+
+  /* ── PRICING ── */
+  .pricing-section { background: white; }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+    align-items: start;
+  }
+
+  .pricing-card {
+    padding: 40px 36px;
+    border: 1.5px solid var(--mist);
+    border-radius: 20px;
+    position: relative;
+    transition: all var(--transition);
+    background: var(--paper);
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.08);
+  }
+
+  .pricing-card.featured {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+    transform: scale(1.04);
+  }
+
+  .pricing-card.featured:hover {
+    transform: scale(1.04) translateY(-4px);
+  }
+
+  .pricing-badge {
+    position: absolute;
+    top: -14px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--teal);
+    color: var(--ink);
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 5px 16px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .plan-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+    margin-bottom: 16px;
+  }
+
+  .plan-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .plan-price sup {
+    font-size: 24px;
+    vertical-align: super;
+    letter-spacing: 0;
+  }
+
+  .plan-period {
+    font-size: 13px;
+    opacity: 0.45;
+    margin-bottom: 32px;
+  }
+
+  .plan-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .plan-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .plan-features li::before {
+    content: '✓';
+    color: var(--teal);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .pricing-card.featured .plan-features li { color: rgba(245,243,238,0.8); }
+
+  .btn-plan {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    text-align: center;
+    border-radius: 10px;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition);
+    text-decoration: none;
+    border: 1.5px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+  }
+
+  .btn-plan:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .pricing-card.featured .btn-plan {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--ink);
+  }
+
+  .pricing-card.featured .btn-plan:hover {
+    background: var(--teal-dark);
+    border-color: var(--teal-dark);
+  }
+
+  /* ── COLUMNS SECTION ── */
+  .columns-section { background: var(--paper); }
+
+  .columns-table-wrap {
+    margin-top: 48px;
+    border: 1.5px solid var(--mist);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .columns-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .columns-table th {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 14px 20px;
+    text-align: left;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .columns-table td {
+    padding: 13px 20px;
+    border-bottom: 1px solid var(--mist);
+    vertical-align: middle;
+  }
+
+  .columns-table tr:last-child td { border-bottom: none; }
+  .columns-table tr:nth-child(even) td { background: rgba(0,0,0,0.02); }
+
+  .col-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  .col-source {
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-weight: 600;
+  }
+
+  .source-jira { background: rgba(0,194,168,0.1); color: var(--teal-dark); }
+  .source-calc { background: rgba(245,166,35,0.1); color: #b87a00; }
+  .source-user { background: rgba(46,204,113,0.1); color: #1a8a4a; }
+
+  .col-badge {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .badge-writeback { background: rgba(232,82,74,0.1); color: var(--red); }
+  .badge-preserved { background: rgba(46,204,113,0.1); color: var(--green); }
+
+  /* ── EARLY ACCESS SECTION ── */
+  .early-section {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .early-section::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,194,168,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .early-section h2 { color: var(--paper); max-width: 600px; margin: 0 auto 20px; }
+
+  .early-section .section-sub { margin: 0 auto 48px; opacity: 0.5; }
+
+  .early-form {
+    display: flex;
+    gap: 12px;
+    max-width: 440px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .early-form input {
+    flex: 1;
+    padding: 15px 20px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius);
+    color: var(--paper);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color var(--transition);
+  }
+
+  .early-form input:focus { border-color: var(--teal); }
+  .early-form input::placeholder { color: rgba(255,255,255,0.3); }
+
+  .early-note {
+    margin-top: 16px;
+    font-size: 12px;
+    color: rgba(245,243,238,0.35);
+    position: relative;
+    z-index: 2;
+  }
+
+  .signups {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .signup-avatars {
+    display: flex;
+  }
+
+  .signup-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--ink);
+    background: var(--teal);
+    margin-left: -8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    font-family: 'Syne', sans-serif;
+  }
+
+  .signup-avatar:first-child { margin-left: 0; }
+
+  .signup-text {
+    font-size: 13px;
+    color: rgba(245,243,238,0.5);
+  }
+
+  .signup-text strong {
+    color: var(--paper);
+    font-weight: 600;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--paper);
+    border-top: 1px solid var(--mist);
+    padding: 40px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .footer-logo span { color: var(--teal); }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--ink);
+    opacity: 0.45;
+    text-decoration: none;
+    transition: opacity var(--transition);
+  }
+
+  .footer-links a:hover { opacity: 1; }
+
+  .footer-copy {
+    font-size: 12px;
+    opacity: 0.35;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── SUCCESS STATE ── */
+  .success-msg {
+    display: none;
+    color: var(--teal);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 20px;
+    background: var(--teal-dim);
+    border-radius: var(--radius);
+    border: 1px solid rgba(0,194,168,0.25);
+  }
+
+  /* ── MOBILE RESPONSIVE ── */
+  @media (max-width: 768px) {
+
+    /* Nav */
+    nav {
+      padding: 16px 20px;
+    }
+    nav ul { display: none; }
+
+    /* Hero */
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      padding-top: 72px;
+    }
+    .hero-left {
+      padding: 48px 24px 40px;
+      order: 1;
+    }
+    .hero-right {
+      order: 2;
+      padding: 40px 24px;
+      min-height: 340px;
+    }
+    h1 { font-size: 38px; letter-spacing: -1px; }
+    .hero-sub { font-size: 16px; }
+    .hero-form {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .hero-form input,
+    .hero-form .btn-primary { width: 100%; }
+    .hero-platforms {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Sync diagram */
+    .sync-diagram {
+      width: 300px;
+      height: 300px;
+    }
+    .sync-node { width: 80px; height: 80px; border-radius: 14px; }
+    .sync-node .node-icon { font-size: 24px; }
+    .sync-node .node-label { font-size: 9px; }
+    .sync-center { width: 44px; height: 44px; font-size: 16px; }
+
+    /* Sections */
+    section { padding: 60px 24px; }
+    h2 { font-size: 30px; letter-spacing: -0.5px; }
+    .section-sub { font-size: 15px; }
+
+    /* Paths grid */
+    .paths-grid { grid-template-columns: 1fr; gap: 16px; }
+
+    /* Features grid */
+    .features-grid { grid-template-columns: 1fr; }
+    .feature-item:nth-child(even) { border-right: none; }
+    .feature-item:nth-last-child(-n+2) { border-bottom: 1.5px solid var(--mist); }
+    .feature-item:last-child { border-bottom: none; }
+
+    /* Compliance grid */
+    .compliance-grid { grid-template-columns: 1fr; gap: 32px; }
+    .compliance-section::before { font-size: 120px; }
+
+    /* Pricing grid */
+    .pricing-grid { grid-template-columns: 1fr; gap: 20px; }
+    .pricing-card.featured { transform: scale(1); }
+    .pricing-card.featured:hover { transform: translateY(-4px); }
+
+    /* Columns table */
+    .columns-table th:nth-child(4),
+    .columns-table td:nth-child(4) { display: none; }
+
+    /* Early access form */
+    .early-form { flex-direction: column; }
+    .early-form input,
+    .early-form .btn-primary { width: 100%; }
+
+    /* Footer */
+    footer {
+      flex-direction: column;
+      gap: 24px;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .footer-links {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    /* Modals */
+    #modal-privacy,
+    #modal-terms {
+      width: 95vw !important;
+      max-height: 90vh !important;
+      top: 50% !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 { font-size: 32px; }
+    .hero-badge { font-size: 11px; }
+    .plan-price { font-size: 42px; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Compli<span>Sync</span></a>
+  <ul>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#compliance">Compliance</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#early" class="nav-cta">Get Early Access</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Now in Early Access</div>
+    <h1>Jira, Sheets &amp;<br><em>Monday</em>.<br>In sync.</h1>
+    <p class="hero-sub">The only bidirectional sync tool built for compliance-first teams. Keep Jira as your source of truth while your whole team works where they're most comfortable.</p>
+    <div class="hero-form" id="hero-form-wrap">
+      <input type="email" id="hero-email" placeholder="your@company.com" autocomplete="email">
+      <button class="btn-primary" onclick="handleSignup('hero')">Get Early Access</button>
+    </div>
+    <div class="success-msg" id="hero-success">🎉 You're on the list! We'll be in touch soon.</div>
+    <p class="hero-note">No credit card required · Free during beta · Cancel anytime</p>
+    <div class="hero-platforms">
+      <span>Works with</span>
+      <div class="platform-pill">🔵 Jira</div>
+      <div class="platform-pill">🟢 Google Sheets</div>
+      <div class="platform-pill">🟣 Monday.com</div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="sync-diagram">
+      <svg class="sync-lines" viewBox="0 0 420 420">
+        <!-- Jira to Sheets -->
+        <path class="sync-line" d="M 210 130 L 90 290"/>
+        <path class="sync-line-reverse" d="M 90 290 L 210 130"/>
+        <!-- Jira to Monday -->
+        <path class="sync-line" d="M 210 130 L 330 290"/>
+        <path class="sync-line-reverse" d="M 330 290 L 210 130"/>
+        <!-- Sheets to Monday -->
+        <path class="sync-line" d="M 90 310 L 310 310"/>
+        <path class="sync-line-reverse" d="M 310 310 L 90 310"/>
+      </svg>
+
+      <div class="sync-node node-jira">
+        <div class="node-icon">🔵</div>
+        <div class="node-label">Jira</div>
+      </div>
+
+      <div class="sync-node node-sheets">
+        <div class="node-icon">🟢</div>
+        <div class="node-label">Sheets</div>
+      </div>
+
+      <div class="sync-node node-monday">
+        <div class="node-icon">🟣</div>
+        <div class="node-label">Monday</div>
+      </div>
+
+      <div class="sync-center">⚡</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item">Bidirectional Sync</div>
+    <div class="ticker-item">HIPAA Ready</div>
+    <div class="ticker-item">PHI Wipe</div>
+    <div class="ticker-item">Auto Field Discovery</div>
+    <div class="ticker-item">Jira Comments Writeback</div>
+    <div class="ticker-item">Audit Logging</div>
+    <div class="ticker-item">Scheduled Sanitization</div>
+    <div class="ticker-item">Conflict Resolution</div>
+    <div class="ticker-item">Bidirectional Sync</div>
+    <div class="ticker-item">HIPAA Ready</div>
+    <div class="ticker-item">PHI Wipe</div>
+    <div class="ticker-item">Auto Field Discovery</div>
+    <div class="ticker-item">Jira Comments Writeback</div>
+    <div class="ticker-item">Audit Logging</div>
+    <div class="ticker-item">Scheduled Sanitization</div>
+    <div class="ticker-item">Conflict Resolution</div>
+  </div>
+</div>
+
+<!-- SYNC PATHS -->
+<section class="paths-section" id="features">
+  <div class="section-label">How It Works</div>
+  <h2>Three sync paths.<br>One source of truth.</h2>
+  <p class="section-sub">Connect any combination of platforms. Jira always wins on ticket data — your team works wherever they're most productive.</p>
+
+  <div class="paths-grid reveal">
+    <div class="path-card">
+      <div class="path-platforms">
+        <div class="path-icon">🔵</div>
+        <div class="path-arrow">⇄</div>
+        <div class="path-icon">🟢</div>
+      </div>
+      <h3>Jira ↔ Google Sheets</h3>
+      <p>Pull any Jira project into a structured, auto-refreshing Google Sheet. Notes write back to Jira as comments. Jira always wins on ticket data.</p>
+      <div class="path-tag">Starter · Pro · Compliance</div>
+    </div>
+
+    <div class="path-card">
+      <div class="path-platforms">
+        <div class="path-icon">🔵</div>
+        <div class="path-arrow">⇄</div>
+        <div class="path-icon">🟣</div>
+      </div>
+      <h3>Jira ↔ Monday.com</h3>
+      <p>Push Jira tickets directly into Monday boards — no Google Sheets required. Full bidirectional sync with Jira as the authoritative source.</p>
+      <div class="path-tag">Pro · Compliance</div>
+    </div>
+
+    <div class="path-card">
+      <div class="path-platforms">
+        <div class="path-icon">🟢</div>
+        <div class="path-arrow">⇄</div>
+        <div class="path-icon">🟣</div>
+      </div>
+      <h3>Sheets ↔ Monday.com</h3>
+      <p>Keep both platforms in sync simultaneously. Notes and updates flow between Sheets and Monday — you choose which platform wins on conflict.</p>
+      <div class="path-tag">Pro · Compliance</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <div class="section-label">Features</div>
+  <h2>Everything your ops<br>team actually needs.</h2>
+
+  <div class="features-grid reveal">
+    <div class="feature-item">
+      <div class="feature-num">01</div>
+      <div class="feature-icon">🔍</div>
+      <h3>Auto Field Discovery</h3>
+      <p>CompliSync automatically discovers every custom field in your Jira instance and suggests intelligent mappings. No developer needed. Set up in under 10 minutes regardless of how your Jira is configured.</p>
+    </div>
+
+    <div class="feature-item">
+      <div class="feature-num">02</div>
+      <div class="feature-icon">💬</div>
+      <h3>Jira Comments Writeback</h3>
+      <p>Edit the Jira Comments column in Sheets or Monday and CompliSync posts it back to Jira automatically — tagged with the source and user. The full comment thread stays in Jira where it belongs.</p>
+    </div>
+
+    <div class="feature-item">
+      <div class="feature-num">03</div>
+      <div class="feature-icon">🔒</div>
+      <h3>Private Notes Column</h3>
+      <p>A dedicated Notes column that never touches Jira. Internal team context stays internal — preserved across every sync, never overwritten, never shared with clients.</p>
+    </div>
+
+    <div class="feature-item">
+      <div class="feature-num">04</div>
+      <div class="feature-icon">⚡</div>
+      <h3>Smart Conflict Resolution</h3>
+      <p>Jira always wins on ticket data. For notes, you choose which platform is authoritative. No surprises, no lost edits, no manual reconciliation.</p>
+    </div>
+
+    <div class="feature-item">
+      <div class="feature-num">05</div>
+      <div class="feature-icon">👤</div>
+      <h3>External Reporter Detection</h3>
+      <p>Automatically flags tickets submitted from outside your organization based on email domain. Instantly see which tickets came from clients vs. internal teams.</p>
+    </div>
+
+    <div class="feature-item">
+      <div class="feature-num">06</div>
+      <div class="feature-icon">🔗</div>
+      <h3>Linked Ticket Mapping</h3>
+      <p>Captures up to three linked tickets per row — all clickable hyperlinks. See dependencies, duplicates, and related issues without ever leaving your sheet.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section class="compliance-section" id="compliance">
+  <div class="section-label">Compliance Tier</div>
+  <h2>Built for<br>healthcare teams.</h2>
+  <p class="section-sub" style="color:rgba(245,243,238,0.5)">The only Jira sync tool with a dedicated PHI compliance layer. Purpose-built for teams operating under HIPAA, HITRUST, or SOC 2.</p>
+
+  <div class="compliance-grid reveal">
+    <div class="compliance-features">
+      <div class="compliance-feature">
+        <div class="cf-icon">🧹</div>
+        <div class="cf-text">
+          <h4>One-Click PHI Wipe</h4>
+          <p>Instantly sanitize designated PHI columns across all sheets. Generates a clean, share-safe version without touching your source data.</p>
+        </div>
+      </div>
+
+      <div class="compliance-feature">
+        <div class="cf-icon">📅</div>
+        <div class="cf-text">
+          <h4>Scheduled Sanitization</h4>
+          <p>Set automatic PHI wipes on a schedule — daily, weekly, or monthly. Runs overnight so your team always starts the day compliant.</p>
+        </div>
+      </div>
+
+      <div class="compliance-feature">
+        <div class="cf-icon">📋</div>
+        <div class="cf-text">
+          <h4>Audit Log</h4>
+          <p>Every sync, wipe, and share is logged with timestamp and user. Export your audit trail as a PDF for compliance reviews.</p>
+        </div>
+      </div>
+
+      <div class="compliance-feature">
+        <div class="cf-icon">🗑️</div>
+        <div class="cf-text">
+          <h4>Data Retention Policy</h4>
+          <p>Automatically remove tickets older than a configurable threshold. Stay within your organization's data retention requirements without manual cleanup.</p>
+        </div>
+      </div>
+
+      <div class="compliance-feature">
+        <div class="cf-icon">📄</div>
+        <div class="cf-text">
+          <h4>HIPAA Documentation Export</h4>
+          <p>Generate a compliance summary document showing your data flow, PHI handling procedures, and audit history — ready for your compliance officer.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phi-visual">
+      <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,243,238,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">PHI Wipe Preview</div>
+      <table class="phi-table">
+        <thead>
+          <tr>
+            <th>Ticket</th>
+            <th>Reporter</th>
+            <th>Summary</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CTS-8291</td>
+            <td><span class="phi-cell" id="phi-1">J. Smith</span></td>
+            <td><span class="phi-cell" id="phi-2">Patient auth issue</span></td>
+          </tr>
+          <tr>
+            <td>CTS-8292</td>
+            <td><span class="phi-cell" id="phi-3">M. Johnson</span></td>
+            <td><span class="phi-cell" id="phi-4">Member ID mismatch</span></td>
+          </tr>
+          <tr>
+            <td>CTS-8293</td>
+            <td><span class="phi-cell" id="phi-5">K. Williams</span></td>
+            <td><span class="phi-cell" id="phi-6">Claims review needed</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="wipe-btn" id="wipe-demo-btn" onclick="demoWipe()">
+        🧹 Wipe PHI Data
+      </button>
+      <div style="margin-top:16px;font-size:11px;color:rgba(245,243,238,0.3);text-align:center;">
+        Demo only — click to see PHI wipe in action
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLUMNS -->
+<section class="columns-section">
+  <div class="section-label">Standard Columns</div>
+  <h2>22 columns, out<br>of the box.</h2>
+  <p class="section-sub">Every column you need, mapped intelligently from your Jira instance. Add unlimited custom columns via the field mapping UI.</p>
+
+  <div class="columns-table-wrap reveal">
+    <table class="columns-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Column</th>
+          <th>Source</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>A</td><td><span class="col-name">Ticket ID</span></td><td><span class="col-source source-jira">Jira</span></td><td>Clickable hyperlink to ticket</td></tr>
+        <tr><td>B</td><td><span class="col-name">Client / Payer</span></td><td><span class="col-source source-jira">Jira</span></td><td>Custom field, auto-discovered</td></tr>
+        <tr><td>C</td><td><span class="col-name">Summary</span></td><td><span class="col-source source-jira">Jira</span></td><td>Ticket title</td></tr>
+        <tr><td>D</td><td><span class="col-name">Status</span></td><td><span class="col-source source-jira">Jira</span></td><td>Maps to your workflow statuses</td></tr>
+        <tr><td>E</td><td><span class="col-name">Priority</span></td><td><span class="col-source source-jira">Jira</span></td><td></td></tr>
+        <tr><td>F</td><td><span class="col-name">Assignee</span></td><td><span class="col-source source-jira">Jira</span></td><td></td></tr>
+        <tr><td>G</td><td><span class="col-name">Date Opened</span></td><td><span class="col-source source-jira">Jira</span></td><td></td></tr>
+        <tr><td>H</td><td><span class="col-name">Last Updated</span></td><td><span class="col-source source-jira">Jira</span></td><td></td></tr>
+        <tr><td>I</td><td><span class="col-name">Days Open</span></td><td><span class="col-source source-calc">Calculated</span></td><td>Auto-computed daily</td></tr>
+        <tr><td>J</td><td><span class="col-name">Days Since Update</span></td><td><span class="col-source source-calc">Calculated</span></td><td></td></tr>
+        <tr><td>K</td><td><span class="col-name">Age Flag</span></td><td><span class="col-source source-calc">Calculated</span></td><td>✅ OK · 🟡 Watch · 🔴 Critical</td></tr>
+        <tr><td>L</td><td><span class="col-name">Stalled?</span></td><td><span class="col-source source-calc">Calculated</span></td><td>⚠️ YES when no update in N days</td></tr>
+        <tr><td>M</td><td><span class="col-name">Awaiting Action</span></td><td><span class="col-source source-jira">Jira</span></td><td>Mapped from your status labels</td></tr>
+        <tr><td>N</td><td><span class="col-name">Reporter</span></td><td><span class="col-source source-jira">Jira</span></td><td></td></tr>
+        <tr><td>O</td><td><span class="col-name">External</span></td><td><span class="col-source source-calc">Calculated</span></td><td>Yes/No based on email domain</td></tr>
+        <tr><td>P</td><td><span class="col-name">Linked Ticket 1</span></td><td><span class="col-source source-jira">Jira</span></td><td>Clickable hyperlink</td></tr>
+        <tr><td>Q</td><td><span class="col-name">Linked Ticket 2</span></td><td><span class="col-source source-jira">Jira</span></td><td>Clickable hyperlink</td></tr>
+        <tr><td>R</td><td><span class="col-name">Linked Ticket 3</span></td><td><span class="col-source source-jira">Jira</span></td><td>Clickable hyperlink</td></tr>
+        <tr><td>S</td><td><span class="col-name">Jira Comments</span></td><td><span class="col-source source-jira">Jira</span></td><td><span class="col-badge badge-writeback">Writes back to Jira</span></td></tr>
+        <tr><td>T</td><td><span class="col-name">Notes</span></td><td><span class="col-source source-user">User</span></td><td><span class="col-badge badge-preserved">Never overwritten</span> · Private</td></tr>
+        <tr><td>+</td><td><span class="col-name">Custom Columns</span></td><td><span class="col-source source-jira">Jira</span></td><td>Map any Jira field via UI · Unlimited</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="section-label">Pricing</div>
+  <h2>Simple, transparent<br>pricing.</h2>
+  <p class="section-sub">Start free during beta. Upgrade when you're ready. All plans include a 14-day free trial.</p>
+
+  <div class="pricing-grid reveal">
+    <div class="pricing-card">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price"><sup>$</sup>29</div>
+      <div class="plan-period">per workspace / month</div>
+      <ul class="plan-features">
+        <li>Jira ↔ Google Sheets sync</li>
+        <li>Scheduled automatic sync</li>
+        <li>All 22 standard columns</li>
+        <li>Jira Comments writeback</li>
+        <li>Private Notes column</li>
+        <li>Auto field discovery</li>
+        <li>External reporter detection</li>
+        <li>Up to 3 Jira projects</li>
+      </ul>
+      <a href="#early" class="btn-plan">Start Free Trial</a>
+    </div>
+
+    <div class="pricing-card featured">
+      <div class="pricing-badge">Most Popular</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price"><sup>$</sup>79</div>
+      <div class="plan-period">per workspace / month</div>
+      <ul class="plan-features">
+        <li>Everything in Starter</li>
+        <li>Jira ↔ Monday.com sync</li>
+        <li>Sheets ↔ Monday.com sync</li>
+        <li>All three platforms simultaneously</li>
+        <li>Unlimited Jira projects</li>
+        <li>Unlimited custom columns</li>
+        <li>Per-client tab generation</li>
+        <li>Conflict resolution controls</li>
+      </ul>
+      <a href="#early" class="btn-plan">Start Free Trial</a>
+    </div>
+
+    <div class="pricing-card">
+      <div class="plan-name">Compliance</div>
+      <div class="plan-price"><sup>$</sup>149</div>
+      <div class="plan-period">per workspace / month</div>
+      <ul class="plan-features">
+        <li>Everything in Pro</li>
+        <li>PHI column designation</li>
+        <li>One-click PHI wipe</li>
+        <li>Scheduled sanitization</li>
+        <li>Full audit log</li>
+        <li>HIPAA documentation export</li>
+        <li>Data retention policies</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="#early" class="btn-plan">Start Free Trial</a>
+    </div>
+  </div>
+</section>
+
+<!-- EARLY ACCESS -->
+<section class="early-section" id="early">
+  <div class="section-label" style="justify-content:center;">Early Access</div>
+  <h2>Be first.<br>Shape the product.</h2>
+  <p class="section-sub">Join the early access list and get free Pro access during beta. Your feedback directly influences what we build next.</p>
+
+  <div class="early-form" id="early-form-wrap">
+    <input type="email" id="early-email" placeholder="your@company.com" autocomplete="email">
+    <button class="btn-primary" onclick="handleSignup('early')">Join Waitlist</button>
+  </div>
+  <div class="success-msg" id="early-success" style="display:none;margin:0 auto;max-width:440px;">🎉 You're on the list! We'll be in touch soon.</div>
+  <p class="early-note">Free Pro access during beta · No credit card · No spam</p>
+
+  <div class="signups">
+    <div class="signup-avatars">
+      <div class="signup-avatar">S</div>
+      <div class="signup-avatar">M</div>
+      <div class="signup-avatar">J</div>
+      <div class="signup-avatar">A</div>
+    </div>
+    <div class="signup-text"><strong>Healthcare &amp; ops teams</strong> already on the list</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">Compli<span>Sync</span></a>
+  <ul class="footer-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#compliance">Compliance</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="mailto:hello@complisync.io">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 CompliSync. All rights reserved.</div>
+</footer>
+
+<script>
+  // ── SCROLL REVEAL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(r => observer.observe(r));
+
+  // ── EMAIL SIGNUP ──
+  function handleSignup(section) {
+    const email = document.getElementById(section + '-email').value;
+    const formWrap = document.getElementById(section + '-form-wrap');
+    const success = document.getElementById(section + '-success');
+    const emailInput = document.getElementById(section + '-email');
+
+    if (!email || !email.includes('@')) {
+      emailInput.style.borderColor = '#e8524a';
+      setTimeout(() => { emailInput.style.borderColor = ''; }, 2000);
+      return;
+    }
+
+    // Disable button to prevent double submit
+    const btn = formWrap.querySelector('button');
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+
+    fetch('https://formspree.io/f/xpqknwgk', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email: email, source: section })
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.ok) {
+        formWrap.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        btn.textContent = 'Try Again';
+        btn.disabled = false;
+        emailInput.style.borderColor = '#e8524a';
+      }
+    })
+    .catch(() => {
+      btn.textContent = 'Try Again';
+      btn.disabled = false;
+      emailInput.style.borderColor = '#e8524a';
+    });
+  }
+
+  // ── PHI WIPE DEMO ──
+  let wiped = false;
+  function demoWipe() {
+    const btn = document.getElementById('wipe-demo-btn');
+    const cells = ['phi-1','phi-2','phi-3','phi-4','phi-5','phi-6'];
+
+    if (!wiped) {
+      cells.forEach((id, i) => {
+        setTimeout(() => {
+          const cell = document.getElementById(id);
+          cell.classList.add('wiped');
+          cell.textContent = '';
+        }, i * 80);
+      });
+      btn.textContent = '✓ PHI Wiped Successfully';
+      btn.classList.add('wiped');
+      wiped = true;
+    } else {
+      const originals = ['J. Smith','Patient auth issue','M. Johnson','Member ID mismatch','K. Williams','Claims review needed'];
+      cells.forEach((id, i) => {
+        setTimeout(() => {
+          const cell = document.getElementById(id);
+          cell.classList.remove('wiped');
+          cell.textContent = originals[i];
+        }, i * 80);
+      });
+      btn.textContent = '🧹 Wipe PHI Data';
+      btn.classList.remove('wiped');
+      wiped = false;
+    }
+  }
+
+  // ── ENTER KEY FOR FORMS ──
+  document.getElementById('hero-email').addEventListener('keydown', e => {
+    if (e.key === 'Enter') handleSignup('hero');
+  });
+  document.getElementById('early-email').addEventListener('keydown', e => {
+    if (e.key === 'Enter') handleSignup('early');
+  });
+</script>
+
+<!-- ── MODAL OVERLAY ── -->
+<div id="modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(10,15,30,0.7);z-index:1000;backdrop-filter:blur(4px);" onclick="closeModal()"></div>
+
+<!-- PRIVACY POLICY MODAL -->
+<div id="modal-privacy" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(800px,92vw);max-height:82vh;background:#f5f3ee;border-radius:20px;z-index:1001;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,0.3);">
+  <div style="padding:32px 40px 20px;border-bottom:1px solid #e8e5de;display:flex;align-items:center;justify-content:space-between;background:#f5f3ee;position:sticky;top:0;">
+    <div>
+      <div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:#00c2a8;margin-bottom:6px;">Legal</div>
+      <h2 style="font-family:'Syne',sans-serif;font-size:24px;font-weight:800;letter-spacing:-0.5px;color:#0a0f1e;margin:0;">Privacy Policy</h2>
+    </div>
+    <button onclick="closeModal()" style="width:36px;height:36px;border-radius:50%;border:1.5px solid #e8e5de;background:white;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#0a0f1e;transition:all 0.2s;">×</button>
+  </div>
+  <div style="padding:32px 40px;overflow-y:auto;max-height:calc(82vh - 100px);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;color:#0a0f1e;">
+    <p style="color:#666;font-size:13px;margin-bottom:24px;">Effective Date: April 25, 2026 · Last Updated: April 25, 2026</p>
+    <p style="margin-bottom:20px;">This Privacy Policy describes how CompliSync collects, uses, and protects information when you use our service that synchronizes data between Jira, Google Sheets, and Monday.com.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">1. Information We Collect</h3>
+    <p style="margin-bottom:12px;font-weight:600;">Information You Provide</p>
+    <ul style="padding-left:24px;margin-bottom:16px;">
+      <li style="margin-bottom:8px;">Account registration information (name, email, organization)</li>
+      <li style="margin-bottom:8px;">Billing information (processed by Stripe; we do not store card numbers)</li>
+      <li style="margin-bottom:8px;">Jira and Monday.com API tokens (stored encrypted)</li>
+      <li style="margin-bottom:8px;">Configuration settings including field mappings and sync schedules</li>
+    </ul>
+    <p style="margin-bottom:12px;font-weight:600;">Data from Connected Platforms</p>
+    <p style="margin-bottom:16px;">When you connect Jira, Google Sheets, or Monday.com, we access ticket data, spreadsheet data, and board data solely to provide the synchronization service you have configured. We do not access data beyond what is necessary.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">2. How We Use Your Information</h3>
+    <p style="margin-bottom:12px;">We use your information to provide and improve the Service, process billing, respond to support requests, and send transactional notifications. <strong>We do not sell, rent, or share your data with third parties for marketing purposes.</strong></p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">3. Protected Health Information (PHI) and HIPAA</h3>
+    <p style="margin-bottom:12px;">CompliSync is designed for compliance-focused teams. Customers on the Compliance tier may execute a Business Associate Agreement (BAA) with us governing PHI processing. Contact hello@complisync.org to request a BAA.</p>
+    <p style="margin-bottom:12px;">CompliSync provides PHI Column Designation, PHI Wipe, Audit Logging, and Data Retention controls. Customers are responsible for correctly configuring these features.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">4. Data Storage and Security</h3>
+    <p style="margin-bottom:12px;">Data is stored on servers in the United States. API tokens are encrypted at rest using AES-256. All data in transit is protected with TLS 1.2 or higher. Data is retained for the duration of your subscription and deleted within 30 days of cancellation.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">5. Third-Party Services</h3>
+    <p style="margin-bottom:12px;">CompliSync integrates with Atlassian Jira, Google Workspace, Monday.com, Stripe (payments), and Formspree (contact forms). Your use of these platforms is governed by their respective privacy policies.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">6. Your Rights</h3>
+    <p style="margin-bottom:12px;">You may request access, correction, deletion, or export of your personal data at any time by contacting hello@complisync.org. We will respond within 30 days.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">7. Changes to This Policy</h3>
+    <p style="margin-bottom:12px;">We will notify you of material changes by email and on our website with at least 14 days notice.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">8. Contact</h3>
+    <p>CompliSync · hello@complisync.org · complisync.org</p>
+  </div>
+</div>
+
+<!-- TERMS OF SERVICE MODAL -->
+<div id="modal-terms" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(800px,92vw);max-height:82vh;background:#f5f3ee;border-radius:20px;z-index:1001;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,0.3);">
+  <div style="padding:32px 40px 20px;border-bottom:1px solid #e8e5de;display:flex;align-items:center;justify-content:space-between;background:#f5f3ee;position:sticky;top:0;">
+    <div>
+      <div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:#00c2a8;margin-bottom:6px;">Legal</div>
+      <h2 style="font-family:'Syne',sans-serif;font-size:24px;font-weight:800;letter-spacing:-0.5px;color:#0a0f1e;margin:0;">Terms of Service</h2>
+    </div>
+    <button onclick="closeModal()" style="width:36px;height:36px;border-radius:50%;border:1.5px solid #e8e5de;background:white;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#0a0f1e;transition:all 0.2s;">×</button>
+  </div>
+  <div style="padding:32px 40px;overflow-y:auto;max-height:calc(82vh - 100px);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;color:#0a0f1e;">
+    <p style="color:#666;font-size:13px;margin-bottom:24px;">Effective Date: April 25, 2026 · Last Updated: April 25, 2026</p>
+    <p style="margin-bottom:20px;">Please read these Terms of Service carefully before using CompliSync. By using the Service, you agree to be bound by these Terms.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">1. The Service</h3>
+    <p style="margin-bottom:12px;">CompliSync is a software-as-a-service product that synchronizes data between Jira, Google Sheets, and Monday.com. By using CompliSync, you represent that you are at least 18 years of age and have the authority to bind your organization to these Terms.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">2. Subscriptions and Billing</h3>
+    <p style="margin-bottom:12px;">Subscriptions are billed monthly or annually in advance. All fees are non-refundable except within 14 days of your initial purchase. You may cancel at any time; cancellation takes effect at the end of the current billing period.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">3. Acceptable Use</h3>
+    <p style="margin-bottom:12px;">You may use CompliSync solely to synchronize data between your authorized accounts. You agree not to reverse engineer the Service, resell access, use the Service to violate applicable law, or attempt to gain unauthorized access to any platform.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">4. Customer Data</h3>
+    <p style="margin-bottom:12px;">You retain all ownership of your data. CompliSync processes your data only as necessary to provide the Service. You are responsible for ensuring you have the right to connect your third-party accounts and for the legality of all data processed.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">5. HIPAA</h3>
+    <p style="margin-bottom:12px;">Customers subject to HIPAA who intend to process Protected Health Information must be on the Compliance tier and must execute a Business Associate Agreement (BAA) with CompliSync before processing any PHI. Contact hello@complisync.org to request a BAA.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">6. Disclaimer of Warranties</h3>
+    <p style="margin-bottom:12px;">THE SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND. COMPLISYNC DOES NOT WARRANT THAT USE OF THE SERVICE WILL RESULT IN COMPLIANCE WITH ANY LAW INCLUDING HIPAA. CUSTOMERS ARE RESPONSIBLE FOR THEIR OWN COMPLIANCE.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">7. Limitation of Liability</h3>
+    <p style="margin-bottom:12px;">COMPLISYNC'S TOTAL LIABILITY SHALL NOT EXCEED THE GREATER OF THE AMOUNT YOU PAID IN THE PRECEDING 12 MONTHS OR $100. WE ARE NOT LIABLE FOR INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">8. Termination</h3>
+    <p style="margin-bottom:12px;">You may cancel at any time. We may suspend or terminate your account for breach of these Terms. Upon termination, your data will be deleted within 30 days.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">9. Governing Law</h3>
+    <p style="margin-bottom:12px;">These Terms are governed by the laws of the United States. Disputes shall be resolved through binding arbitration under AAA rules.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">10. Contact</h3>
+    <p>CompliSync · hello@complisync.org · complisync.org</p>
+  </div>
+</div>
+
+<script>
+  function showModal(type) {
+    document.getElementById('modal-overlay').style.display = 'block';
+    document.getElementById('modal-privacy').style.display = type === 'privacy' ? 'block' : 'none';
+    document.getElementById('modal-terms').style.display = type === 'terms' ? 'block' : 'none';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('modal-overlay').style.display = 'none';
+    document.getElementById('modal-privacy').style.display = 'none';
+    document.getElementById('modal-terms').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+
+</body>
+</html>
