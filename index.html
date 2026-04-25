@@ -1669,5 +1669,118 @@
     if (e.key === 'Enter') handleSignup('early');
   });
 </script>
+
+<!-- ── MODAL OVERLAY ── -->
+<div id="modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(10,15,30,0.7);z-index:1000;backdrop-filter:blur(4px);" onclick="closeModal()"></div>
+
+<!-- PRIVACY POLICY MODAL -->
+<div id="modal-privacy" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(800px,92vw);max-height:82vh;background:#f5f3ee;border-radius:20px;z-index:1001;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,0.3);">
+  <div style="padding:32px 40px 20px;border-bottom:1px solid #e8e5de;display:flex;align-items:center;justify-content:space-between;background:#f5f3ee;position:sticky;top:0;">
+    <div>
+      <div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:#00c2a8;margin-bottom:6px;">Legal</div>
+      <h2 style="font-family:'Syne',sans-serif;font-size:24px;font-weight:800;letter-spacing:-0.5px;color:#0a0f1e;margin:0;">Privacy Policy</h2>
+    </div>
+    <button onclick="closeModal()" style="width:36px;height:36px;border-radius:50%;border:1.5px solid #e8e5de;background:white;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#0a0f1e;transition:all 0.2s;">×</button>
+  </div>
+  <div style="padding:32px 40px;overflow-y:auto;max-height:calc(82vh - 100px);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;color:#0a0f1e;">
+    <p style="color:#666;font-size:13px;margin-bottom:24px;">Effective Date: April 25, 2026 · Last Updated: April 25, 2026</p>
+    <p style="margin-bottom:20px;">This Privacy Policy describes how CompliSync collects, uses, and protects information when you use our service that synchronizes data between Jira, Google Sheets, and Monday.com.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">1. Information We Collect</h3>
+    <p style="margin-bottom:12px;font-weight:600;">Information You Provide</p>
+    <ul style="padding-left:24px;margin-bottom:16px;">
+      <li style="margin-bottom:8px;">Account registration information (name, email, organization)</li>
+      <li style="margin-bottom:8px;">Billing information (processed by Stripe; we do not store card numbers)</li>
+      <li style="margin-bottom:8px;">Jira and Monday.com API tokens (stored encrypted)</li>
+      <li style="margin-bottom:8px;">Configuration settings including field mappings and sync schedules</li>
+    </ul>
+    <p style="margin-bottom:12px;font-weight:600;">Data from Connected Platforms</p>
+    <p style="margin-bottom:16px;">When you connect Jira, Google Sheets, or Monday.com, we access ticket data, spreadsheet data, and board data solely to provide the synchronization service you have configured. We do not access data beyond what is necessary.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">2. How We Use Your Information</h3>
+    <p style="margin-bottom:12px;">We use your information to provide and improve the Service, process billing, respond to support requests, and send transactional notifications. <strong>We do not sell, rent, or share your data with third parties for marketing purposes.</strong></p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">3. Protected Health Information (PHI) and HIPAA</h3>
+    <p style="margin-bottom:12px;">CompliSync is designed for compliance-focused teams. Customers on the Compliance tier may execute a Business Associate Agreement (BAA) with us governing PHI processing. Contact hello@complisync.org to request a BAA.</p>
+    <p style="margin-bottom:12px;">CompliSync provides PHI Column Designation, PHI Wipe, Audit Logging, and Data Retention controls. Customers are responsible for correctly configuring these features.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">4. Data Storage and Security</h3>
+    <p style="margin-bottom:12px;">Data is stored on servers in the United States. API tokens are encrypted at rest using AES-256. All data in transit is protected with TLS 1.2 or higher. Data is retained for the duration of your subscription and deleted within 30 days of cancellation.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">5. Third-Party Services</h3>
+    <p style="margin-bottom:12px;">CompliSync integrates with Atlassian Jira, Google Workspace, Monday.com, Stripe (payments), and Formspree (contact forms). Your use of these platforms is governed by their respective privacy policies.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">6. Your Rights</h3>
+    <p style="margin-bottom:12px;">You may request access, correction, deletion, or export of your personal data at any time by contacting hello@complisync.org. We will respond within 30 days.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">7. Changes to This Policy</h3>
+    <p style="margin-bottom:12px;">We will notify you of material changes by email and on our website with at least 14 days notice.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">8. Contact</h3>
+    <p>CompliSync · hello@complisync.org · complisync.org</p>
+  </div>
+</div>
+
+<!-- TERMS OF SERVICE MODAL -->
+<div id="modal-terms" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(800px,92vw);max-height:82vh;background:#f5f3ee;border-radius:20px;z-index:1001;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,0.3);">
+  <div style="padding:32px 40px 20px;border-bottom:1px solid #e8e5de;display:flex;align-items:center;justify-content:space-between;background:#f5f3ee;position:sticky;top:0;">
+    <div>
+      <div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:#00c2a8;margin-bottom:6px;">Legal</div>
+      <h2 style="font-family:'Syne',sans-serif;font-size:24px;font-weight:800;letter-spacing:-0.5px;color:#0a0f1e;margin:0;">Terms of Service</h2>
+    </div>
+    <button onclick="closeModal()" style="width:36px;height:36px;border-radius:50%;border:1.5px solid #e8e5de;background:white;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#0a0f1e;transition:all 0.2s;">×</button>
+  </div>
+  <div style="padding:32px 40px;overflow-y:auto;max-height:calc(82vh - 100px);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;color:#0a0f1e;">
+    <p style="color:#666;font-size:13px;margin-bottom:24px;">Effective Date: April 25, 2026 · Last Updated: April 25, 2026</p>
+    <p style="margin-bottom:20px;">Please read these Terms of Service carefully before using CompliSync. By using the Service, you agree to be bound by these Terms.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">1. The Service</h3>
+    <p style="margin-bottom:12px;">CompliSync is a software-as-a-service product that synchronizes data between Jira, Google Sheets, and Monday.com. By using CompliSync, you represent that you are at least 18 years of age and have the authority to bind your organization to these Terms.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">2. Subscriptions and Billing</h3>
+    <p style="margin-bottom:12px;">Subscriptions are billed monthly or annually in advance. All fees are non-refundable except within 14 days of your initial purchase. You may cancel at any time; cancellation takes effect at the end of the current billing period.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">3. Acceptable Use</h3>
+    <p style="margin-bottom:12px;">You may use CompliSync solely to synchronize data between your authorized accounts. You agree not to reverse engineer the Service, resell access, use the Service to violate applicable law, or attempt to gain unauthorized access to any platform.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">4. Customer Data</h3>
+    <p style="margin-bottom:12px;">You retain all ownership of your data. CompliSync processes your data only as necessary to provide the Service. You are responsible for ensuring you have the right to connect your third-party accounts and for the legality of all data processed.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">5. HIPAA</h3>
+    <p style="margin-bottom:12px;">Customers subject to HIPAA who intend to process Protected Health Information must be on the Compliance tier and must execute a Business Associate Agreement (BAA) with CompliSync before processing any PHI. Contact hello@complisync.org to request a BAA.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">6. Disclaimer of Warranties</h3>
+    <p style="margin-bottom:12px;">THE SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND. COMPLISYNC DOES NOT WARRANT THAT USE OF THE SERVICE WILL RESULT IN COMPLIANCE WITH ANY LAW INCLUDING HIPAA. CUSTOMERS ARE RESPONSIBLE FOR THEIR OWN COMPLIANCE.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">7. Limitation of Liability</h3>
+    <p style="margin-bottom:12px;">COMPLISYNC'S TOTAL LIABILITY SHALL NOT EXCEED THE GREATER OF THE AMOUNT YOU PAID IN THE PRECEDING 12 MONTHS OR $100. WE ARE NOT LIABLE FOR INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">8. Termination</h3>
+    <p style="margin-bottom:12px;">You may cancel at any time. We may suspend or terminate your account for breach of these Terms. Upon termination, your data will be deleted within 30 days.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">9. Governing Law</h3>
+    <p style="margin-bottom:12px;">These Terms are governed by the laws of the United States. Disputes shall be resolved through binding arbitration under AAA rules.</p>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">10. Contact</h3>
+    <p>CompliSync · hello@complisync.org · complisync.org</p>
+  </div>
+</div>
+
+<script>
+  function showModal(type) {
+    document.getElementById('modal-overlay').style.display = 'block';
+    document.getElementById('modal-privacy').style.display = type === 'privacy' ? 'block' : 'none';
+    document.getElementById('modal-terms').style.display = type === 'terms' ? 'block' : 'none';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('modal-overlay').style.display = 'none';
+    document.getElementById('modal-privacy').style.display = 'none';
+    document.getElementById('modal-terms').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+
 </body>
 </html>
