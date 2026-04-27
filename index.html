@@ -119,14 +119,19 @@
     overflow: hidden;
   }
 
-  .hero-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 80px 64px 80px 80px;
-    position: relative;
-    z-index: 2;
-  }
+<div class="hero-left">
+  <div class="product-switcher">
+    <a href="#" class="product-btn active complisync">
+      <span style="font-size:10px;">●</span> CompliSync
+    </a>
+    <a href="https://compilo.io" class="product-btn compilo">
+      Compilo <span style="font-size:10px; opacity:0.5;">↗</span>
+    </a>
+  </div>
+
+  <div class="hero-badge">Now in Early Access</div>
+  <h1>Jira, Sheets &amp;<br><em>Monday</em>.<br>In sync.</h1>
+  </div>
 
   .hero-badge {
     display: inline-flex;
@@ -1546,6 +1551,54 @@
     .plan-price-main { font-size: 48px; }
     section { padding: 48px 20px; }
   }
+
+
+  /* Product Switcher Refinement */
+.product-switcher {
+  display: inline-flex;
+  background: rgba(0, 0, 0, 0.05); /* Subtle depth */
+  padding: 4px;
+  border-radius: 100px;
+  margin-bottom: 32px; /* Space before the badge */
+  border: 1px solid var(--mist);
+  align-self: flex-start; /* Keeps it tight to the left */
+}
+
+.product-btn {
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* CompliSync Active State */
+.product-btn.complisync.active {
+  background: white;
+  color: var(--teal);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Compilo Inactive State */
+.product-btn.compilo {
+  color: var(--ink);
+  opacity: 0.4;
+}
+
+.product-btn.compilo:hover {
+  opacity: 1;
+  color: #5a67d8; /* Compilo's brand color */
+  background: rgba(90, 103, 216, 0.05);
+}
+
+  
 </style>
 </head>
 <body>
