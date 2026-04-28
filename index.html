@@ -12,6 +12,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://complisync.io/complisync_banner.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
@@ -31,7 +32,6 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -107,6 +107,55 @@
   }
 
   .nav-cta:hover { background: var(--teal) !important; color: var(--ink) !important; }
+
+  /* Product switcher pill */
+  .product-switcher {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 18px;
+    padding-left: 18px;
+    border-left: 1px solid var(--mist);
+  }
+
+  .product-switcher-label {
+    font-size: 11px;
+    color: #bbb;
+    letter-spacing: 0.04em;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .product-switcher-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    background: #F5F0E8;
+    border: 1px solid #E8E0D0;
+    border-radius: 100px;
+    padding: 5px 12px;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+
+  .product-switcher-link:hover {
+    background: #E6F5F2;
+    border-color: #A8D9D2;
+  }
+
+  .product-switcher-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1C2622;
+    letter-spacing: -0.2px;
+  }
+
+  .product-switcher-name span { color: #2D9C8A; }
+
+  .product-switcher-arrow {
+    font-size: 10px;
+    color: #7A8A84;
+  }
 
   /* ── HERO ── */
   .hero {
@@ -310,8 +359,7 @@
 
   .sync-diagram {
     position: relative;
-    width: 420px;
-    height: 420px;
+    width: 420px; height: 420px;
     animation: fadeUp 0.8s 0.3s ease both;
   }
 
@@ -352,12 +400,7 @@
   .node-sheets { bottom: 20px; left: 20px; }
   .node-monday { bottom: 20px; right: 20px; }
 
-  .sync-lines {
-    position: absolute;
-    inset: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-  }
+  .sync-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 
   .sync-line {
     stroke: rgba(0,194,168,0.25);
@@ -394,16 +437,11 @@
 
   @keyframes spin-slow {
     from { transform: translate(-50%, -20%) rotate(0deg); }
-    to { transform: translate(-50%, -20%) rotate(360deg); }
+    to   { transform: translate(-50%, -20%) rotate(360deg); }
   }
 
   /* ── TICKER ── */
-  .ticker {
-    background: var(--teal);
-    padding: 12px 0;
-    overflow: hidden;
-    white-space: nowrap;
-  }
+  .ticker { background: var(--teal); padding: 12px 0; overflow: hidden; white-space: nowrap; }
 
   .ticker-track {
     display: inline-flex;
@@ -427,7 +465,7 @@
 
   @keyframes ticker {
     from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    to   { transform: translateX(-50%); }
   }
 
   /* ── SECTIONS ── */
@@ -446,11 +484,7 @@
     gap: 10px;
   }
 
-  .section-label::before {
-    content: '';
-    width: 24px; height: 1.5px;
-    background: var(--teal);
-  }
+  .section-label::before { content: ''; width: 24px; height: 1.5px; background: var(--teal); }
 
   h2 {
     font-family: 'Syne', sans-serif;
@@ -469,7 +503,7 @@
     line-height: 1.7;
   }
 
-  /* ── SYNC PATHS ── */
+  /* ── PATHS ── */
   .paths-section { background: white; }
 
   .paths-grid {
@@ -489,65 +523,19 @@
     background: var(--paper);
   }
 
-  .path-card:hover {
-    border-color: var(--teal);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-  }
-
-  .path-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--teal);
-    opacity: 0;
-    transition: opacity var(--transition);
-  }
-
+  .path-card:hover { border-color: var(--teal); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+  .path-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--teal); opacity: 0; transition: opacity var(--transition); }
   .path-card:hover::before { opacity: 1; }
 
-  .path-platforms {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
+  .path-platforms { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
 
-  .path-icon {
-    width: 44px; height: 44px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    background: var(--mist);
-  }
-
+  .path-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; background: var(--mist); }
   .path-arrow { font-size: 18px; color: var(--teal); font-weight: 700; }
 
-  .path-card h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    margin-bottom: 10px;
-  }
-
+  .path-card h3 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 10px; }
   .path-card p { font-size: 14px; opacity: 0.6; line-height: 1.6; font-weight: 300; }
 
-  .path-tag {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 4px 12px;
-    background: var(--teal-dim);
-    color: var(--teal-dark);
-    border-radius: 100px;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
+  .path-tag { display: inline-block; margin-top: 20px; padding: 4px 12px; background: var(--teal-dim); color: var(--teal-dark); border-radius: 100px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
 
   /* ── FEATURES ── */
   .features-section { background: var(--paper); }
@@ -574,336 +562,86 @@
   .feature-item:nth-child(even) { border-right: none; }
   .feature-item:nth-last-child(-n+2) { border-bottom: none; }
 
-  .feature-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--teal);
-    letter-spacing: 0.1em;
-    margin-bottom: 16px;
-  }
-
-  .feature-item h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    margin-bottom: 12px;
-  }
-
+  .feature-num { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; color: var(--teal); letter-spacing: 0.1em; margin-bottom: 16px; }
+  .feature-item h3 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 12px; }
   .feature-item p { font-size: 14px; opacity: 0.6; line-height: 1.7; font-weight: 300; }
-
   .feature-icon { position: absolute; top: 40px; right: 40px; font-size: 28px; opacity: 0.15; }
 
-  /* ── COMPARISON TABLE ── */
+  /* ── COMPARISON ── */
   .comparison-section { background: white; }
 
-  .comparison-wrap {
-    margin-top: 56px;
-    border: 1.5px solid var(--mist);
-    border-radius: 20px;
-    overflow: hidden;
-  }
+  .comparison-wrap { margin-top: 56px; border: 1.5px solid var(--mist); border-radius: 20px; overflow: hidden; }
 
-  .comparison-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .comparison-table thead tr {
-    background: var(--ink);
-  }
-
-  .comparison-table th {
-    padding: 18px 24px;
-    text-align: left;
-    font-family: 'Syne', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(245,243,238,0.6);
-  }
-
+  .comparison-table { width: 100%; border-collapse: collapse; }
+  .comparison-table thead tr { background: var(--ink); }
+  .comparison-table th { padding: 18px 24px; text-align: left; font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(245,243,238,0.6); }
   .comparison-table th:first-child { color: var(--paper); font-size: 11px; }
   .comparison-table th.col-cs { color: var(--teal); }
-
-  .comparison-table td {
-    padding: 16px 24px;
-    border-bottom: 1px solid var(--mist);
-    font-size: 14px;
-    vertical-align: middle;
-  }
-
+  .comparison-table td { padding: 16px 24px; border-bottom: 1px solid var(--mist); font-size: 14px; vertical-align: middle; }
   .comparison-table tr:last-child td { border-bottom: none; }
   .comparison-table tr:nth-child(even) td { background: rgba(0,0,0,0.015); }
+  .comparison-table td:first-child { font-weight: 500; font-size: 14px; color: var(--ink); opacity: 0.8; }
 
-  .comparison-table td:first-child {
-    font-weight: 500;
-    font-size: 14px;
-    color: var(--ink);
-    opacity: 0.8;
-  }
-
-  .check-yes {
-    color: var(--teal);
-    font-size: 18px;
-    font-weight: 700;
-  }
-
-  .check-no {
-    color: #ccc;
-    font-size: 18px;
-  }
-
-  .check-partial {
-    color: var(--warn);
-    font-size: 13px;
-    font-weight: 600;
-  }
-
+  .check-yes { color: var(--teal); font-size: 18px; font-weight: 700; }
+  .check-no { color: #ccc; font-size: 18px; }
+  .check-partial { color: var(--warn); font-size: 13px; font-weight: 600; }
   .col-cs-cell { background: rgba(0,194,168,0.04); }
   .col-cs-cell.check-yes { font-weight: 700; }
 
-  /* ── MOCKUP SHOWCASE ── */
+  /* ── MOCKUP ── */
   .mockup-section { background: var(--ink); overflow: hidden; position: relative; }
-
-  .mockup-section::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 800px; height: 800px;
-    background: radial-gradient(circle, rgba(0,194,168,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
+  .mockup-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(0,194,168,0.08) 0%, transparent 70%); pointer-events: none; }
   .mockup-section .section-label { color: var(--teal); }
   .mockup-section h2 { color: var(--paper); }
   .mockup-section .section-sub { color: rgba(245,243,238,0.5); }
 
-  .mockup-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-top: 56px;
-  }
+  .mockup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 56px; }
 
-  .mockup-card {
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.08);
-    background: rgba(255,255,255,0.03);
-    transition: all var(--transition);
-  }
-
-  .mockup-card:hover {
-    border-color: rgba(0,194,168,0.3);
-    transform: translateY(-4px);
-  }
-
+  .mockup-card { border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); transition: all var(--transition); }
+  .mockup-card:hover { border-color: rgba(0,194,168,0.3); transform: translateY(-4px); }
   .mockup-card.tall { grid-row: span 2; }
 
-  .mockup-bar {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 12px 16px;
-    background: rgba(255,255,255,0.05);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .mockup-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-  }
-
+  .mockup-bar { display: flex; align-items: center; gap: 6px; padding: 12px 16px; background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
   .dot-red { background: #e8524a; opacity: 0.7; }
   .dot-yellow { background: #f5a623; opacity: 0.7; }
   .dot-green { background: #2ecc71; opacity: 0.7; }
+  .mockup-bar-title { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.35); letter-spacing: 0.08em; text-transform: uppercase; margin-left: 8px; }
+  .mockup-content { padding: 24px; min-height: 180px; display: flex; flex-direction: column; gap: 12px; }
 
-  .mockup-bar-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.35);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-left: 8px;
-  }
+  .mock-tabs { display: flex; gap: 0; border-bottom: 1px solid rgba(255,255,255,0.08); margin: -24px -24px 20px; padding: 0 24px; }
+  .mock-tab { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 600; padding: 10px 14px; color: rgba(255,255,255,0.3); border-bottom: 2px solid transparent; cursor: default; letter-spacing: 0.05em; }
+  .mock-tab.active { color: var(--teal); border-bottom-color: var(--teal); }
 
-  .mockup-content {
-    padding: 24px;
-    min-height: 180px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+  .mock-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); }
+  .mock-row-label { font-size: 12px; color: rgba(255,255,255,0.6); font-family: 'DM Sans', sans-serif; }
 
-  /* Sidebar mockup internals */
-  .mock-tabs {
-    display: flex;
-    gap: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    margin: -24px -24px 20px;
-    padding: 0 24px;
-  }
-
-  .mock-tab {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 10px 14px;
-    color: rgba(255,255,255,0.3);
-    border-bottom: 2px solid transparent;
-    cursor: default;
-    letter-spacing: 0.05em;
-  }
-
-  .mock-tab.active {
-    color: var(--teal);
-    border-bottom-color: var(--teal);
-  }
-
-  .mock-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 12px;
-    background: rgba(255,255,255,0.04);
-    border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .mock-row-label {
-    font-size: 12px;
-    color: rgba(255,255,255,0.6);
-    font-family: 'DM Sans', sans-serif;
-  }
-
-  .mock-badge {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 100px;
-    font-family: 'Syne', sans-serif;
-    letter-spacing: 0.05em;
-  }
-
+  .mock-badge { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 100px; font-family: 'Syne', sans-serif; letter-spacing: 0.05em; }
   .badge-synced { background: rgba(46,204,113,0.15); color: #2ecc71; }
   .badge-pending { background: rgba(245,166,35,0.15); color: #f5a623; }
   .badge-phi { background: rgba(232,82,74,0.15); color: #e8524a; }
   .badge-ok { background: rgba(0,194,168,0.15); color: var(--teal); }
 
-  .mock-status-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-  }
-
-  .mock-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
+  .mock-status-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .mock-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
   .mock-dot-green { background: #2ecc71; box-shadow: 0 0 6px rgba(46,204,113,0.5); }
   .mock-dot-teal { background: var(--teal); box-shadow: 0 0 6px rgba(0,194,168,0.5); }
   .mock-dot-yellow { background: #f5a623; box-shadow: 0 0 6px rgba(245,166,35,0.4); }
-
   .mock-status-label { font-size: 12px; color: rgba(255,255,255,0.55); }
   .mock-status-value { font-size: 12px; color: rgba(255,255,255,0.85); font-weight: 500; margin-left: auto; }
+  .mock-sync-btn { margin-top: 8px; width: 100%; padding: 10px; background: var(--teal); border: none; border-radius: 8px; font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; color: var(--ink); letter-spacing: 0.05em; cursor: default; text-align: center; }
 
-  .mock-sync-btn {
-    margin-top: 8px;
-    width: 100%;
-    padding: 10px;
-    background: var(--teal);
-    border: none;
-    border-radius: 8px;
-    font-family: 'Syne', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--ink);
-    letter-spacing: 0.05em;
-    cursor: default;
-    text-align: center;
-  }
-
-  .mock-phi-field {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-  }
-
-  .mock-checkbox {
-    width: 14px; height: 14px;
-    border: 1.5px solid rgba(0,194,168,0.5);
-    border-radius: 3px;
-    background: rgba(0,194,168,0.1);
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 9px;
-    color: var(--teal);
-    font-weight: 700;
-  }
-
-  .mock-checkbox.unchecked {
-    background: transparent;
-    border-color: rgba(255,255,255,0.15);
-    color: transparent;
-  }
-
+  .mock-phi-field { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .mock-checkbox { width: 14px; height: 14px; border: 1.5px solid rgba(0,194,168,0.5); border-radius: 3px; background: rgba(0,194,168,0.1); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--teal); font-weight: 700; }
+  .mock-checkbox.unchecked { background: transparent; border-color: rgba(255,255,255,0.15); color: transparent; }
   .mock-field-name { font-size: 12px; color: rgba(255,255,255,0.7); }
   .mock-field-key { font-size: 10px; color: rgba(255,255,255,0.3); font-family: monospace; margin-left: auto; }
+  .mock-caption { margin-top: 16px; font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.3); text-align: center; text-transform: uppercase; letter-spacing: 0.1em; }
 
-  .mock-caption {
-    margin-top: 16px;
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.3);
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  /* Sheet mockup */
-  .mock-sheet {
-    font-size: 11px;
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .mock-sheet th {
-    background: rgba(255,255,255,0.07);
-    color: rgba(255,255,255,0.5);
-    padding: 7px 10px;
-    text-align: left;
-    font-weight: 600;
-    font-size: 10px;
-    white-space: nowrap;
-    border: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .mock-sheet td {
-    padding: 7px 10px;
-    border: 1px solid rgba(255,255,255,0.05);
-    color: rgba(255,255,255,0.65);
-    white-space: nowrap;
-    overflow: hidden;
-    max-width: 100px;
-    text-overflow: ellipsis;
-  }
-
+  .mock-sheet { font-size: 11px; width: 100%; border-collapse: collapse; }
+  .mock-sheet th { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); padding: 7px 10px; text-align: left; font-weight: 600; font-size: 10px; white-space: nowrap; border: 1px solid rgba(255,255,255,0.06); }
+  .mock-sheet td { padding: 7px 10px; border: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.65); white-space: nowrap; overflow: hidden; max-width: 100px; text-overflow: ellipsis; }
   .mock-sheet tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
-
   .mock-sheet .cell-id { color: var(--teal); font-weight: 600; }
   .mock-sheet .cell-age-ok { color: #2ecc71; }
   .mock-sheet .cell-age-warn { color: #f5a623; }
@@ -912,526 +650,366 @@
   .mock-sheet .cell-phi { color: rgba(232,82,74,0.6); background: rgba(232,82,74,0.08); }
 
   /* ── COMPLIANCE ── */
-  .compliance-section {
-    background: var(--ink);
-    color: var(--paper);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .compliance-section::before {
-    content: 'HIPAA';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Syne', sans-serif;
-    font-size: 280px;
-    font-weight: 800;
-    color: rgba(255,255,255,0.02);
-    pointer-events: none;
-    white-space: nowrap;
-    letter-spacing: -8px;
-  }
-
+  .compliance-section { background: var(--ink); color: var(--paper); position: relative; overflow: hidden; }
+  .compliance-section::before { content: 'HIPAA'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Syne', sans-serif; font-size: 280px; font-weight: 800; color: rgba(255,255,255,0.02); pointer-events: none; white-space: nowrap; letter-spacing: -8px; }
   .compliance-section .section-label { color: var(--teal); }
   .compliance-section h2 { color: var(--paper); }
 
-  .compliance-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    margin-top: 64px;
-    align-items: start;
-  }
-
+  .compliance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 64px; align-items: start; }
   .compliance-features { display: flex; flex-direction: column; gap: 24px; }
 
-  .compliance-feature {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    padding: 24px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px;
-    transition: all var(--transition);
-  }
-
-  .compliance-feature:hover {
-    background: rgba(0,194,168,0.08);
-    border-color: rgba(0,194,168,0.2);
-  }
-
-  .cf-icon {
-    width: 44px; height: 44px;
-    background: rgba(0,194,168,0.12);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-
-  .cf-text h4 {
-    font-family: 'Syne', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--paper);
-    margin-bottom: 6px;
-    letter-spacing: -0.3px;
-  }
-
+  .compliance-feature { display: flex; gap: 20px; align-items: flex-start; padding: 24px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; transition: all var(--transition); }
+  .compliance-feature:hover { background: rgba(0,194,168,0.08); border-color: rgba(0,194,168,0.2); }
+  .cf-icon { width: 44px; height: 44px; background: rgba(0,194,168,0.12); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .cf-text h4 { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--paper); margin-bottom: 6px; letter-spacing: -0.3px; }
   .cf-text p { font-size: 13px; color: rgba(245,243,238,0.5); line-height: 1.6; font-weight: 300; }
 
-  .phi-visual {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px;
-    padding: 32px;
-    position: relative;
-  }
-
-  .phi-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-    margin-bottom: 24px;
-  }
-
-  .phi-table th {
-    background: rgba(255,255,255,0.06);
-    color: rgba(245,243,238,0.5);
-    padding: 8px 12px;
-    text-align: left;
-    font-weight: 600;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .phi-table td {
-    padding: 10px 12px;
-    color: rgba(245,243,238,0.7);
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    font-family: 'DM Sans', monospace;
-  }
-
-  .phi-cell {
-    background: rgba(232,82,74,0.15);
-    color: var(--red);
-    border-radius: 4px;
-    padding: 2px 6px;
-    position: relative;
-  }
-
-  .phi-cell.wiped {
-    background: rgba(46,204,113,0.1);
-    color: var(--green);
-  }
-
+  .phi-visual { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 32px; position: relative; }
+  .phi-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 24px; }
+  .phi-table th { background: rgba(255,255,255,0.06); color: rgba(245,243,238,0.5); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .phi-table td { padding: 10px 12px; color: rgba(245,243,238,0.7); border-bottom: 1px solid rgba(255,255,255,0.04); font-family: 'DM Sans', monospace; }
+  .phi-cell { background: rgba(232,82,74,0.15); color: var(--red); border-radius: 4px; padding: 2px 6px; position: relative; }
+  .phi-cell.wiped { background: rgba(46,204,113,0.1); color: var(--green); }
   .phi-cell.wiped::after { content: '██████'; color: rgba(46,204,113,0.3); }
-
-  .wipe-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 14px;
-    background: rgba(232,82,74,0.15);
-    border: 1px solid rgba(232,82,74,0.3);
-    border-radius: 10px;
-    color: var(--red);
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all var(--transition);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
+  .wipe-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 14px; background: rgba(232,82,74,0.15); border: 1px solid rgba(232,82,74,0.3); border-radius: 10px; color: var(--red); font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; transition: all var(--transition); text-transform: uppercase; letter-spacing: 0.08em; }
   .wipe-btn:hover { background: rgba(232,82,74,0.25); border-color: var(--red); }
   .wipe-btn.wiped { background: rgba(46,204,113,0.1); border-color: rgba(46,204,113,0.3); color: var(--green); }
 
   /* ── COLUMNS ── */
   .columns-section { background: var(--paper); }
-
-  .columns-table-wrap {
-    margin-top: 48px;
-    border: 1.5px solid var(--mist);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-
+  .columns-table-wrap { margin-top: 48px; border: 1.5px solid var(--mist); border-radius: 16px; overflow: hidden; }
   .columns-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-
-  .columns-table th {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 14px 20px;
-    text-align: left;
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  .columns-table td {
-    padding: 13px 20px;
-    border-bottom: 1px solid var(--mist);
-    vertical-align: middle;
-  }
-
+  .columns-table th { background: var(--ink); color: var(--paper); padding: 14px 20px; text-align: left; font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+  .columns-table td { padding: 13px 20px; border-bottom: 1px solid var(--mist); vertical-align: middle; }
   .columns-table tr:last-child td { border-bottom: none; }
   .columns-table tr:nth-child(even) td { background: rgba(0,0,0,0.02); }
-
   .col-name { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 13px; }
-
   .col-source { font-size: 12px; padding: 3px 10px; border-radius: 100px; font-weight: 600; }
   .source-jira { background: rgba(0,194,168,0.1); color: var(--teal-dark); }
   .source-calc { background: rgba(245,166,35,0.1); color: #b87a00; }
   .source-user { background: rgba(46,204,113,0.1); color: #1a8a4a; }
-
   .col-badge { font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
   .badge-writeback { background: rgba(232,82,74,0.1); color: var(--red); }
   .badge-preserved { background: rgba(46,204,113,0.1); color: var(--green); }
 
-  /* ── PRICING — updated to single plan at $49 ── */
+  /* ── PRICING ── */
   .pricing-section { background: var(--paper); }
+  .pricing-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 56px; align-items: start; }
 
-  .pricing-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    margin-top: 56px;
-    align-items: start;
-  }
+  .pricing-card-main { padding: 48px 44px; background: var(--ink); border-radius: 24px; color: var(--paper); position: relative; overflow: hidden; }
+  .pricing-card-main::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(0,194,168,0.2) 0%, transparent 70%); pointer-events: none; }
 
-  .pricing-card-main {
-    padding: 48px 44px;
-    background: var(--ink);
-    border-radius: 24px;
-    color: var(--paper);
-    position: relative;
-    overflow: hidden;
-  }
+  .pricing-badge-top { display: inline-block; background: var(--teal); color: var(--ink); font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 5px 14px; border-radius: 100px; margin-bottom: 24px; }
+  .plan-name-main { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(245,243,238,0.5); margin-bottom: 12px; }
+  .plan-price-main { font-family: 'Syne', sans-serif; font-size: 72px; font-weight: 800; letter-spacing: -3px; line-height: 1; color: var(--paper); margin-bottom: 4px; }
+  .plan-price-main sup { font-size: 32px; vertical-align: super; letter-spacing: 0; opacity: 0.7; }
+  .plan-period-main { font-size: 14px; color: rgba(245,243,238,0.4); margin-bottom: 8px; }
+  .plan-annual { display: inline-block; font-size: 13px; color: var(--teal); font-weight: 600; margin-bottom: 36px; }
+  .plan-features-main { list-style: none; display: flex; flex-direction: column; gap: 13px; margin-bottom: 40px; }
+  .plan-features-main li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: rgba(245,243,238,0.8); line-height: 1.4; }
+  .plan-features-main li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .btn-plan-main { display: block; width: 100%; padding: 16px; text-align: center; background: var(--teal); border: none; border-radius: 12px; font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); cursor: pointer; transition: all var(--transition); text-decoration: none; letter-spacing: -0.3px; }
+  .btn-plan-main:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,194,168,0.3); }
 
-  .pricing-card-main::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 200px; height: 200px;
-    background: radial-gradient(circle, rgba(0,194,168,0.2) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .pricing-badge-top {
-    display: inline-block;
-    background: var(--teal);
-    color: var(--ink);
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 5px 14px;
-    border-radius: 100px;
-    margin-bottom: 24px;
-  }
-
-  .plan-name-main {
-    font-family: 'Syne', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: rgba(245,243,238,0.5);
-    margin-bottom: 12px;
-  }
-
-  .plan-price-main {
-    font-family: 'Syne', sans-serif;
-    font-size: 72px;
-    font-weight: 800;
-    letter-spacing: -3px;
-    line-height: 1;
-    color: var(--paper);
-    margin-bottom: 4px;
-  }
-
-  .plan-price-main sup {
-    font-size: 32px;
-    vertical-align: super;
-    letter-spacing: 0;
-    opacity: 0.7;
-  }
-
-  .plan-period-main {
-    font-size: 14px;
-    color: rgba(245,243,238,0.4);
-    margin-bottom: 8px;
-  }
-
-  .plan-annual {
-    display: inline-block;
-    font-size: 13px;
-    color: var(--teal);
-    font-weight: 600;
-    margin-bottom: 36px;
-  }
-
-  .plan-features-main {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 13px;
-    margin-bottom: 40px;
-  }
-
-  .plan-features-main li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 15px;
-    color: rgba(245,243,238,0.8);
-    line-height: 1.4;
-  }
-
-  .plan-features-main li::before {
-    content: '✓';
-    color: var(--teal);
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  .btn-plan-main {
-    display: block;
-    width: 100%;
-    padding: 16px;
-    text-align: center;
-    background: var(--teal);
-    border: none;
-    border-radius: 12px;
-    font-family: 'Syne', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--ink);
-    cursor: pointer;
-    transition: all var(--transition);
-    text-decoration: none;
-    letter-spacing: -0.3px;
-  }
-
-  .btn-plan-main:hover {
-    background: var(--teal-dark);
-    transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(0,194,168,0.3);
-  }
-
-  .pricing-details {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .pricing-detail-card {
-    padding: 28px 32px;
-    background: white;
-    border: 1.5px solid var(--mist);
-    border-radius: 20px;
-    transition: all var(--transition);
-  }
-
-  .pricing-detail-card:hover {
-    border-color: var(--teal);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
-  }
-
-  .pricing-detail-card h4 {
-    font-family: 'Syne', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: -0.3px;
-    margin-bottom: 8px;
-  }
-
-  .pricing-detail-card p {
-    font-size: 14px;
-    opacity: 0.55;
-    line-height: 1.6;
-    font-weight: 300;
-  }
-
-  .pricing-detail-icon {
-    font-size: 22px;
-    margin-bottom: 12px;
-  }
+  .pricing-details { display: flex; flex-direction: column; gap: 20px; }
+  .pricing-detail-card { padding: 28px 32px; background: white; border: 1.5px solid var(--mist); border-radius: 20px; transition: all var(--transition); }
+  .pricing-detail-card:hover { border-color: var(--teal); box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
+  .pricing-detail-card h4 { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 8px; }
+  .pricing-detail-card p { font-size: 14px; opacity: 0.55; line-height: 1.6; font-weight: 300; }
+  .pricing-detail-icon { font-size: 22px; margin-bottom: 12px; }
 
   /* ── FAQ ── */
   .faq-section { background: white; }
-
-  .faq-list {
-    margin-top: 56px;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border: 1.5px solid var(--mist);
-    border-radius: 20px;
-    overflow: hidden;
-  }
-
-  .faq-item {
-    border-bottom: 1px solid var(--mist);
-  }
-
+  .faq-list { margin-top: 56px; display: flex; flex-direction: column; gap: 0; border: 1.5px solid var(--mist); border-radius: 20px; overflow: hidden; }
+  .faq-item { border-bottom: 1px solid var(--mist); }
   .faq-item:last-child { border-bottom: none; }
-
-  .faq-q {
-    width: 100%;
-    text-align: left;
-    padding: 24px 32px;
-    background: none;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    cursor: pointer;
-    font-family: 'Syne', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--ink);
-    letter-spacing: -0.3px;
-    transition: background var(--transition);
-  }
-
+  .faq-q { width: 100%; text-align: left; padding: 24px 32px; background: none; border: none; display: flex; align-items: center; justify-content: space-between; gap: 24px; cursor: pointer; font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; transition: background var(--transition); }
   .faq-q:hover { background: var(--paper); }
   .faq-q.open { background: var(--paper); }
-
-  .faq-icon {
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    border: 1.5px solid var(--mist);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    color: var(--teal);
-    flex-shrink: 0;
-    transition: all var(--transition);
-    font-weight: 400;
-    line-height: 1;
-  }
-
-  .faq-q.open .faq-icon {
-    background: var(--teal);
-    border-color: var(--teal);
-    color: var(--ink);
-    transform: rotate(45deg);
-  }
-
-  .faq-a {
-    display: none;
-    padding: 0 32px 24px;
-    font-size: 15px;
-    color: var(--ink);
-    opacity: 0.6;
-    line-height: 1.75;
-    font-weight: 300;
-    max-width: 680px;
-  }
-
+  .faq-icon { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--mist); display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--teal); flex-shrink: 0; transition: all var(--transition); font-weight: 400; line-height: 1; }
+  .faq-q.open .faq-icon { background: var(--teal); border-color: var(--teal); color: var(--ink); transform: rotate(45deg); }
+  .faq-a { display: none; padding: 0 32px 24px; font-size: 15px; color: var(--ink); opacity: 0.6; line-height: 1.75; font-weight: 300; max-width: 680px; }
   .faq-a.open { display: block; }
 
   /* ── EARLY ACCESS ── */
-  .early-section {
-    background: var(--ink);
-    color: var(--paper);
-    text-align: center;
+  .early-section { background: var(--ink); color: var(--paper); text-align: center; position: relative; overflow: hidden; }
+  .early-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,194,168,0.15) 0%, transparent 70%); pointer-events: none; }
+  .early-section h2 { color: var(--paper); max-width: 600px; margin: 0 auto 20px; }
+  .early-section .section-sub { margin: 0 auto 48px; opacity: 0.5; }
+
+  .early-form { display: flex; gap: 12px; max-width: 440px; margin: 0 auto; position: relative; z-index: 2; }
+  .early-form input { flex: 1; padding: 15px 20px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); color: var(--paper); font-family: 'DM Sans', sans-serif; font-size: 15px; outline: none; transition: border-color var(--transition); }
+  .early-form input:focus { border-color: var(--teal); }
+  .early-form input::placeholder { color: rgba(255,255,255,0.3); }
+  .early-note { margin-top: 16px; font-size: 12px; color: rgba(245,243,238,0.35); position: relative; z-index: 2; }
+
+  .signups { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 40px; position: relative; z-index: 2; }
+  .signup-avatars { display: flex; }
+  .signup-avatar { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--ink); background: var(--teal); margin-left: -8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--ink); font-family: 'Syne', sans-serif; }
+  .signup-avatar:first-child { margin-left: 0; }
+  .signup-text { font-size: 13px; color: rgba(245,243,238,0.5); }
+  .signup-text strong { color: var(--paper); font-weight: 600; }
+
+  /* ── COMPILO SIBLING BAND ── */
+  .compilo-band {
+    background: #F5F0E8;
+    border-top: 1px solid #E8E0D0;
+    padding: 80px 80px;
     position: relative;
     overflow: hidden;
   }
 
-  .early-section::before {
+  .compilo-band::before {
     content: '';
     position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(0,194,168,0.15) 0%, transparent 70%);
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(45,156,138,0.08) 0%, transparent 70%);
     pointer-events: none;
   }
 
-  .early-section h2 { color: var(--paper); max-width: 600px; margin: 0 auto 20px; }
-  .early-section .section-sub { margin: 0 auto 48px; opacity: 0.5; }
-
-  .early-form {
-    display: flex;
-    gap: 12px;
-    max-width: 440px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-  }
-
-  .early-form input {
-    flex: 1;
-    padding: 15px 20px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: var(--radius);
-    color: var(--paper);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    outline: none;
-    transition: border-color var(--transition);
-  }
-
-  .early-form input:focus { border-color: var(--teal); }
-  .early-form input::placeholder { color: rgba(255,255,255,0.3); }
-
-  .early-note {
-    margin-top: 16px;
-    font-size: 12px;
-    color: rgba(245,243,238,0.35);
-    position: relative;
-    z-index: 2;
-  }
-
-  .signups {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 40px;
-    position: relative;
-    z-index: 2;
-  }
-
-  .signup-avatars { display: flex; }
-
-  .signup-avatar {
-    width: 32px; height: 32px;
+  .compilo-band::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 10%;
+    width: 200px; height: 200px;
     border-radius: 50%;
-    border: 2px solid var(--ink);
-    background: var(--teal);
-    margin-left: -8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--ink);
-    font-family: 'Syne', sans-serif;
+    background: radial-gradient(circle, rgba(201,123,132,0.07) 0%, transparent 70%);
+    pointer-events: none;
   }
 
-  .signup-avatar:first-child { margin-left: 0; }
-  .signup-text { font-size: 13px; color: rgba(245,243,238,0.5); }
-  .signup-text strong { color: var(--paper); font-weight: 600; }
+  .compilo-band-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .compilo-band-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #1A6B5E;
+    background: #E6F5F2;
+    border: 1px solid #A8D9D2;
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .compilo-band-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #2D9C8A;
+    flex-shrink: 0;
+    display: inline-block;
+  }
+
+  .compilo-band-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    color: #1C2622;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+  }
+
+  .compilo-band-headline em {
+    font-style: italic;
+    color: #2D9C8A;
+  }
+
+  .compilo-band-body {
+    font-size: 16px;
+    color: #7A8A84;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    max-width: 460px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .compilo-band-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #2D9C8A;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s;
+  }
+
+  .compilo-band-cta:hover { background: #1A6B5E; }
+
+  .compilo-band-note {
+    font-size: 13px;
+    color: #7A8A84;
+    font-family: 'DM Sans', sans-serif;
+    margin-left: 4px;
+  }
+
+  /* ── COMPILO APP WINDOW ── */
+  .compilo-app-wrap {
+    position: relative;
+  }
+
+  .compilo-app-wrap::before {
+    content: '';
+    position: absolute;
+    top: -24px; right: -24px;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: #F7ECED;
+    z-index: 0;
+  }
+
+  .compilo-app-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: -18px; left: -18px;
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: #E6F5F2;
+    z-index: 0;
+  }
+
+  .compilo-app-window {
+    position: relative;
+    z-index: 1;
+    background: white;
+    border: 1px solid #E8E0D0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 32px rgba(28,38,34,0.08);
+  }
+
+  .compilo-app-bar {
+    background: #F5F0E8;
+    border-bottom: 1px solid #E8E0D0;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .compilo-app-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+  .compilo-app-body {
+    display: grid;
+    grid-template-columns: 155px 1fr;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .compilo-app-sidebar {
+    background: #F5F0E8;
+    border-right: 1px solid #E8E0D0;
+    padding: 10px 8px;
+  }
+
+  .compilo-sb-label {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #7A8A84;
+    padding: 0 6px;
+    margin-bottom: 4px;
+  }
+
+  .compilo-sb-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    color: #3D4D47;
+    margin-bottom: 2px;
+  }
+
+  .compilo-sb-item.active {
+    background: #E6F5F2;
+    color: #1A6B5E;
+    font-weight: 500;
+  }
+
+  .compilo-sb-dot {
+    width: 10px; height: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  .compilo-app-main { padding: 12px; }
+
+  .compilo-step-pills {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+
+  .compilo-pill {
+    padding: 3px 8px;
+    border-radius: 100px;
+    font-size: 9px;
+    font-weight: 600;
+  }
+
+  .compilo-pill.done { background: #E6F5F2; color: #1A6B5E; border: 1px solid #A8D9D2; }
+  .compilo-pill.active { background: #2D9C8A; color: white; }
+  .compilo-pill.todo { color: #7A8A84; border: 1px solid #E8E0D0; }
+
+  .compilo-file-list {
+    background: #F5F0E8;
+    border: 1px solid #E8E0D0;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .compilo-file-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 8px;
+    border-bottom: 1px solid #E8E0D0;
+    font-size: 10px;
+  }
+
+  .compilo-file-row:last-child { border-bottom: none; }
+
+  .compilo-file-badge {
+    color: white;
+    font-size: 7px;
+    font-weight: 700;
+    padding: 1px 4px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .compilo-match-badge {
+    font-size: 8px;
+    font-weight: 600;
+    padding: 1px 5px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
 
   /* ── FOOTER ── */
   footer {
@@ -1444,99 +1022,65 @@
   }
 
   .footer-links { display: flex; gap: 32px; list-style: none; }
-
-  .footer-links a {
-    font-size: 13px;
-    color: var(--ink);
-    opacity: 0.45;
-    text-decoration: none;
-    transition: opacity var(--transition);
-  }
-
+  .footer-links a { font-size: 13px; color: var(--ink); opacity: 0.45; text-decoration: none; transition: opacity var(--transition); }
   .footer-links a:hover { opacity: 1; }
   .footer-copy { font-size: 12px; opacity: 0.35; }
 
-  /* ── SUCCESS STATE ── */
-  .success-msg {
-    display: none;
-    color: var(--teal);
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    padding: 14px 20px;
-    background: var(--teal-dim);
-    border-radius: var(--radius);
-    border: 1px solid rgba(0,194,168,0.25);
-  }
+  /* ── SUCCESS ── */
+  .success-msg { display: none; color: var(--teal); font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; padding: 14px 20px; background: var(--teal-dim); border-radius: var(--radius); border: 1px solid rgba(0,194,168,0.25); }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
-  .reveal {
-    opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* ── MOBILE ── */
   @media (max-width: 768px) {
     nav { padding: 14px 20px; }
     nav ul { display: none; }
-
+    .product-switcher { display: none; }
     .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 64px; }
     .hero-left { padding: 44px 24px 36px; order: 1; }
     .hero-right { order: 2; padding: 36px 24px; min-height: 300px; }
-
     h1 { font-size: 36px; letter-spacing: -1px; }
     .hero-sub { font-size: 16px; }
     .hero-form { flex-direction: column; gap: 10px; }
     .hero-form input, .hero-form .btn-primary { width: 100%; }
-
     .sync-diagram { width: 280px; height: 280px; }
     .sync-node { width: 76px; height: 76px; border-radius: 14px; }
     .sync-node .node-icon { font-size: 22px; }
     .sync-node .node-label { font-size: 9px; }
     .sync-center { width: 40px; height: 40px; font-size: 15px; }
-
     section { padding: 60px 24px; }
     h2 { font-size: 28px; letter-spacing: -0.5px; }
     .section-sub { font-size: 15px; }
-
     .paths-grid { grid-template-columns: 1fr; gap: 16px; }
-
     .features-grid { grid-template-columns: 1fr; }
     .feature-item:nth-child(even) { border-right: none; }
     .feature-item:nth-last-child(-n+2) { border-bottom: 1.5px solid var(--mist); }
     .feature-item:last-child { border-bottom: none; }
     .feature-item { padding: 28px; }
-
     .comparison-wrap { overflow-x: auto; }
     .comparison-table { min-width: 560px; }
-
     .mockup-grid { grid-template-columns: 1fr; }
     .mockup-card.tall { grid-row: span 1; }
-
     .compliance-grid { grid-template-columns: 1fr; gap: 32px; }
     .compliance-section::before { font-size: 100px; }
-
     .pricing-layout { grid-template-columns: 1fr; gap: 24px; }
     .pricing-card-main { padding: 36px 28px; }
     .plan-price-main { font-size: 56px; }
-
     .faq-q { padding: 20px 24px; font-size: 15px; }
     .faq-a { padding: 0 24px 20px; }
-
     .early-form { flex-direction: column; }
     .early-form input, .early-form .btn-primary { width: 100%; }
-
     footer { flex-direction: column; gap: 24px; padding: 32px 24px; text-align: center; }
     .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
-
+    .compilo-band { padding: 60px 24px; }
+    .compilo-band-inner { grid-template-columns: 1fr; gap: 2rem; }
     #modal-privacy, #modal-terms { width: 95vw !important; max-height: 90vh !important; top: 50% !important; }
   }
 
@@ -1552,27 +1096,42 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" style="text-decoration:none;display:flex;align-items:center;gap:12px;">
-    <svg width="32" height="32" viewBox="0 0 72 72">
-      <circle cx="36" cy="20" r="18" fill="#00C2A8"/>
-      <circle cx="27" cy="20" r="6.5" fill="none" stroke="white" stroke-width="2.5"/>
-      <circle cx="37" cy="20" r="6.5" fill="none" stroke="white" stroke-width="2.5"/>
-      <circle cx="16" cy="54" r="18" fill="#0A0F1E"/>
-      <rect x="7" y="48" width="18" height="2.5" rx="1.25" fill="white" opacity="0.9"/>
-      <rect x="7" y="54" width="18" height="2.5" rx="1.25" fill="white" opacity="0.55"/>
-      <rect x="7" y="60" width="12" height="2.5" rx="1.25" fill="white" opacity="0.25"/>
-      <circle cx="56" cy="54" r="18" fill="#0A0F1E"/>
-      <circle cx="47" cy="54" r="5" fill="#00C2A8"/>
-      <circle cx="58" cy="54" r="5" fill="#00C2A8" opacity="0.5"/>
-      <circle cx="69" cy="54" r="5" fill="#00C2A8" opacity="0.2"/>
-      <circle cx="21" cy="42" r="3" fill="#00C2A8" opacity="0.85"/>
-      <circle cx="51" cy="42" r="3" fill="#00C2A8" opacity="0.85"/>
-      <circle cx="36" cy="54" r="3" fill="#00C2A8" opacity="0.85"/>
-      <path d="M 24 36 C 18 44 16 46 18 48" stroke="#00C2A8" stroke-width="1.8" fill="none" stroke-dasharray="4 3" opacity="0.65" stroke-linecap="round"/>
-      <path d="M 48 36 C 54 44 56 46 54 48" stroke="#00C2A8" stroke-width="1.8" fill="none" stroke-dasharray="4 3" opacity="0.65" stroke-linecap="round"/>
-    </svg>
-    <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:22px;color:#0A0F1E;letter-spacing:-0.5px;">Compli<span style="color:#00C2A8;">Sync</span></span>
-  </a>
+  <div style="display:flex;align-items:center;">
+    <a href="#" style="text-decoration:none;display:flex;align-items:center;gap:12px;">
+      <svg width="32" height="32" viewBox="0 0 72 72">
+        <circle cx="36" cy="20" r="18" fill="#00C2A8"/>
+        <circle cx="27" cy="20" r="6.5" fill="none" stroke="white" stroke-width="2.5"/>
+        <circle cx="37" cy="20" r="6.5" fill="none" stroke="white" stroke-width="2.5"/>
+        <circle cx="16" cy="54" r="18" fill="#0A0F1E"/>
+        <rect x="7" y="48" width="18" height="2.5" rx="1.25" fill="white" opacity="0.9"/>
+        <rect x="7" y="54" width="18" height="2.5" rx="1.25" fill="white" opacity="0.55"/>
+        <rect x="7" y="60" width="12" height="2.5" rx="1.25" fill="white" opacity="0.25"/>
+        <circle cx="56" cy="54" r="18" fill="#0A0F1E"/>
+        <circle cx="47" cy="54" r="5" fill="#00C2A8"/>
+        <circle cx="58" cy="54" r="5" fill="#00C2A8" opacity="0.5"/>
+        <circle cx="69" cy="54" r="5" fill="#00C2A8" opacity="0.2"/>
+        <circle cx="21" cy="42" r="3" fill="#00C2A8" opacity="0.85"/>
+        <circle cx="51" cy="42" r="3" fill="#00C2A8" opacity="0.85"/>
+        <circle cx="36" cy="54" r="3" fill="#00C2A8" opacity="0.85"/>
+        <path d="M 24 36 C 18 44 16 46 18 48" stroke="#00C2A8" stroke-width="1.8" fill="none" stroke-dasharray="4 3" opacity="0.65" stroke-linecap="round"/>
+        <path d="M 48 36 C 54 44 56 46 54 48" stroke="#00C2A8" stroke-width="1.8" fill="none" stroke-dasharray="4 3" opacity="0.65" stroke-linecap="round"/>
+      </svg>
+      <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:22px;color:#0A0F1E;letter-spacing:-0.5px;">Compli<span style="color:#00C2A8;">Sync</span></span>
+    </a>
+    <!-- Compilo product switcher -->
+    <div class="product-switcher">
+      <span class="product-switcher-label">Also</span>
+      <a href="https://complisync.io/compilo" class="product-switcher-link">
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+          <rect x="1.5" y="2.5" width="11" height="1.4" rx="0.7" fill="#2D9C8A" opacity="0.9"/>
+          <rect x="1.5" y="5.7" width="11" height="1.4" rx="0.7" fill="#2D9C8A" opacity="0.9"/>
+          <rect x="1.5" y="8.9" width="6.5" height="1.4" rx="0.7" fill="#2D9C8A" opacity="0.5"/>
+        </svg>
+        <span class="product-switcher-name">Compilo<span>.</span></span>
+        <span class="product-switcher-arrow">&#x2197;</span>
+      </a>
+    </div>
+  </div>
   <ul>
     <li><a href="#features">Features</a></li>
     <li><a href="#compliance">Compliance</a></li>
@@ -1601,7 +1160,6 @@
       <div class="platform-pill">🟣 Monday.com</div>
     </div>
   </div>
-
   <div class="hero-right">
     <div class="sync-diagram">
       <svg class="sync-lines" viewBox="0 0 420 420">
@@ -1647,36 +1205,21 @@
   <div class="section-label">How It Works</div>
   <h2>Three sync paths.<br>One source of truth.</h2>
   <p class="section-sub">Connect any combination of platforms. Jira always wins on ticket data — your team works wherever they're most productive.</p>
-
   <div class="paths-grid reveal">
     <div class="path-card">
-      <div class="path-platforms">
-        <div class="path-icon">🔵</div>
-        <div class="path-arrow">⇄</div>
-        <div class="path-icon">🟢</div>
-      </div>
+      <div class="path-platforms"><div class="path-icon">🔵</div><div class="path-arrow">⇄</div><div class="path-icon">🟢</div></div>
       <h3>Jira ↔ Google Sheets</h3>
       <p>Pull any Jira project into a structured, auto-refreshing Google Sheet. Notes write back to Jira as comments. Jira always wins on ticket data.</p>
       <div class="path-tag">Included in all plans</div>
     </div>
-
     <div class="path-card">
-      <div class="path-platforms">
-        <div class="path-icon">🔵</div>
-        <div class="path-arrow">⇄</div>
-        <div class="path-icon">🟣</div>
-      </div>
+      <div class="path-platforms"><div class="path-icon">🔵</div><div class="path-arrow">⇄</div><div class="path-icon">🟣</div></div>
       <h3>Jira ↔ Monday.com</h3>
       <p>Push Jira tickets directly into Monday boards — no Google Sheets required. Full bidirectional sync with Jira as the authoritative source.</p>
       <div class="path-tag">Included in all plans</div>
     </div>
-
     <div class="path-card">
-      <div class="path-platforms">
-        <div class="path-icon">🟢</div>
-        <div class="path-arrow">⇄</div>
-        <div class="path-icon">🟣</div>
-      </div>
+      <div class="path-platforms"><div class="path-icon">🟢</div><div class="path-arrow">⇄</div><div class="path-icon">🟣</div></div>
       <h3>Sheets ↔ Monday.com</h3>
       <p>Keep both platforms in sync simultaneously. Notes and updates flow between Sheets and Monday — you choose which platform wins on conflict.</p>
       <div class="path-tag">Included in all plans</div>
@@ -1688,141 +1231,37 @@
 <section class="features-section">
   <div class="section-label">Features</div>
   <h2>Everything your ops<br>team actually needs.</h2>
-
   <div class="features-grid reveal">
-    <div class="feature-item">
-      <div class="feature-num">01</div>
-      <div class="feature-icon">🔍</div>
-      <h3>Auto Field Discovery</h3>
-      <p>CompliSync automatically discovers every custom field in your Jira instance and suggests intelligent mappings. No developer needed. Set up in under 10 minutes regardless of how your Jira is configured.</p>
-    </div>
-
-    <div class="feature-item">
-      <div class="feature-num">02</div>
-      <div class="feature-icon">💬</div>
-      <h3>Jira Comments Writeback</h3>
-      <p>Edit the Jira Comments column in Sheets or Monday and CompliSync posts it back to Jira automatically — tagged with the source and user. The full comment thread stays in Jira where it belongs.</p>
-    </div>
-
-    <div class="feature-item">
-      <div class="feature-num">03</div>
-      <div class="feature-icon">🔒</div>
-      <h3>Private Notes Column</h3>
-      <p>A dedicated Notes column that never touches Jira. Internal team context stays internal — preserved across every sync, never overwritten, never shared with clients.</p>
-    </div>
-
-    <div class="feature-item">
-      <div class="feature-num">04</div>
-      <div class="feature-icon">⚡</div>
-      <h3>Smart Conflict Resolution</h3>
-      <p>Jira always wins on ticket data. For notes, you choose which platform is authoritative. No surprises, no lost edits, no manual reconciliation.</p>
-    </div>
-
-    <div class="feature-item">
-      <div class="feature-num">05</div>
-      <div class="feature-icon">👤</div>
-      <h3>External Reporter Detection</h3>
-      <p>Automatically flags tickets submitted from outside your organization based on email domain. Instantly see which tickets came from clients vs. internal teams.</p>
-    </div>
-
-    <div class="feature-item">
-      <div class="feature-num">06</div>
-      <div class="feature-icon">🔗</div>
-      <h3>Linked Ticket Mapping</h3>
-      <p>Captures up to three linked tickets per row — all clickable hyperlinks. See dependencies, duplicates, and related issues without ever leaving your sheet.</p>
-    </div>
+    <div class="feature-item"><div class="feature-num">01</div><div class="feature-icon">🔍</div><h3>Auto Field Discovery</h3><p>CompliSync automatically discovers every custom field in your Jira instance and suggests intelligent mappings. No developer needed. Set up in under 10 minutes regardless of how your Jira is configured.</p></div>
+    <div class="feature-item"><div class="feature-num">02</div><div class="feature-icon">💬</div><h3>Jira Comments Writeback</h3><p>Edit the Jira Comments column in Sheets or Monday and CompliSync posts it back to Jira automatically — tagged with the source and user. The full comment thread stays in Jira where it belongs.</p></div>
+    <div class="feature-item"><div class="feature-num">03</div><div class="feature-icon">🔒</div><h3>Private Notes Column</h3><p>A dedicated Notes column that never touches Jira. Internal team context stays internal — preserved across every sync, never overwritten, never shared with clients.</p></div>
+    <div class="feature-item"><div class="feature-num">04</div><div class="feature-icon">⚡</div><h3>Smart Conflict Resolution</h3><p>Jira always wins on ticket data. For notes, you choose which platform is authoritative. No surprises, no lost edits, no manual reconciliation.</p></div>
+    <div class="feature-item"><div class="feature-num">05</div><div class="feature-icon">👤</div><h3>External Reporter Detection</h3><p>Automatically flags tickets submitted from outside your organization based on email domain. Instantly see which tickets came from clients vs. internal teams.</p></div>
+    <div class="feature-item"><div class="feature-num">06</div><div class="feature-icon">🔗</div><h3>Linked Ticket Mapping</h3><p>Captures up to three linked tickets per row — all clickable hyperlinks. See dependencies, duplicates, and related issues without ever leaving your sheet.</p></div>
   </div>
 </section>
 
-<!-- COMPARISON TABLE -->
+<!-- COMPARISON -->
 <section class="comparison-section">
   <div class="section-label">Why CompliSync</div>
   <h2>How we stack up<br>against the alternatives.</h2>
   <p class="section-sub">Manual exports and generic sync tools weren't built for healthcare ops teams. CompliSync was.</p>
-
   <div class="comparison-wrap reveal">
     <table class="comparison-table">
-      <thead>
-        <tr>
-          <th>Feature</th>
-          <th class="col-cs">CompliSync</th>
-          <th>Zapier / Make</th>
-          <th>Manual Exports</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Feature</th><th class="col-cs">CompliSync</th><th>Zapier / Make</th><th>Manual Exports</th></tr></thead>
       <tbody>
-        <tr>
-          <td>Jira → Sheets sync</td>
-          <td class="col-cs-cell check-yes">✓</td>
-          <td class="check-partial">Partial</td>
-          <td class="check-partial">Manual</td>
-        </tr>
-        <tr>
-          <td>Jira → Monday sync</td>
-          <td class="col-cs-cell check-yes">✓</td>
-          <td class="check-partial">Partial</td>
-          <td class="check-no">✕</td>
-        </tr>
-        <tr>
-          <td>Notes writeback to Jira</td>
-          <td class="col-cs-cell check-yes">✓</td>
-          <td class="check-no">✕</td>
-          <td class="check-no">✕</td>
-        </tr>
-        <tr>
-          <td>PHI field designation</td>
-          <td class="col-cs-cell check-yes">✓</td>
-          <td class="check-no">✕</td>
-          <td class="check-no">✕</td>
-        </tr>
-        <tr>
-          <td>One-click PHI wipe</td>
-          <td class="col-cs-cell check-yes">✓</td>
-          <td class="check-no">✕</td>
-          <td class="check-no">✕</td>
-        </tr>
-        <tr>
-          <td>Audit log</td>
-          <td class="col-cs-cell check-yes">✓</td>
-          <td class="check-partial">Limited</td>
-          <td class="check-no">✕</td>
-        </tr>
-        <tr>
-          <td>Auto field discovery</td>
-          <td class="col-cs-cell check-yes">✓</td>
-          <td class="check-no">✕</td>
-          <td class="check-no">✕</td>
-        </tr>
-        <tr>
-          <td>External reporter detection</td>
-          <td class="col-cs-cell check-yes">✓</td>
-          <td class="check-no">✕</td>
-          <td class="check-no">✕</td>
-        </tr>
-        <tr>
-          <td>Age flags &amp; stall detection</td>
-          <td class="col-cs-cell check-yes">✓</td>
-          <td class="check-no">✕</td>
-          <td class="check-no">✕</td>
-        </tr>
-        <tr>
-          <td>Private Notes column</td>
-          <td class="col-cs-cell check-yes">✓</td>
-          <td class="check-no">✕</td>
-          <td class="check-no">✕</td>
-        </tr>
-        <tr>
-          <td>Lives inside Google Sheets</td>
-          <td class="col-cs-cell check-yes">✓</td>
-          <td class="check-no">External tool</td>
-          <td class="check-no">✕</td>
-        </tr>
-        <tr>
-          <td>Setup time</td>
-          <td class="col-cs-cell" style="color:#009e88;font-weight:600;">Under 10 min</td>
-          <td class="check-partial">Hours–days</td>
-          <td class="check-partial">Ongoing</td>
-        </tr>
+        <tr><td>Jira → Sheets sync</td><td class="col-cs-cell check-yes">✓</td><td class="check-partial">Partial</td><td class="check-partial">Manual</td></tr>
+        <tr><td>Jira → Monday sync</td><td class="col-cs-cell check-yes">✓</td><td class="check-partial">Partial</td><td class="check-no">✕</td></tr>
+        <tr><td>Notes writeback to Jira</td><td class="col-cs-cell check-yes">✓</td><td class="check-no">✕</td><td class="check-no">✕</td></tr>
+        <tr><td>PHI field designation</td><td class="col-cs-cell check-yes">✓</td><td class="check-no">✕</td><td class="check-no">✕</td></tr>
+        <tr><td>One-click PHI wipe</td><td class="col-cs-cell check-yes">✓</td><td class="check-no">✕</td><td class="check-no">✕</td></tr>
+        <tr><td>Audit log</td><td class="col-cs-cell check-yes">✓</td><td class="check-partial">Limited</td><td class="check-no">✕</td></tr>
+        <tr><td>Auto field discovery</td><td class="col-cs-cell check-yes">✓</td><td class="check-no">✕</td><td class="check-no">✕</td></tr>
+        <tr><td>External reporter detection</td><td class="col-cs-cell check-yes">✓</td><td class="check-no">✕</td><td class="check-no">✕</td></tr>
+        <tr><td>Age flags &amp; stall detection</td><td class="col-cs-cell check-yes">✓</td><td class="check-no">✕</td><td class="check-no">✕</td></tr>
+        <tr><td>Private Notes column</td><td class="col-cs-cell check-yes">✓</td><td class="check-no">✕</td><td class="check-no">✕</td></tr>
+        <tr><td>Lives inside Google Sheets</td><td class="col-cs-cell check-yes">✓</td><td class="check-no">External tool</td><td class="check-no">✕</td></tr>
+        <tr><td>Setup time</td><td class="col-cs-cell" style="color:#009e88;font-weight:600;">Under 10 min</td><td class="check-partial">Hours–days</td><td class="check-partial">Ongoing</td></tr>
       </tbody>
     </table>
   </div>
@@ -1833,154 +1272,49 @@
   <div class="section-label">See It In Action</div>
   <h2 style="color:var(--paper);">Everything in one<br>tidy sidebar.</h2>
   <p class="section-sub">CompliSync lives inside Google Sheets as an add-on. No new tab, no new tool — your team opens the sidebar and gets to work.</p>
-
   <div class="mockup-grid reveal">
-
-    <!-- Sync status panel -->
     <div class="mockup-card tall">
-      <div class="mockup-bar">
-        <div class="mockup-dot dot-red"></div>
-        <div class="mockup-dot dot-yellow"></div>
-        <div class="mockup-dot dot-green"></div>
-        <div class="mockup-bar-title">CompliSync Sidebar</div>
-      </div>
+      <div class="mockup-bar"><div class="mockup-dot dot-red"></div><div class="mockup-dot dot-yellow"></div><div class="mockup-dot dot-green"></div><div class="mockup-bar-title">CompliSync Sidebar</div></div>
       <div class="mockup-content">
-        <div class="mock-tabs">
-          <div class="mock-tab active">Sync</div>
-          <div class="mock-tab">Connect</div>
-          <div class="mock-tab">Projects</div>
-          <div class="mock-tab">PHI</div>
+        <div class="mock-tabs"><div class="mock-tab active">Sync</div><div class="mock-tab">Connect</div><div class="mock-tab">Projects</div><div class="mock-tab">PHI</div></div>
+        <div class="mock-status-row"><div class="mock-dot mock-dot-green"></div><div class="mock-status-label">Jira</div><div class="mock-status-value">Connected</div></div>
+        <div class="mock-status-row"><div class="mock-dot mock-dot-teal"></div><div class="mock-status-label">Monday.com</div><div class="mock-status-value">Connected</div></div>
+        <div class="mock-status-row"><div class="mock-dot mock-dot-yellow"></div><div class="mock-status-label">Last sync</div><div class="mock-status-value">8 min ago</div></div>
+        <div style="margin-top:4px;">
+          <div class="mock-row"><div class="mock-row-label">CTS Sheets</div><div class="mock-badge badge-synced">Synced</div></div>
+          <div class="mock-row" style="margin-top:6px;"><div class="mock-row-label">DP Tickets</div><div class="mock-badge badge-synced">Synced</div></div>
+          <div class="mock-row" style="margin-top:6px;"><div class="mock-row-label">CQO</div><div class="mock-badge badge-pending">Pending</div></div>
         </div>
-
-        <div class="mock-status-row">
-          <div class="mock-dot mock-dot-green"></div>
-          <div class="mock-status-label">Jira</div>
-          <div class="mock-status-value">Connected</div>
-        </div>
-        <div class="mock-status-row">
-          <div class="mock-dot mock-dot-teal"></div>
-          <div class="mock-status-label">Monday.com</div>
-          <div class="mock-status-value">Connected</div>
-        </div>
-        <div class="mock-status-row">
-          <div class="mock-dot mock-dot-yellow"></div>
-          <div class="mock-status-label">Last sync</div>
-          <div class="mock-status-value">8 min ago</div>
-        </div>
-
-        <div style="margin-top: 4px;">
-          <div class="mock-row">
-            <div class="mock-row-label">CTS Sheets</div>
-            <div class="mock-badge badge-synced">Synced</div>
-          </div>
-          <div class="mock-row" style="margin-top:6px;">
-            <div class="mock-row-label">DP Tickets</div>
-            <div class="mock-badge badge-synced">Synced</div>
-          </div>
-          <div class="mock-row" style="margin-top:6px;">
-            <div class="mock-row-label">CQO</div>
-            <div class="mock-badge badge-pending">Pending</div>
-          </div>
-        </div>
-
         <div class="mock-sync-btn">⚡ Sync Now</div>
-
         <div class="mock-caption">Sync Tab</div>
       </div>
     </div>
-
-    <!-- PHI panel -->
     <div class="mockup-card">
-      <div class="mockup-bar">
-        <div class="mockup-dot dot-red"></div>
-        <div class="mockup-dot dot-yellow"></div>
-        <div class="mockup-dot dot-green"></div>
-        <div class="mockup-bar-title">PHI Controls</div>
-      </div>
+      <div class="mockup-bar"><div class="mockup-dot dot-red"></div><div class="mockup-dot dot-yellow"></div><div class="mockup-dot dot-green"></div><div class="mockup-bar-title">PHI Controls</div></div>
       <div class="mockup-content">
         <div style="font-size:11px;font-family:'Syne',sans-serif;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">PHI Columns</div>
-
-        <div class="mock-phi-field">
-          <div class="mock-checkbox">✓</div>
-          <div class="mock-field-name">Client / Payer</div>
-          <div class="mock-field-key">customfield_10323</div>
-        </div>
-        <div class="mock-phi-field">
-          <div class="mock-checkbox">✓</div>
-          <div class="mock-field-name">Summary</div>
-          <div class="mock-field-key">summary</div>
-        </div>
-        <div class="mock-phi-field">
-          <div class="mock-checkbox">✓</div>
-          <div class="mock-field-name">Reporter</div>
-          <div class="mock-field-key">reporter</div>
-        </div>
-        <div class="mock-phi-field">
-          <div class="mock-checkbox unchecked">✓</div>
-          <div class="mock-field-name">Assignee</div>
-          <div class="mock-field-key">assignee</div>
-        </div>
-        <div class="mock-phi-field" style="border-bottom:none;">
-          <div class="mock-checkbox unchecked">✓</div>
-          <div class="mock-field-name">Status</div>
-          <div class="mock-field-key">status</div>
-        </div>
-
+        <div class="mock-phi-field"><div class="mock-checkbox">✓</div><div class="mock-field-name">Client / Payer</div><div class="mock-field-key">customfield_10323</div></div>
+        <div class="mock-phi-field"><div class="mock-checkbox">✓</div><div class="mock-field-name">Summary</div><div class="mock-field-key">summary</div></div>
+        <div class="mock-phi-field"><div class="mock-checkbox">✓</div><div class="mock-field-name">Reporter</div><div class="mock-field-key">reporter</div></div>
+        <div class="mock-phi-field"><div class="mock-checkbox unchecked">✓</div><div class="mock-field-name">Assignee</div><div class="mock-field-key">assignee</div></div>
+        <div class="mock-phi-field" style="border-bottom:none;"><div class="mock-checkbox unchecked">✓</div><div class="mock-field-name">Status</div><div class="mock-field-key">status</div></div>
         <div class="mock-caption">PHI Tab — field designation</div>
       </div>
     </div>
-
-    <!-- Sheet mockup -->
     <div class="mockup-card">
-      <div class="mockup-bar">
-        <div class="mockup-dot dot-red"></div>
-        <div class="mockup-dot dot-yellow"></div>
-        <div class="mockup-dot dot-green"></div>
-        <div class="mockup-bar-title">CTS Sheets</div>
-      </div>
+      <div class="mockup-bar"><div class="mockup-dot dot-red"></div><div class="mockup-dot dot-yellow"></div><div class="mockup-dot dot-green"></div><div class="mockup-bar-title">CTS Sheets</div></div>
       <div class="mockup-content" style="padding:16px;overflow-x:auto;">
         <table class="mock-sheet">
-          <thead>
-            <tr>
-              <th>Ticket</th>
-              <th>Payer</th>
-              <th>Status</th>
-              <th>Days Open</th>
-              <th>Flag</th>
-              <th>Stalled?</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Ticket</th><th>Payer</th><th>Status</th><th>Days Open</th><th>Flag</th><th>Stalled?</th></tr></thead>
           <tbody>
-            <tr>
-              <td class="cell-id">CTS-8291</td>
-              <td class="cell-phi">J. Smith</td>
-              <td>In Progress</td>
-              <td>12</td>
-              <td class="cell-age-ok">✅ OK</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td class="cell-id">CTS-8292</td>
-              <td class="cell-phi">M. Johnson</td>
-              <td>Open</td>
-              <td>31</td>
-              <td class="cell-age-warn">🟡 Watch</td>
-              <td class="cell-stalled">⚠️ YES</td>
-            </tr>
-            <tr>
-              <td class="cell-id">CTS-8293</td>
-              <td class="cell-phi">K. Williams</td>
-              <td>Review</td>
-              <td>58</td>
-              <td class="cell-age-crit">🔴 Critical</td>
-              <td class="cell-stalled">⚠️ YES</td>
-            </tr>
+            <tr><td class="cell-id">CTS-8291</td><td class="cell-phi">J. Smith</td><td>In Progress</td><td>12</td><td class="cell-age-ok">✅ OK</td><td></td></tr>
+            <tr><td class="cell-id">CTS-8292</td><td class="cell-phi">M. Johnson</td><td>Open</td><td>31</td><td class="cell-age-warn">🟡 Watch</td><td class="cell-stalled">⚠️ YES</td></tr>
+            <tr><td class="cell-id">CTS-8293</td><td class="cell-phi">K. Williams</td><td>Review</td><td>58</td><td class="cell-age-crit">🔴 Critical</td><td class="cell-stalled">⚠️ YES</td></tr>
           </tbody>
         </table>
         <div class="mock-caption">Live Google Sheet with PHI highlighted</div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -1989,68 +1323,22 @@
   <div class="section-label">Compliance Tier</div>
   <h2>Built for<br>healthcare teams.</h2>
   <p class="section-sub" style="color:rgba(245,243,238,0.5)">The only Jira sync tool with a dedicated PHI compliance layer. Purpose-built for teams operating under HIPAA, HITRUST, or SOC 2.</p>
-
   <div class="compliance-grid reveal">
     <div class="compliance-features">
-      <div class="compliance-feature">
-        <div class="cf-icon">🧹</div>
-        <div class="cf-text">
-          <h4>One-Click PHI Wipe</h4>
-          <p>Instantly sanitize designated PHI columns across all sheets. Generates a clean, share-safe version without touching your source data.</p>
-        </div>
-      </div>
-      <div class="compliance-feature">
-        <div class="cf-icon">📅</div>
-        <div class="cf-text">
-          <h4>Scheduled Sanitization</h4>
-          <p>Set automatic PHI wipes on a schedule — daily, weekly, or monthly. Runs overnight so your team always starts the day compliant.</p>
-        </div>
-      </div>
-      <div class="compliance-feature">
-        <div class="cf-icon">📋</div>
-        <div class="cf-text">
-          <h4>Audit Log</h4>
-          <p>Every sync, wipe, and share is logged with timestamp and user. Export your audit trail as a PDF for compliance reviews.</p>
-        </div>
-      </div>
-      <div class="compliance-feature">
-        <div class="cf-icon">🗑️</div>
-        <div class="cf-text">
-          <h4>Data Retention Policy</h4>
-          <p>Automatically remove tickets older than a configurable threshold. Stay within your organization's data retention requirements without manual cleanup.</p>
-        </div>
-      </div>
-      <div class="compliance-feature">
-        <div class="cf-icon">📄</div>
-        <div class="cf-text">
-          <h4>HIPAA Documentation Export</h4>
-          <p>Generate a compliance summary document showing your data flow, PHI handling procedures, and audit history — ready for your compliance officer.</p>
-        </div>
-      </div>
+      <div class="compliance-feature"><div class="cf-icon">🧹</div><div class="cf-text"><h4>One-Click PHI Wipe</h4><p>Instantly sanitize designated PHI columns across all sheets. Generates a clean, share-safe version without touching your source data.</p></div></div>
+      <div class="compliance-feature"><div class="cf-icon">📅</div><div class="cf-text"><h4>Scheduled Sanitization</h4><p>Set automatic PHI wipes on a schedule — daily, weekly, or monthly. Runs overnight so your team always starts the day compliant.</p></div></div>
+      <div class="compliance-feature"><div class="cf-icon">📋</div><div class="cf-text"><h4>Audit Log</h4><p>Every sync, wipe, and share is logged with timestamp and user. Export your audit trail as a PDF for compliance reviews.</p></div></div>
+      <div class="compliance-feature"><div class="cf-icon">🗑️</div><div class="cf-text"><h4>Data Retention Policy</h4><p>Automatically remove tickets older than a configurable threshold. Stay within your organization's data retention requirements without manual cleanup.</p></div></div>
+      <div class="compliance-feature"><div class="cf-icon">📄</div><div class="cf-text"><h4>HIPAA Documentation Export</h4><p>Generate a compliance summary document showing your data flow, PHI handling procedures, and audit history — ready for your compliance officer.</p></div></div>
     </div>
-
     <div class="phi-visual">
       <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,243,238,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">PHI Wipe Preview</div>
       <table class="phi-table">
-        <thead>
-          <tr><th>Ticket</th><th>Reporter</th><th>Summary</th></tr>
-        </thead>
+        <thead><tr><th>Ticket</th><th>Reporter</th><th>Summary</th></tr></thead>
         <tbody>
-          <tr>
-            <td>CTS-8291</td>
-            <td><span class="phi-cell" id="phi-1">J. Smith</span></td>
-            <td><span class="phi-cell" id="phi-2">Patient auth issue</span></td>
-          </tr>
-          <tr>
-            <td>CTS-8292</td>
-            <td><span class="phi-cell" id="phi-3">M. Johnson</span></td>
-            <td><span class="phi-cell" id="phi-4">Member ID mismatch</span></td>
-          </tr>
-          <tr>
-            <td>CTS-8293</td>
-            <td><span class="phi-cell" id="phi-5">K. Williams</span></td>
-            <td><span class="phi-cell" id="phi-6">Claims review needed</span></td>
-          </tr>
+          <tr><td>CTS-8291</td><td><span class="phi-cell" id="phi-1">J. Smith</span></td><td><span class="phi-cell" id="phi-2">Patient auth issue</span></td></tr>
+          <tr><td>CTS-8292</td><td><span class="phi-cell" id="phi-3">M. Johnson</span></td><td><span class="phi-cell" id="phi-4">Member ID mismatch</span></td></tr>
+          <tr><td>CTS-8293</td><td><span class="phi-cell" id="phi-5">K. Williams</span></td><td><span class="phi-cell" id="phi-6">Claims review needed</span></td></tr>
         </tbody>
       </table>
       <button class="wipe-btn" id="wipe-demo-btn" onclick="demoWipe()">🧹 Wipe PHI Data</button>
@@ -2064,12 +1352,9 @@
   <div class="section-label">Standard Columns</div>
   <h2>22 columns, out<br>of the box.</h2>
   <p class="section-sub">Every column you need, mapped intelligently from your Jira instance. Add unlimited custom columns via the field mapping UI.</p>
-
   <div class="columns-table-wrap reveal">
     <table class="columns-table">
-      <thead>
-        <tr><th>#</th><th>Column</th><th>Source</th><th>Notes</th></tr>
-      </thead>
+      <thead><tr><th>#</th><th>Column</th><th>Source</th><th>Notes</th></tr></thead>
       <tbody>
         <tr><td>A</td><td><span class="col-name">Ticket ID</span></td><td><span class="col-source source-jira">Jira</span></td><td>Clickable hyperlink to ticket</td></tr>
         <tr><td>B</td><td><span class="col-name">Client / Payer</span></td><td><span class="col-source source-jira">Jira</span></td><td>Custom field, auto-discovered</td></tr>
@@ -2097,17 +1382,15 @@
   </div>
 </section>
 
-<!-- PRICING — $49/month flat -->
+<!-- PRICING -->
 <section class="pricing-section" id="pricing">
   <div class="section-label">Pricing</div>
   <h2>One plan.<br>Everything included.</h2>
   <p class="section-sub">No tiers, no feature gates, no surprises. Every team gets the full CompliSync — sync, PHI compliance, and audit logging included.</p>
-
   <div style="display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;">
     <button onclick="setPricing('monthly')" id="toggle-monthly" style="padding:10px 24px;border-radius:100px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s;letter-spacing:0.05em;">Monthly</button>
     <button onclick="setPricing('annual')" id="toggle-annual" style="padding:10px 24px;border-radius:100px;border:1.5px solid var(--mist);background:transparent;color:var(--ink);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s;letter-spacing:0.05em;">Annual <span style="color:var(--teal);margin-left:4px;">Save 2 months</span></button>
   </div>
-
   <div class="pricing-layout reveal">
     <div class="pricing-card-main">
       <div class="pricing-badge-top">Early Access Pricing</div>
@@ -2115,7 +1398,6 @@
       <div class="plan-price-main"><sup>$</sup><span id="price-display">19</span></div>
       <div class="plan-period-main" id="period-display">per workspace / month</div>
       <div class="plan-annual" id="annual-note" style="visibility:hidden;">Billed as $190/year — 2 months free</div>
-
       <ul class="plan-features-main">
         <li>Jira ↔ Google Sheets sync</li>
         <li>Jira ↔ Monday.com sync</li>
@@ -2132,34 +1414,13 @@
         <li>Unlimited Jira projects</li>
         <li>Daily auto-sync (weekdays)</li>
       </ul>
-
       <a href="#early" class="btn-plan-main">Start Free During Beta</a>
     </div>
-
     <div class="pricing-details">
-      <div class="pricing-detail-card">
-        <div class="pricing-detail-icon">🎉</div>
-        <h4>Free during beta</h4>
-        <p>We're in early access. Join now and use CompliSync for free while we build it together. You'll lock in the founding rate when we launch.</p>
-      </div>
-
-      <div class="pricing-detail-card">
-        <div class="pricing-detail-icon">🏥</div>
-        <h4>BAA available</h4>
-        <p>Need a Business Associate Agreement for HIPAA? We've got you covered. Contact hello@complisync.org to request yours before going live with PHI.</p>
-      </div>
-
-      <div class="pricing-detail-card">
-        <div class="pricing-detail-icon">💳</div>
-        <h4>No credit card required</h4>
-        <p>Sign up and start syncing today — no payment info needed until beta ends. We'll give you 30 days notice before charging anything.</p>
-      </div>
-
-      <div class="pricing-detail-card">
-        <div class="pricing-detail-icon">🔁</div>
-        <h4>Cancel anytime</h4>
-        <p>Month-to-month, no contracts. Cancel from your settings in one click. Your data exports cleanly to CSV on the way out.</p>
-      </div>
+      <div class="pricing-detail-card"><div class="pricing-detail-icon">🎉</div><h4>Free during beta</h4><p>We're in early access. Join now and use CompliSync for free while we build it together. You'll lock in the founding rate when we launch.</p></div>
+      <div class="pricing-detail-card"><div class="pricing-detail-icon">🏥</div><h4>BAA available</h4><p>Need a Business Associate Agreement for HIPAA? We've got you covered. Contact hello@complisync.io to request yours before going live with PHI.</p></div>
+      <div class="pricing-detail-card"><div class="pricing-detail-icon">💳</div><h4>No credit card required</h4><p>Sign up and start syncing today — no payment info needed until beta ends. We'll give you 30 days notice before charging anything.</p></div>
+      <div class="pricing-detail-card"><div class="pricing-detail-icon">🔁</div><h4>Cancel anytime</h4><p>Month-to-month, no contracts. Cancel from your settings in one click. Your data exports cleanly to CSV on the way out.</p></div>
     </div>
   </div>
 </section>
@@ -2168,89 +1429,15 @@
 <section class="faq-section" id="faq">
   <div class="section-label">FAQ</div>
   <h2>Questions we<br>hear a lot.</h2>
-
   <div class="faq-list reveal">
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        Does CompliSync store my Jira data on your servers?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">
-        No. CompliSync runs as a Google Apps Script add-on, which means your data flows directly between Jira, Google Sheets, and Monday.com inside your Google Workspace environment. We never store ticket data on our servers. Your Jira API token is encrypted and stored in Google's ScriptProperties — not in any CompliSync database.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        Is CompliSync actually HIPAA compliant?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">
-        CompliSync provides the controls you need to handle PHI responsibly — field designation, PHI wipe, audit logging, data retention, and a BAA. But HIPAA compliance is your organization's responsibility, not ours. We give you the tooling; your team is responsible for configuring it correctly and following your own compliance policies. We strongly recommend involving your compliance officer before syncing any PHI.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        What happens if Jira and Sheets have conflicting data?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">
-        Jira always wins on ticket data — status, priority, assignee, dates, and any Jira-owned fields. The one exception is the Notes column, which is user-owned and never overwritten by a sync. For the Jira Comments column, CompliSync detects whether a comment already exists in Jira before writing back, so you won't get duplicate entries.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        How is this different from Zapier or a custom integration?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">
-        Zapier is trigger-based — it fires when something changes, but it doesn't know the full state of your Jira board. CompliSync does a full bidirectional sync of every ticket matching your JQL filter, every time. It also lives inside Google Sheets as a sidebar, so there's no external tool to log into. And it has healthcare-specific features — PHI controls, external reporter detection, age flags — that generic automation tools simply don't offer.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        Do I need to be a developer to set this up?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">
-        No. CompliSync is a Google Sheets add-on — install it from the Google Workspace Marketplace, open the sidebar, paste in your Jira URL and API token, and you're syncing within 10 minutes. Field discovery is automatic. You can add custom columns through a point-and-click UI. No code, no YAML, no webhooks to configure.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        Can I sync multiple Jira projects?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">
-        Yes — unlimited Jira projects are included. Each project gets its own sheet tab and its own column configuration. You can have different column layouts, JQL filters, and Monday board IDs per project. Projects can sync to Sheets only, Monday only, or both simultaneously.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        How often does the sync run?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">
-        CompliSync sets up an automatic daily sync trigger that runs on weekdays. You can also hit "Sync Now" from the sidebar at any time for an on-demand sync. The sync schedule and frequency are configurable from the Settings tab in the sidebar.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        What does the PHI wipe actually do?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">
-        When you click "Wipe PHI", CompliSync creates a copy of your sheet with all designated PHI columns replaced with [REDACTED]. Your original data is untouched — the wipe only affects the copy. You can then share the sanitized copy safely with external stakeholders, auditors, or anyone who doesn't need access to the underlying patient data. There's also an emergency wipe mode that clears PHI in-place from the live sheet, with a double-confirmation prompt.
-      </div>
-    </div>
-
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Does CompliSync store my Jira data on your servers?<span class="faq-icon">+</span></button><div class="faq-a">No. CompliSync runs as a Google Apps Script add-on, which means your data flows directly between Jira, Google Sheets, and Monday.com inside your Google Workspace environment. We never store ticket data on our servers. Your Jira API token is encrypted and stored in Google's ScriptProperties — not in any CompliSync database.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is CompliSync actually HIPAA compliant?<span class="faq-icon">+</span></button><div class="faq-a">CompliSync provides the controls you need to handle PHI responsibly — field designation, PHI wipe, audit logging, data retention, and a BAA. But HIPAA compliance is your organization's responsibility, not ours. We give you the tooling; your team is responsible for configuring it correctly and following your own compliance policies. We strongly recommend involving your compliance officer before syncing any PHI.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What happens if Jira and Sheets have conflicting data?<span class="faq-icon">+</span></button><div class="faq-a">Jira always wins on ticket data — status, priority, assignee, dates, and any Jira-owned fields. The one exception is the Notes column, which is user-owned and never overwritten by a sync. For the Jira Comments column, CompliSync detects whether a comment already exists in Jira before writing back, so you won't get duplicate entries.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How is this different from Zapier or a custom integration?<span class="faq-icon">+</span></button><div class="faq-a">Zapier is trigger-based — it fires when something changes, but it doesn't know the full state of your Jira board. CompliSync does a full bidirectional sync of every ticket matching your JQL filter, every time. It also lives inside Google Sheets as a sidebar, so there's no external tool to log into. And it has healthcare-specific features — PHI controls, external reporter detection, age flags — that generic automation tools simply don't offer.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do I need to be a developer to set this up?<span class="faq-icon">+</span></button><div class="faq-a">No. CompliSync is a Google Sheets add-on — install it from the Google Workspace Marketplace, open the sidebar, paste in your Jira URL and API token, and you're syncing within 10 minutes. Field discovery is automatic. You can add custom columns through a point-and-click UI. No code, no YAML, no webhooks to configure.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I sync multiple Jira projects?<span class="faq-icon">+</span></button><div class="faq-a">Yes — unlimited Jira projects are included. Each project gets its own sheet tab and its own column configuration. You can have different column layouts, JQL filters, and Monday board IDs per project. Projects can sync to Sheets only, Monday only, or both simultaneously.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How often does the sync run?<span class="faq-icon">+</span></button><div class="faq-a">CompliSync sets up an automatic daily sync trigger that runs on weekdays. You can also hit "Sync Now" from the sidebar at any time for an on-demand sync. The sync schedule and frequency are configurable from the Settings tab in the sidebar.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What does the PHI wipe actually do?<span class="faq-icon">+</span></button><div class="faq-a">When you click "Wipe PHI", CompliSync creates a copy of your sheet with all designated PHI columns replaced with [REDACTED]. Your original data is untouched — the wipe only affects the copy. You can then share the sanitized copy safely with external stakeholders, auditors, or anyone who doesn't need access to the underlying patient data. There's also an emergency wipe mode that clears PHI in-place from the live sheet, with a double-confirmation prompt.</div></div>
   </div>
 </section>
 
@@ -2259,24 +1446,109 @@
   <div class="section-label" style="justify-content:center;">Early Access</div>
   <h2>Be first.<br>Shape the product.</h2>
   <p class="section-sub">Join the early access list and get free full access during beta. Your feedback directly influences what we build next.</p>
-
   <div class="early-form" id="early-form-wrap">
     <input type="email" id="early-email" placeholder="your@company.com" autocomplete="email">
     <button class="btn-primary" onclick="handleSignup('early')">Join Waitlist</button>
   </div>
   <div class="success-msg" id="early-success" style="display:none;margin:0 auto;max-width:440px;">🎉 You're on the list! We'll be in touch soon.</div>
   <p class="early-note">Free full access during beta · No credit card · No spam</p>
-
   <div class="signups">
     <div class="signup-avatars">
-      <div class="signup-avatar">S</div>
-      <div class="signup-avatar">M</div>
-      <div class="signup-avatar">J</div>
-      <div class="signup-avatar">A</div>
+      <div class="signup-avatar">S</div><div class="signup-avatar">M</div><div class="signup-avatar">J</div><div class="signup-avatar">A</div>
     </div>
     <div class="signup-text"><strong>Healthcare &amp; ops teams</strong> already on the list</div>
   </div>
 </section>
+
+<!-- ── COMPILO SIBLING BAND ── -->
+<div class="compilo-band">
+  <div class="compilo-band-inner">
+
+    <!-- Left: copy -->
+    <div>
+      <div class="compilo-band-eyebrow">Also from the CompliSync family</div>
+      <div class="compilo-band-headline">
+        Compile your Drive files into <em>something beautiful.</em>
+      </div>
+      <p class="compilo-band-body">
+        Compilo gathers your PDFs, Word docs, slides, and text files from Google Drive and weaves them into polished, structured documents — with cover pages, clickable tables of contents, smart filename and content filters, and automatic scheduling.
+      </p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+        <a href="https://complisync.io/compilo" class="compilo-band-cta">Explore Compilo &#x2192;</a>
+        <span class="compilo-band-note">Free during beta</span>
+      </div>
+    </div>
+
+    <!-- Right: app window mockup -->
+    <div class="compilo-app-wrap">
+      <div class="compilo-app-window">
+
+        <!-- Title bar -->
+        <div class="compilo-app-bar">
+          <div class="compilo-app-dot" style="background:#FFBCB5;"></div>
+          <div class="compilo-app-dot" style="background:#FFDAA5;"></div>
+          <div class="compilo-app-dot" style="background:#BEECC4;"></div>
+          <span style="margin-left:8px;font-size:11px;color:#7A8A84;">Compilo &middot; Google Drive</span>
+        </div>
+
+        <!-- App body -->
+        <div class="compilo-app-body">
+
+          <!-- Sidebar -->
+          <div class="compilo-app-sidebar">
+            <div class="compilo-sb-label">Workspace</div>
+            <div class="compilo-sb-item active"><div class="compilo-sb-dot" style="background:#2D9C8A;"></div>New compilation</div>
+            <div class="compilo-sb-item"><div class="compilo-sb-dot" style="background:#E8E0D0;"></div>My compilations</div>
+            <div class="compilo-sb-item"><div class="compilo-sb-dot" style="background:#E8E0D0;"></div>Schedules</div>
+            <div class="compilo-sb-label" style="margin-top:10px;">Recent</div>
+            <div class="compilo-sb-item"><div class="compilo-sb-dot" style="background:#E8E0D0;"></div>Q1 Policies</div>
+            <div class="compilo-sb-item"><div class="compilo-sb-dot" style="background:#E8E0D0;"></div>Team Handbook</div>
+            <div class="compilo-sb-item"><div class="compilo-sb-dot" style="background:#E8E0D0;"></div>Client Reports</div>
+          </div>
+
+          <!-- Main -->
+          <div class="compilo-app-main">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+              <div>
+                <div style="font-size:12px;font-weight:500;color:#1C2622;">New compilation</div>
+                <div style="font-size:10px;color:#7A8A84;">Step 2 of 4 &mdash; Filters</div>
+              </div>
+              <div style="background:#2D9C8A;color:white;padding:4px 11px;border-radius:100px;font-size:10px;font-weight:600;">Run now</div>
+            </div>
+
+            <!-- Step pills -->
+            <div class="compilo-step-pills">
+              <div class="compilo-pill done">&#x2713; Source</div>
+              <div class="compilo-pill active">2 Filters</div>
+              <div class="compilo-pill todo">3 Style</div>
+              <div class="compilo-pill todo">4 Output</div>
+            </div>
+
+            <!-- File rows -->
+            <div class="compilo-file-list">
+              <div class="compilo-file-row">
+                <span class="compilo-file-badge" style="background:#E24B4A;">PDF</span>
+                <span style="flex:1;color:#3D4D47;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Cohere Medical Policy - Cardiac Ablation.pdf</span>
+                <span class="compilo-match-badge" style="background:#E6F5F2;color:#1A6B5E;">matched</span>
+              </div>
+              <div class="compilo-file-row">
+                <span class="compilo-file-badge" style="background:#378ADD;">DOC</span>
+                <span style="flex:1;color:#3D4D47;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Cohere Medical Policy - Stress Echo.docx</span>
+                <span class="compilo-match-badge" style="background:#E6F5F2;color:#1A6B5E;">matched</span>
+              </div>
+              <div class="compilo-file-row">
+                <span class="compilo-file-badge" style="background:#E9762B;">PPT</span>
+                <span style="flex:1;color:#3D4D47;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Cardiology Overview Slides.pptx</span>
+                <span style="font-size:8px;color:#7A8A84;flex-shrink:0;">filtered out</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -2304,11 +1576,12 @@
     <li><a href="#compliance">Compliance</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#faq">FAQ</a></li>
-    <li><a href="javascript:void(0)" onclick="showModal('privacy')">Privacy Policy</a></li>
-    <li><a href="javascript:void(0)" onclick="showModal('terms')">Terms of Service</a></li>
-    <li><a href="mailto:hello@complisync.org">Contact</a></li>
+    <li><a href="https://complisync.io/compilo">Compilo</a></li>
+    <li><a href="https://complisync.io/privacy">Privacy Policy</a></li>
+    <li><a href="https://complisync.io/terms">Terms of Service</a></li>
+    <li><a href="mailto:hello@complisync.io">Contact</a></li>
   </ul>
-  <div class="footer-copy">© 2026 CompliSync. All rights reserved.</div>
+  <div class="footer-copy">&copy; 2026 CompliSync. All rights reserved.</div>
 </footer>
 
 <script>
@@ -2327,17 +1600,14 @@
     const formWrap = document.getElementById(section + '-form-wrap');
     const success = document.getElementById(section + '-success');
     const emailInput = document.getElementById(section + '-email');
-
     if (!email || !email.includes('@')) {
       emailInput.style.borderColor = '#e8524a';
       setTimeout(() => { emailInput.style.borderColor = ''; }, 2000);
       return;
     }
-
     const btn = formWrap.querySelector('button');
     btn.textContent = 'Submitting...';
     btn.disabled = true;
-
     fetch('https://formspree.io/f/xpqknwgk', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -2345,20 +1615,10 @@
     })
     .then(res => res.json())
     .then(data => {
-      if (data.ok) {
-        formWrap.style.display = 'none';
-        success.style.display = 'block';
-      } else {
-        btn.textContent = 'Try Again';
-        btn.disabled = false;
-        emailInput.style.borderColor = '#e8524a';
-      }
+      if (data.ok) { formWrap.style.display = 'none'; success.style.display = 'block'; }
+      else { btn.textContent = 'Try Again'; btn.disabled = false; emailInput.style.borderColor = '#e8524a'; }
     })
-    .catch(() => {
-      btn.textContent = 'Try Again';
-      btn.disabled = false;
-      emailInput.style.borderColor = '#e8524a';
-    });
+    .catch(() => { btn.textContent = 'Try Again'; btn.disabled = false; emailInput.style.borderColor = '#e8524a'; });
   }
 
   // ── PHI WIPE DEMO ──
@@ -2403,22 +1663,14 @@
       price.textContent = '16';
       period.textContent = 'per workspace / month, billed annually';
       note.style.visibility = 'visible';
-      annual.style.background = 'var(--ink)';
-      annual.style.color = 'var(--paper)';
-      annual.style.borderColor = 'var(--ink)';
-      monthly.style.background = 'transparent';
-      monthly.style.color = 'var(--ink)';
-      monthly.style.borderColor = 'var(--mist)';
+      annual.style.background = 'var(--ink)'; annual.style.color = 'var(--paper)'; annual.style.borderColor = 'var(--ink)';
+      monthly.style.background = 'transparent'; monthly.style.color = 'var(--ink)'; monthly.style.borderColor = 'var(--mist)';
     } else {
       price.textContent = '19';
       period.textContent = 'per workspace / month';
       note.style.visibility = 'hidden';
-      monthly.style.background = 'var(--ink)';
-      monthly.style.color = 'var(--paper)';
-      monthly.style.borderColor = 'var(--ink)';
-      annual.style.background = 'transparent';
-      annual.style.color = 'var(--ink)';
-      annual.style.borderColor = 'var(--mist)';
+      monthly.style.background = 'var(--ink)'; monthly.style.color = 'var(--paper)'; monthly.style.borderColor = 'var(--ink)';
+      annual.style.background = 'transparent'; annual.style.color = 'var(--ink)'; annual.style.borderColor = 'var(--mist)';
     }
   }
 
@@ -2426,106 +1678,16 @@
   function toggleFaq(btn) {
     const answer = btn.nextElementSibling;
     const isOpen = btn.classList.contains('open');
-    // Close all
     document.querySelectorAll('.faq-q.open').forEach(q => {
       q.classList.remove('open');
       q.nextElementSibling.classList.remove('open');
     });
-    // Open clicked if it was closed
-    if (!isOpen) {
-      btn.classList.add('open');
-      answer.classList.add('open');
-    }
+    if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
   }
 
   // ── ENTER KEY ──
   document.getElementById('hero-email').addEventListener('keydown', e => { if (e.key === 'Enter') handleSignup('hero'); });
   document.getElementById('early-email').addEventListener('keydown', e => { if (e.key === 'Enter') handleSignup('early'); });
-</script>
-
-<!-- MODAL OVERLAY -->
-<div id="modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(10,15,30,0.7);z-index:1000;backdrop-filter:blur(4px);" onclick="closeModal()"></div>
-
-<!-- PRIVACY MODAL -->
-<div id="modal-privacy" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(800px,92vw);max-height:82vh;background:#f5f3ee;border-radius:20px;z-index:1001;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,0.3);">
-  <div style="padding:32px 40px 20px;border-bottom:1px solid #e8e5de;display:flex;align-items:center;justify-content:space-between;background:#f5f3ee;position:sticky;top:0;">
-    <div>
-      <div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:#00c2a8;margin-bottom:6px;">Legal</div>
-      <h2 style="font-family:'Syne',sans-serif;font-size:24px;font-weight:800;letter-spacing:-0.5px;color:#0a0f1e;margin:0;">Privacy Policy</h2>
-    </div>
-    <button onclick="closeModal()" style="width:36px;height:36px;border-radius:50%;border:1.5px solid #e8e5de;background:white;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#0a0f1e;transition:all 0.2s;">×</button>
-  </div>
-  <div style="padding:32px 40px;overflow-y:auto;max-height:calc(82vh - 100px);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;color:#0a0f1e;">
-    <p style="color:#666;font-size:13px;margin-bottom:24px;">Effective Date: April 25, 2026 · Last Updated: April 25, 2026</p>
-    <p style="margin-bottom:20px;">This Privacy Policy describes how CompliSync collects, uses, and protects information when you use our service.</p>
-    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">1. Information We Collect</h3>
-    <p style="margin-bottom:12px;font-weight:600;">Information You Provide</p>
-    <ul style="padding-left:24px;margin-bottom:16px;">
-      <li style="margin-bottom:8px;">Account registration information (name, email, organization)</li>
-      <li style="margin-bottom:8px;">Billing information (processed by Stripe; we do not store card numbers)</li>
-      <li style="margin-bottom:8px;">Jira and Monday.com API tokens (stored encrypted)</li>
-      <li style="margin-bottom:8px;">Configuration settings including field mappings and sync schedules</li>
-    </ul>
-    <p style="margin-bottom:12px;font-weight:600;">Data from Connected Platforms</p>
-    <p style="margin-bottom:16px;">When you connect Jira, Google Sheets, or Monday.com, we access ticket data, spreadsheet data, and board data solely to provide the synchronization service you have configured.</p>
-    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">2. How We Use Your Information</h3>
-    <p style="margin-bottom:12px;">We use your information to provide and improve the Service, process billing, respond to support requests, and send transactional notifications. <strong>We do not sell, rent, or share your data with third parties for marketing purposes.</strong></p>
-    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">3. Protected Health Information (PHI) and HIPAA</h3>
-    <p style="margin-bottom:12px;">CompliSync is designed for compliance-focused teams. Customers may execute a Business Associate Agreement (BAA) with us governing PHI processing. Contact hello@complisync.org to request a BAA.</p>
-    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">4. Data Storage and Security</h3>
-    <p style="margin-bottom:12px;">API tokens are encrypted at rest using AES-256. All data in transit is protected with TLS 1.2 or higher. Data is retained for the duration of your subscription and deleted within 30 days of cancellation.</p>
-    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">5. Your Rights</h3>
-    <p style="margin-bottom:12px;">You may request access, correction, deletion, or export of your personal data at any time by contacting hello@complisync.org.</p>
-    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">6. Contact</h3>
-    <p>CompliSync · hello@complisync.org · complisync.org</p>
-  </div>
-</div>
-
-<!-- TERMS MODAL -->
-<div id="modal-terms" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(800px,92vw);max-height:82vh;background:#f5f3ee;border-radius:20px;z-index:1001;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,0.3);">
-  <div style="padding:32px 40px 20px;border-bottom:1px solid #e8e5de;display:flex;align-items:center;justify-content:space-between;background:#f5f3ee;position:sticky;top:0;">
-    <div>
-      <div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:#00c2a8;margin-bottom:6px;">Legal</div>
-      <h2 style="font-family:'Syne',sans-serif;font-size:24px;font-weight:800;letter-spacing:-0.5px;color:#0a0f1e;margin:0;">Terms of Service</h2>
-    </div>
-    <button onclick="closeModal()" style="width:36px;height:36px;border-radius:50%;border:1.5px solid #e8e5de;background:white;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#0a0f1e;transition:all 0.2s;">×</button>
-  </div>
-  <div style="padding:32px 40px;overflow-y:auto;max-height:calc(82vh - 100px);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;color:#0a0f1e;">
-    <p style="color:#666;font-size:13px;margin-bottom:24px;">Effective Date: April 25, 2026 · Last Updated: April 25, 2026</p>
-    <p style="margin-bottom:20px;">By using CompliSync, you agree to be bound by these Terms.</p>
-    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">1. The Service</h3>
-    <p style="margin-bottom:12px;">CompliSync is a software-as-a-service product that synchronizes data between Jira, Google Sheets, and Monday.com. You represent that you are at least 18 years of age and have authority to bind your organization.</p>
-    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">2. Subscriptions and Billing</h3>
-    <p style="margin-bottom:12px;">Subscriptions are billed monthly or annually in advance. All fees are non-refundable except within 14 days of initial purchase. You may cancel at any time; cancellation takes effect at end of the current billing period.</p>
-    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">3. Acceptable Use</h3>
-    <p style="margin-bottom:12px;">You may use CompliSync solely to synchronize data between your authorized accounts. You agree not to reverse engineer the Service, resell access, or use the Service to violate applicable law.</p>
-    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">4. Customer Data</h3>
-    <p style="margin-bottom:12px;">You retain all ownership of your data. You are responsible for ensuring you have the right to connect your third-party accounts and for the legality of all data processed.</p>
-    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">5. HIPAA</h3>
-    <p style="margin-bottom:12px;">Customers subject to HIPAA must execute a Business Associate Agreement (BAA) with CompliSync before processing any PHI. Contact hello@complisync.org to request a BAA.</p>
-    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">6. Disclaimer of Warranties</h3>
-    <p style="margin-bottom:12px;">THE SERVICE IS PROVIDED "AS IS". COMPLISYNC DOES NOT WARRANT THAT USE OF THE SERVICE WILL RESULT IN COMPLIANCE WITH ANY LAW INCLUDING HIPAA. CUSTOMERS ARE RESPONSIBLE FOR THEIR OWN COMPLIANCE.</p>
-    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">7. Limitation of Liability</h3>
-    <p style="margin-bottom:12px;">COMPLISYNC'S TOTAL LIABILITY SHALL NOT EXCEED THE GREATER OF THE AMOUNT PAID IN THE PRECEDING 12 MONTHS OR $100.</p>
-    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 12px;color:#0a0f1e;">8. Contact</h3>
-    <p>CompliSync · hello@complisync.org · complisync.org</p>
-  </div>
-</div>
-
-<script>
-  function showModal(type) {
-    document.getElementById('modal-overlay').style.display = 'block';
-    document.getElementById('modal-privacy').style.display = type === 'privacy' ? 'block' : 'none';
-    document.getElementById('modal-terms').style.display = type === 'terms' ? 'block' : 'none';
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal() {
-    document.getElementById('modal-overlay').style.display = 'none';
-    document.getElementById('modal-privacy').style.display = 'none';
-    document.getElementById('modal-terms').style.display = 'none';
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
 
 </body>
