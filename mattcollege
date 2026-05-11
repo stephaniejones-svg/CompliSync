@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>May Intersession 2026 — Course Calendar</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #f5f3ef;
+    color: #2c2a27;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+  }
+  .page { max-width: 980px; margin: 0 auto; }
+
+  header { margin-bottom: 2rem; border-bottom: 2px solid #2c2a27; padding-bottom: 1rem; }
+  header h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.01em; }
+  header p { font-size: 0.875rem; color: #5a5751; margin-top: 0.25rem; font-style: italic; }
+
+  /* Legend */
+  .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 1.75rem; }
+  .li { display: flex; align-items: center; gap: 7px; font-size: 0.8rem; color: #5a5751; font-family: 'Helvetica Neue', Arial, sans-serif; }
+  .ld { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+
+  /* Quick links */
+  .links-section { margin-bottom: 1.75rem; }
+  .links-section h2 { font-size: 0.7rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #5a5751; margin-bottom: 0.5rem; }
+  .link-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.5rem; }
+  .chip {
+    font-size: 0.78rem; padding: 5px 11px;
+    border-radius: 20px; border: 1px solid #c8c4bc;
+    background: #fff; color: #2c2a27;
+    text-decoration: none; font-family: 'Helvetica Neue', Arial, sans-serif;
+    transition: background 0.15s;
+  }
+  .chip:hover { background: #eceae5; }
+  .chip.blue { border-left: 3px solid #185FA5; }
+  .chip.green { border-left: 3px solid #3B6D11; }
+
+  /* Week */
+  .week { margin-bottom: 2rem; }
+  .wk-head {
+    font-size: 0.7rem; font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #5a5751; border-bottom: 1px solid #c8c4bc;
+    padding-bottom: 6px; margin-bottom: 8px;
+  }
+  .day-names { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-bottom: 4px; }
+  .dn { font-size: 0.7rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 700; text-align: center; color: #9a978f; text-transform: uppercase; letter-spacing: 0.05em; }
+  .grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+
+  .cell {
+    border: 1px solid #dedad3; border-radius: 6px;
+    padding: 7px 8px; min-height: 100px;
+    background: #fff; vertical-align: top;
+  }
+  .cell.today { border: 2px solid #185FA5; }
+  .cell.wknd { background: #f0ede8; }
+  .cell.empty { border: none; background: transparent; min-height: 0; }
+  .dnum { font-size: 0.72rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 700; color: #9a978f; margin-bottom: 5px; }
+  .cell.today .dnum { color: #185FA5; }
+
+  .t {
+    font-size: 0.68rem; padding: 2px 5px; border-radius: 3px;
+    margin-bottom: 3px; line-height: 1.4; display: block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  .t a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+  .t.h  { background: #deeaf7; color: #0c447c; }
+  .t.hq { background: #faeeda; color: #633806; }
+  .t.he { background: #faece7; color: #712b13; font-weight: 700; }
+  .t.s  { background: #eaf3de; color: #27500a; }
+  .t.sq { background: #eeedfe; color: #3c3489; }
+  .t.se { background: #f4c0d1; color: #4b1528; font-weight: 700; }
+  .t.note { background: #f0ede8; color: #5a5751; }
+  .t.warn { background: #faece7; color: #712b13; }
+
+  /* Notes */
+  .notes { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 8px; }
+  .note-box {
+    font-size: 0.8rem; font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #5a5751; background: #f0ede8;
+    border: 1px solid #dedad3; border-radius: 6px;
+    padding: 10px 14px; line-height: 1.5;
+  }
+  .note-box strong { color: #2c2a27; }
+  .note-box a { color: #185FA5; }
+
+  footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #dedad3; font-size: 0.75rem; color: #9a978f; font-family: 'Helvetica Neue', Arial, sans-serif; font-style: italic; }
+
+  @media (max-width: 640px) {
+    .grid, .day-names { grid-template-columns: 1fr; }
+    .cell.empty { display: none; }
+    .dn { display: none; }
+    .cell { min-height: unset; }
+  }
+  @media print {
+    body { background: #fff; padding: 0.5rem; }
+    .chip:hover { background: #fff; }
+    a { text-decoration: none; color: inherit; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>May Intersession 2026 — Course Calendar</h1>
+    <p>HLTH 4310: Health Concerns of the Aging &nbsp;·&nbsp; Human Sexuality 3305 &nbsp;·&nbsp; May 11 – May 29, 2026</p>
+  </header>
+
+  <div class="legend">
+    <div class="li"><div class="ld" style="background:#185FA5"></div>HLTH 4310 assignment</div>
+    <div class="li"><div class="ld" style="background:#c97b00"></div>HLTH 4310 quiz</div>
+    <div class="li"><div class="ld" style="background:#D85A30"></div>HLTH 4310 exam</div>
+    <div class="li"><div class="ld" style="background:#3B6D11"></div>Sexuality assignment/paper</div>
+    <div class="li"><div class="ld" style="background:#7F77DD"></div>Sexuality quiz/discussion</div>
+    <div class="li"><div class="ld" style="background:#D4537E"></div>Sexuality exam</div>
+  </div>
+
+  <div class="links-section">
+    <h2>HLTH 4310 — Blackboard</h2>
+    <div class="link-row">
+      <a class="chip blue" href="https://bblearn.uca.edu" target="_blank">Blackboard Home ↗</a>
+      <a class="chip blue" href="https://bblearn.uca.edu" target="_blank">Getting Started ↗</a>
+      <a class="chip blue" href="https://bblearn.uca.edu" target="_blank">Week 1 (Ch.1–3) ↗</a>
+      <a class="chip blue" href="https://bblearn.uca.edu" target="_blank">Week 2 (Ch.4–6) ↗</a>
+      <a class="chip blue" href="https://bblearn.uca.edu" target="_blank">Week 3 (Ch.7–9) ↗</a>
+    </div>
+    <h2 style="margin-top:0.75rem">Human Sexuality — D2L Modules</h2>
+    <div class="link-row">
+      <a class="chip green" href="https://learn.uca.edu/d2l/le/lessons/13973/units/227303" target="_blank">Course Home ↗</a>
+      <a class="chip green" href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227313" target="_blank">Module 0 ↗</a>
+      <a class="chip green" href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227314" target="_blank">Module 1 ↗</a>
+      <a class="chip green" href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227315" target="_blank">Module 2 ↗</a>
+      <a class="chip green" href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227316" target="_blank">Module 3 ↗</a>
+      <a class="chip green" href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227317" target="_blank">Module 4 ↗</a>
+    </div>
+  </div>
+
+  <!-- WEEK 1 -->
+  <div class="week">
+    <div class="wk-head">Week 1 — May 11–17 &nbsp;·&nbsp; HLTH: Ch.1–3 &nbsp;·&nbsp; Sexuality: Modules 0–2</div>
+    <div class="day-names">
+      <div class="dn">Mon</div><div class="dn">Tue</div><div class="dn">Wed</div>
+      <div class="dn">Thu</div><div class="dn">Fri</div><div class="dn">Sat</div><div class="dn">Sun</div>
+    </div>
+    <div class="grid">
+      <div class="cell today">
+        <div class="dnum">11 Mon ★ First Day</div>
+        <span class="t note">📖 HLTH: Read Ch.1–3</span>
+        <span class="t note">📖 <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227313" target="_blank">Sex Mod 0</a>: Ch.3 &amp; 4 A&amp;P</span>
+        <span class="t note">🖥 Explore both course sites</span>
+        <span class="t warn">⚠️ Plan Aging Interview NOW</span>
+      </div>
+      <div class="cell">
+        <div class="dnum">12 Tue</div>
+        <span class="t sq">✅ <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227313" target="_blank">Mod 0</a>: Extra Credit Intro (Disc.)</span>
+        <span class="t sq">✅ <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227313" target="_blank">Mod 0</a>: Syllabus Quiz</span>
+        <span class="t s">✅ <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227314" target="_blank">Mod 1</a>: Cultural Perspectives Paper</span>
+      </div>
+      <div class="cell">
+        <div class="dnum">13 Wed</div>
+        <span class="t h">✅ HLTH: Intro Discussion Board — 11:59 PM</span>
+        <span class="t hq">✅ HLTH: Syllabus Quiz — 11:59 PM</span>
+      </div>
+      <div class="cell">
+        <div class="dnum">14 Thu</div>
+        <span class="t se">🎯 <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227314" target="_blank">Mod 1</a>: Exam (Ch.1, 13, 14)</span>
+        <span class="t note">📖 HLTH: Review Ch.1–3 PowerPoints</span>
+      </div>
+      <div class="cell">
+        <div class="dnum">15 Fri</div>
+        <span class="t h">✅ HLTH: Ch.1 Life Expectancy Assignment — 11:59 PM</span>
+        <span class="t hq">✅ HLTH: Ch.2 Reading Quiz — 11:59 PM</span>
+        <span class="t sq">✅ <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227314" target="_blank">Mod 1</a>: Discussion initial posts (Sets 1&amp;2)</span>
+      </div>
+      <div class="cell wknd">
+        <div class="dnum">16 Sat</div>
+        <span class="t sq">✅ <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227315" target="_blank">Mod 2</a>: Discussion initial posts (Sets 1&amp;2)</span>
+        <span class="t note">📝 Conduct Aging Interview</span>
+      </div>
+      <div class="cell wknd">
+        <div class="dnum">17 Sun</div>
+        <span class="t h">✅ HLTH: Ch.3 Aging Interview &amp; Reflection — 11:59 PM</span>
+        <span class="t he">🎯 HLTH: Exam 1 (Ch.1–3) — 11:59 PM</span>
+        <span class="t sq">✅ <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227314" target="_blank">Mod 1</a>: Discussion peer responses (Sets 1&amp;2)</span>
+        <span class="t sq">✅ <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227315" target="_blank">Mod 2</a>: Discussion peer responses (Sets 1&amp;2)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 2 -->
+  <div class="week">
+    <div class="wk-head">Week 2 — May 18–24 &nbsp;·&nbsp; HLTH: Ch.4–6 &nbsp;·&nbsp; Sexuality: Modules 2–4</div>
+    <div class="day-names">
+      <div class="dn">Mon</div><div class="dn">Tue</div><div class="dn">Wed</div>
+      <div class="dn">Thu</div><div class="dn">Fri</div><div class="dn">Sat</div><div class="dn">Sun</div>
+    </div>
+    <div class="grid">
+      <div class="cell">
+        <div class="dnum">18 Mon</div>
+        <span class="t s">✅ <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227315" target="_blank">Mod 2</a>: Relationship Project</span>
+        <span class="t note">📖 HLTH: Start Ch.4–5</span>
+      </div>
+      <div class="cell">
+        <div class="dnum">19 Tue</div>
+        <span class="t sq">✅ <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227315" target="_blank">Mod 2</a>: Consent &amp; Refusal Skills Quiz</span>
+        <span class="t note">📖 HLTH: Read Ch.6</span>
+      </div>
+      <div class="cell">
+        <div class="dnum">20 Wed</div>
+        <span class="t se">🎯 <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227315" target="_blank">Mod 2</a>: Exam (Ch.3, 6, 15, 16)</span>
+        <span class="t note">📖 HLTH: Review Ch.4–6 PowerPoints</span>
+      </div>
+      <div class="cell">
+        <div class="dnum">21 Thu</div>
+        <span class="t sq">✅ <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227316" target="_blank">Mod 3</a>: Body Image WS &amp; Quiz</span>
+        <span class="t note">📝 HLTH: Draft Ch.4 Case Study</span>
+      </div>
+      <div class="cell">
+        <div class="dnum">22 Fri — Busy day!</div>
+        <span class="t h">✅ HLTH: Ch.4 Case Study — 11:59 PM</span>
+        <span class="t hq">✅ HLTH: Ch.5 Reading Quiz — 11:59 PM</span>
+        <span class="t h">✅ HLTH: Ch.6 Retire Video Worksheet — 11:59 PM</span>
+        <span class="t hq">✅ HLTH: Ch.6 Reading Quiz — 11:59 PM</span>
+        <span class="t sq">✅ <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227316" target="_blank">Mod 3</a>: Discussion initial posts (Sets 1&amp;2)</span>
+      </div>
+      <div class="cell wknd">
+        <div class="dnum">23 Sat</div>
+        <span class="t sq">✅ <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227317" target="_blank">Mod 4</a>: Discussion initial posts (Sets 1&amp;2)</span>
+        <span class="t note">📖 Study HLTH Ch.4–6 for Exam 2</span>
+      </div>
+      <div class="cell wknd">
+        <div class="dnum">24 Sun</div>
+        <span class="t he">🎯 HLTH: Exam 2 (Ch.4–6) — 11:59 PM</span>
+        <span class="t sq">✅ <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227316" target="_blank">Mod 3</a>: Discussion peer responses (Sets 1&amp;2)</span>
+        <span class="t sq">✅ <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227317" target="_blank">Mod 4</a>: Discussion peer responses (Sets 1&amp;2)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 3 -->
+  <div class="week">
+    <div class="wk-head">Week 3 — May 25–29 &nbsp;·&nbsp; HLTH: Ch.7–9 (ends Fri) &nbsp;·&nbsp; Sexuality: Modules 3–4</div>
+    <div class="day-names">
+      <div class="dn">Mon</div><div class="dn">Tue</div><div class="dn">Wed</div>
+      <div class="dn">Thu</div><div class="dn">Fri</div><div class="dn">Sat</div><div class="dn">Sun</div>
+    </div>
+    <div class="grid">
+      <div class="cell">
+        <div class="dnum">25 Mon — Memorial Day</div>
+        <span class="t note">🏛 No classes — use for reading</span>
+        <span class="t note">📖 HLTH: Read Ch.7–9</span>
+        <span class="t note">📖 <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227316" target="_blank">Mod 3</a>: catch up / read ahead</span>
+      </div>
+      <div class="cell">
+        <div class="dnum">26 Tue</div>
+        <span class="t s">✅ <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227316" target="_blank">Mod 3</a>: Article Reflection Paper</span>
+        <span class="t warn">⚠️ HLTH: Last day to withdraw (W grade)</span>
+      </div>
+      <div class="cell">
+        <div class="dnum">27 Wed — Busy day!</div>
+        <span class="t hq">✅ HLTH: Ch.7 Reading Quiz — 11:59 PM</span>
+        <span class="t h">✅ HLTH: Ch.8 Reading Assignment — 11:59 PM</span>
+        <span class="t h">✅ HLTH: Ch.8 Revolutionizing Dementia Care — 11:59 PM</span>
+        <span class="t se">🎯 <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227316" target="_blank">Mod 3</a>: Exam (Ch.10, 11, 12, 17)</span>
+      </div>
+      <div class="cell">
+        <div class="dnum">28 Thu</div>
+        <span class="t s">✅ <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227317" target="_blank">Mod 4</a>: Personal &amp; Course Reflection Paper</span>
+        <span class="t sq">✅ <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227317" target="_blank">Mod 4</a>: Course Evaluations (MyUCA)</span>
+        <span class="t note">📝 HLTH: Finalize Ch.9 Case Study</span>
+      </div>
+      <div class="cell">
+        <div class="dnum">29 Fri — Last Day!</div>
+        <span class="t h">✅ HLTH: Ch.9 Case Study — 11:59 PM</span>
+        <span class="t he">🎯 HLTH: Exam 3/Final (Ch.7–9) — 11:59 PM</span>
+        <span class="t se">🎯 <a href="https://learn.uca.edu/d2l/le/lessons/13973/lessons/227317" target="_blank">Mod 4</a>: Exam (Ch.7,8,9,18,19) — ⚠️ 10 AM!</span>
+        <span class="t warn">🏁 Both courses end today</span>
+      </div>
+      <div class="cell wknd empty"></div>
+      <div class="cell wknd empty"></div>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div class="note-box">⚠️ <strong>May 29 critical warning:</strong> The Sexuality Module 4 Final Exam is due at <strong>10 AM</strong> — not midnight. Don't mix it up with the HLTH 4310 Final which is due at 11:59 PM the same day.</div>
+    <div class="note-box">📧 <strong>HLTH 4310 email:</strong> Always include your full name + CRN <strong>35148</strong> when emailing Ms. Chance at <a href="mailto:mchance3@uca.edu">mchance3@uca.edu</a>. <strong>No late work accepted — zero credit after the deadline.</strong></div>
+    <div class="note-box">🔗 <strong>Reference links:</strong>
+      <a href="http://owl.english.purdue.edu/owl/resource/560/01/" target="_blank">Purdue OWL APA ↗</a> &nbsp;·&nbsp;
+      <a href="http://uca.edu/cwc/quick-help/apa-basics/" target="_blank">UCA APA Basics ↗</a> &nbsp;·&nbsp;
+      <a href="http://uca.teamdynamix.com/TDClient/1923/Portal/KB/?CategoryID=17450" target="_blank">UCA IT Knowledge Base ↗</a> &nbsp;·&nbsp;
+      <a href="mailto:ithelpdesk@uca.edu">IT Help Desk</a> &nbsp;·&nbsp;
+      <a href="http://apastyle.org/" target="_blank">APA Style ↗</a>
+    </div>
+  </div>
+
+  <footer>Generated May 11, 2026 &nbsp;·&nbsp; All dates tentative — check Blackboard and D2L for any instructor updates.</footer>
+
+</div>
+</body>
+</html>
