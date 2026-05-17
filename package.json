@@ -1,0 +1,16 @@
+{
+  "name": "complisync-jira-proxy",
+  "version": "1.0.0",
+  "description": "Jira API proxy for CompliSync Google Workspace Add-on",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^2.7.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
