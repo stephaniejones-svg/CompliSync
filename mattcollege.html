@@ -8,21 +8,17 @@
 <style>
 :root{
   --bg:#f5f3ef; --surface:#fff; --border:#dbd8d1; --text:#1c1916; --muted:#7a7570;
-  --amber:#92400e; --amber-bg:#fef3c7; --amber-bd:#fcd34d;
-  --red:#991b1b;   --red-bg:#fee2e2;   --red-bd:#fca5a5;
+  --red:#991b1b; --red-bg:#fee2e2; --red-bd:#fca5a5;
   --gray-bg:#f1f5f9; --gray-bd:#e2e8f0;
-  --green:#166534; --green-bg:#dcfce7; --green-bd:#86efac;
-  --blue:#1e40af;  --blue-bg:#dbeafe;  --blue-bd:#93c5fd;
-  /* course colours */
-  --g33:#0369a1;   --g33-bg:#e0f2fe;   --g33-bd:#7dd3fc;
-  --g43:#b45309;   --g43-bg:#fef3c7;   --g43-bd:#fcd34d;
-  --h43:#0f766e;  --h43-bg:#ccfbf1;  --h43-bd:#5eead4;
+  --green-bg:#dcfce7; --green-bd:#86efac; --green:#166534;
+  --blue-bg:#dbeafe; --blue-bd:#93c5fd; --blue:#1e40af;
+  --g33:#0369a1; --g33-bg:#e0f2fe; --g33-bd:#7dd3fc;
+  --g43:#b45309; --g43-bg:#fef3c7; --g43-bd:#fcd34d;
+  --h43:#0f766e; --h43-bg:#ccfbf1; --h43-bd:#5eead4;
   --mono:'IBM Plex Mono',monospace; --sans:'IBM Plex Sans',system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;}
-
-/* ── HEADER ── */
 .hdr{background:var(--text);color:#f5f3ef;padding:1.25rem 1.5rem 1rem;}
 .hdr-title{font-size:1.25rem;font-weight:500;margin-bottom:.3rem;}
 .hdr-sub{font-size:12px;color:#9ca3af;}
@@ -31,121 +27,86 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
 .cpill-g33{background:var(--g33-bg);color:var(--g33);}
 .cpill-g43{background:var(--g43-bg);color:var(--g43);}
 .cpill-h43{background:var(--h43-bg);color:var(--h43);}
-
-/* ── PROGRESS ── */
 .prog-wrap{background:var(--surface);border-bottom:1px solid var(--border);padding:.75rem 1.5rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
 .prog-bar-outer{flex:1;min-width:120px;height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
 .prog-bar-fill{height:100%;background:var(--green);border-radius:2px;transition:width .3s;}
 .pstat{display:flex;flex-direction:column;align-items:center;}
 .pstat-n{font-family:var(--mono);font-size:1rem;font-weight:500;color:var(--green);}
 .pstat-l{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
-
-/* ── LEGEND ── */
 .legend{display:flex;flex-wrap:wrap;gap:10px;padding:.65rem 1.5rem;background:var(--surface);border-bottom:1px solid var(--border);font-size:11px;align-items:center;}
 .leg{display:flex;align-items:center;gap:4px;color:var(--muted);}
 .ldot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
 .leg-div{width:1px;height:14px;background:var(--border);margin:0 4px;}
-
-/* ── FILTERS ── */
 .filters{display:flex;gap:6px;padding:.6rem 1.5rem;background:var(--surface);border-bottom:1px solid var(--border);flex-wrap:wrap;}
 .fbtn{font-family:var(--mono);font-size:10px;padding:3px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);cursor:pointer;letter-spacing:.04em;}
 .fbtn:hover{border-color:var(--text);color:var(--text);}
 .fbtn.on{background:var(--text);color:#f5f3ef;border-color:var(--text);}
-
-/* ── HOW-TO ── */
 .how-to{margin:.75rem 1.5rem;background:var(--gray-bg);border:1px solid var(--gray-bd);border-radius:6px;padding:.65rem 1rem;font-size:11.5px;color:var(--muted);line-height:1.6;}
 .how-to strong{color:var(--text);}
-
-/* ── LAYOUT ── */
 .wrap{max-width:800px;margin:0 auto;padding:.75rem 1.5rem 3rem;}
-
-/* ── MONTH / WEEK HEADERS ── */
-.month-hdr{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text);margin:2rem 0 .75rem;padding:.5rem .75rem;background:var(--text);color:#f5f3ef;border-radius:5px;}
+.month-hdr{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#f5f3ef;margin:2rem 0 .75rem;padding:.5rem .75rem;background:var(--text);border-radius:5px;}
 .month-hdr:first-child{margin-top:0;}
 .wk-hdr{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:1.25rem 0 .5rem;padding-bottom:.35rem;border-bottom:1px solid var(--border);}
-
-/* ── DAY ROWS ── */
-.day-row{display:grid;grid-template-columns:72px 1fr;margin-bottom:5px;align-items:start;}
+.day-row{display:grid;grid-template-columns:80px 1fr;margin-bottom:5px;align-items:start;}
 .day-col{font-size:11px;color:var(--muted);padding:.5rem .75rem .5rem 0;border-right:1px solid var(--border);margin-right:10px;line-height:1.3;text-align:right;}
 .day-num{font-family:var(--mono);font-size:1.2rem;font-weight:500;color:var(--text);display:block;line-height:1;}
-.today-pip{display:inline-block;width:6px;height:6px;background:#ef4444;border-radius:50%;vertical-align:2px;margin-right:2px;}
 .tasks{display:flex;flex-direction:column;gap:3px;padding:.2rem 0;}
 .no-task{font-size:11px;color:var(--muted);padding:.35rem 0;font-style:italic;opacity:.55;}
-
-/* ── TASK CARDS ── */
 .task{display:flex;align-items:flex-start;gap:7px;padding:5px 8px;border-radius:5px;border:1px solid transparent;transition:opacity .15s;}
 .task.checked{opacity:.38;}
 .task.checked .t-text{text-decoration:line-through;}
-
-/* type colours */
-.task.target  {background:var(--amber-bg);border-color:var(--amber-bd);}
-.task.deadline{background:var(--red-bg);  border-color:var(--red-bd);}
-.task.reading {background:var(--gray-bg); border-color:var(--gray-bd);}
-.task.annot   {background:var(--green-bg);border-color:var(--green-bd);}
-.task.journal {background:var(--blue-bg); border-color:var(--blue-bd);}
-.task.h43   {border-left:3px solid var(--h43);}
-
-/* course left-border accent */
-.task.g33   {border-left:3px solid var(--g33);}
-.task.g43   {border-left:3px solid var(--g43);}
-
-/* checkbox */
+.task.deadline{background:var(--red-bg);border-color:var(--red-bd);border-left:3px solid #ef4444;}
+.task.reading{background:var(--gray-bg);border-color:var(--gray-bd);}
+.task.annot{background:var(--green-bg);border-color:var(--green-bd);}
+.task.journal{background:var(--blue-bg);border-color:var(--blue-bd);}
+.task.g33{border-left-color:var(--g33);}
+.task.g43{border-left-color:var(--g43);}
+.task.h43{border-left-color:var(--h43);}
+.task.reading.g33{border-left:3px solid var(--g33);}
+.task.reading.g43{border-left:3px solid var(--g43);}
+.task.reading.h43{border-left:3px solid var(--h43);}
+.task.annot.g33{border-left:3px solid var(--g33);}
+.task.journal.g33{border-left:3px solid var(--g33);}
+.task.journal.g43{border-left:3px solid var(--g43);}
 .cb{width:15px;height:15px;border:1.5px solid var(--border);border-radius:3px;flex-shrink:0;margin-top:2px;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--surface);}
 .task.checked .cb{background:var(--green);border-color:var(--green);}
 .cb-check{display:none;color:white;font-size:9px;line-height:1;}
 .task.checked .cb-check{display:block;}
-
-/* dot */
 .tdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:4px;}
-.dot-target{background:#f59e0b;}
 .dot-dead{background:#ef4444;}
 .dot-read{background:#94a3b8;}
 .dot-annot{background:#16a34a;}
 .dot-journal{background:#2563eb;}
-
-/* text */
 .t-body{flex:1;min-width:0;}
 .t-text{font-size:12px;color:var(--text);line-height:1.4;}
 .task.deadline .t-text{color:var(--red);font-weight:500;}
-.task.target   .t-text{color:var(--amber);}
 .t-sub{font-size:10.5px;color:var(--muted);margin-top:1px;opacity:.8;}
 .t-sub a{color:inherit;text-decoration:underline;text-underline-offset:2px;}
-
-/* badges */
 .badge{font-family:var(--mono);font-size:9px;padding:1px 5px;border-radius:3px;margin-right:3px;font-weight:500;display:inline-block;}
-.b-dead  {background:var(--red-bg);  color:var(--red);}
-.b-target{background:var(--amber-bg);color:var(--amber);}
-.b-annot {background:var(--green-bg);color:var(--green);}
-.b-jrnl  {background:var(--blue-bg); color:var(--blue);}
-.b-h43   {background:var(--h43-bg);  color:var(--h43);}
-.b-g33   {background:var(--g33-bg);  color:var(--g33);}
-.b-g43   {background:var(--g43-bg);  color:var(--g43);}
-
-/* hidden by filter */
+.b-dead{background:var(--red-bg);color:var(--red);}
+.b-annot{background:var(--green-bg);color:var(--green);}
+.b-jrnl{background:var(--blue-bg);color:var(--blue);}
+.b-g33{background:var(--g33-bg);color:var(--g33);}
+.b-g43{background:var(--g43-bg);color:var(--g43);}
+.b-h43{background:var(--h43-bg);color:var(--h43);}
 .task.hide{display:none;}
-
 @media(max-width:520px){
-  .day-row{grid-template-columns:54px 1fr;}
+  .day-row{grid-template-columns:56px 1fr;}
   .wrap,.filters,.legend,.prog-wrap{padding-left:1rem;padding-right:1rem;}
   .how-to{margin-left:1rem;margin-right:1rem;}
-  .month-hdr{margin-left:0;margin-right:0;}
 }
 </style>
 </head>
 <body>
-
-<!-- HEADER -->
 <div class="hdr">
   <div class="hdr-title">Summer 2026 — Master Study Plan</div>
-  <div class="hdr-sub">Three courses · Jun 1 – Aug 7, 2026 · Target dates shown in amber · Hard deadlines in red</div>
+  <div class="hdr-sub">Three courses · Jun 1 – Aug 7, 2026 · Hard deadlines only · Left border = course</div>
   <div class="course-pills">
     <span class="cpill cpill-g33">GEST 3380 · General Studies Tutorial · Jun 1–Aug 7</span>
     <span class="cpill cpill-g43">GEST 4380 · General Studies Capstone · Jun 1–Aug 7</span>
     <span class="cpill cpill-h43">HLTH 4300 · Community Health · Jun 1–Jul 2</span>
   </div>
 </div>
-
-<!-- PROGRESS -->
 <div class="prog-wrap">
   <span style="font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap;">Overall progress</span>
   <div class="prog-bar-outer"><div class="prog-bar-fill" id="prog" style="width:0%"></div></div>
@@ -153,18 +114,13 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
   <div class="pstat"><span class="pstat-n" id="s-left">0</span><span class="pstat-l">left</span></div>
   <div class="pstat"><span class="pstat-n" id="s-pct">0%</span><span class="pstat-l">complete</span></div>
 </div>
-
-<!-- FILTERS -->
 <div class="filters">
   <button class="fbtn on" onclick="filter('all',this)">All courses</button>
   <button class="fbtn" onclick="filter('g33',this)">GEST 3380</button>
   <button class="fbtn" onclick="filter('g43',this)">GEST 4380</button>
   <button class="fbtn" onclick="filter('h43',this)">HLTH 4300</button>
 </div>
-
-<!-- LEGEND -->
 <div class="legend">
-  <div class="leg"><div class="ldot" style="background:#f59e0b"></div>Work on it (target)</div>
   <div class="leg"><div class="ldot" style="background:#ef4444"></div>Hard deadline</div>
   <div class="leg"><div class="ldot" style="background:#94a3b8"></div>Reading / setup</div>
   <div class="leg"><div class="ldot" style="background:#16a34a"></div>Annot bib</div>
@@ -174,614 +130,274 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
   <div class="leg"><span style="display:inline-block;width:3px;height:14px;background:var(--g43);border-radius:1px;margin-right:4px;"></span>GEST 4380</div>
   <div class="leg"><span style="display:inline-block;width:3px;height:14px;background:var(--h43);border-radius:1px;margin-right:4px;"></span>HLTH 4300</div>
 </div>
-
-<div class="how-to"><strong>How to read this:</strong> Amber = recommended target date to work ahead. Red = hard deadline. Left border colour = which course. Check the box when done — progress saves in your browser.</div>
-
+<div class="how-to"><strong>How to read this:</strong> Red = hard deadline. Gray = reading / setup task. Left border colour = which course. Check the box when done — progress saves in your browser.</div>
 <div class="wrap">
-
-<!-- ════════════════════════════════════════ -->
-<!--  MAY — HLTH 4310 ONLY                   -->
-<!-- ════════════════════════════════════════ -->
 <div class="month-hdr">June 2026 · GEST 3380 + GEST 4380 + HLTH 4300</div>
-
-<div class="wk-hdr">Week 0 — Jun 1–7 · Both GEST courses start</div>
-
+<div class="wk-hdr">Week 0 — Jun 1–7 · All three courses start</div>
 <div class="day-row">
   <div class="day-col"><span class="day-num">1</span>Mon</div>
   <div class="tasks">
-    <div class="task reading g33" id="t52"><div class="cb" onclick="chk('t52')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span>Log into Brightspace — confirm GEST 3380 access<div class="t-sub"><a href="https://learn.uca.edu/d2l/le/lessons/21309" target="_blank">learn.uca.edu → GEST 3380</a></div></div></div></div>
-    <div class="task reading g43" id="t53"><div class="cb" onclick="chk('t53')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span>Log into Blackboard — confirm GEST 4380 access<div class="t-sub"><a href="https://learn.uca.edu/d2l/le/lessons/13466" target="_blank">learn.uca.edu → GEST 4380</a></div></div></div></div>
-    <div class="task reading g33" id="t54"><div class="cb" onclick="chk('t54')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span>Read GEST 3380 syllabus — note 2-week contact rule, .docx only, APA format</div></div></div>
-    <div class="task reading g43" id="t55"><div class="cb" onclick="chk('t55')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span>Read GEST 4380 syllabus — note 3-week contact rule</div></div></div>
-    <div class="task reading h43" id="h1"><div class="cb" onclick="chk('h1')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span>Log into Brightspace — confirm HLTH 4300 access<div class="t-sub"><a href="https://learn.uca.edu/d2l/le/lessons/22022" target="_blank">learn.uca.edu → HLTH 4300</a></div></div></div></div>
-    <div class="task reading h43" id="h2"><div class="cb" onclick="chk('h2')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span>Read HLTH 4300 syllabus — note quiz policy (no reopens!), late work, Community Health Project</div></div></div>
+    <div class="task reading g33" id="x1"><div class="cb" onclick="chk('x1')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> Log into Brightspace — confirm GEST 3380 access<div class="t-sub"><a href="https://learn.uca.edu/d2l/le/lessons/21309" target="_blank">learn.uca.edu → GEST 3380</a></div></div></div></div>
+    <div class="task reading g43" id="x2"><div class="cb" onclick="chk('x2')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> Log into Blackboard — confirm GEST 4380 access<div class="t-sub"><a href="https://learn.uca.edu/d2l/le/lessons/13466" target="_blank">learn.uca.edu → GEST 4380</a></div></div></div></div>
+    <div class="task reading h43" id="x3"><div class="cb" onclick="chk('x3')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> Log into Brightspace — confirm HLTH 4300 access<div class="t-sub"><a href="https://learn.uca.edu/d2l/le/lessons/22022" target="_blank">learn.uca.edu → HLTH 4300</a></div></div></div></div>
   </div>
 </div>
-
 <div class="day-row">
   <div class="day-col"><span class="day-num">2</span>Tue</div>
   <div class="tasks">
-    <div class="task reading g33" id="t56"><div class="cb" onclick="chk('t56')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span>Order textbooks: <em>They Say/I Say</em> (6th ed. ISBN 9781324070115) + <em>Give Methods a Chance</em> (ISBN 9781324000549)</div></div></div>
-    <div class="task reading g33" id="t57"><div class="cb" onclick="chk('t57')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span>Confirm Microsoft Word access — .docx required for all submissions<div class="t-sub"><a href="https://uca.edu/it/student-resources/" target="_blank">Free via UCA IT</a></div></div></div></div>
-    <div class="task reading g43" id="t58"><div class="cb" onclick="chk('t58')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span>Access shared GEST 4380 course texts on Blackboard</div></div></div>
-    <div class="task reading h43" id="h3"><div class="cb" onclick="chk('h3')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span>Get required textbook: McKenzie et al. <em>An Introduction to Community Health</em> (10th ed.)<div class="t-sub">Jones & Bartlett 2022 — must have for quizzes which are open-book</div></div></div></div>
-    <div class="task reading h43" id="h4"><div class="cb" onclick="chk('h4')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span>Read Ch. 1 — Community & Public Health: Yesterday, Today, and Tomorrow<div class="t-sub">Module 1 · due Sun Jun 7</div></div></div></div>
+    <div class="task reading g33" id="x4"><div class="cb" onclick="chk('x4')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> Read GEST 3380 syllabus — note 2-week contact rule, .docx only, APA format</div></div></div>
+    <div class="task reading g43" id="x5"><div class="cb" onclick="chk('x5')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> Read GEST 4380 syllabus — note 3-week contact rule</div></div></div>
+    <div class="task reading h43" id="x6"><div class="cb" onclick="chk('x6')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> Read HLTH 4300 syllabus — note quiz no-reopen policy, late work, Community Health Project</div></div></div>
+    <div class="task reading g33" id="x7"><div class="cb" onclick="chk('x7')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> Order textbooks: <em>They Say/I Say</em> (6th ed.) + <em>Give Methods a Chance</em></div></div></div>
+    <div class="task reading h43" id="x8"><div class="cb" onclick="chk('x8')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> Get required textbook: McKenzie et al. <em>An Introduction to Community Health</em> (10th ed.)</div></div></div>
   </div>
 </div>
-
 <div class="day-row">
   <div class="day-col"><span class="day-num">3</span>Wed</div>
   <div class="tasks">
-    <div class="task reading g33" id="t59"><div class="cb" onclick="chk('t59')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span>Explore Torreyson Library databases<div class="t-sub"><a href="https://library.uca.edu" target="_blank">library.uca.edu</a> — JSTOR, EBSCO Academic Search Complete</div></div></div></div>
-    <div class="task reading g43" id="t60"><div class="cb" onclick="chk('t60')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span>Office hours: Olds by Zoom/email anytime · <a href="mailto:carlo@uca.edu">carlo@uca.edu</a></div></div></div>
-    <div class="task reading h43" id="h5"><div class="cb" onclick="chk('h5')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span>Read Ch. 2 — Organizations That Shape Community & Public Health</div></div></div></div>
+    <div class="task reading g33" id="x9"><div class="cb" onclick="chk('x9')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> Explore Torreyson Library databases<div class="t-sub"><a href="https://library.uca.edu" target="_blank">library.uca.edu</a></div></div></div></div>
+    <div class="task reading h43" id="x10"><div class="cb" onclick="chk('x10')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> Read Ch. 1 — Community & Public Health + Ch. 2 — Organizations + Ch. 13 — Health Care Delivery<div class="t-sub">Module 1 · due Sun Jun 7</div></div></div></div>
   </div>
 </div>
-
 <div class="day-row">
   <div class="day-col"><span class="day-num">4</span>Thu</div>
   <div class="tasks">
-    <div class="task reading g33" id="t61"><div class="cb" onclick="chk('t61')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span>Begin reading <em>They Say/I Say</em> Ch. 1–2</div></div></div>
-    <div class="task target g43" id="t62"><div class="cb" onclick="chk('t62')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Draft today</span>Class Check-in response<div class="t-sub">Due ~Sun Jun 7</div></div></div></div>
-    <div class="task reading h43" id="h6"><div class="cb" onclick="chk('h6')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span>Read Ch. 13 — Health Care Delivery in the United States</div></div></div>
-    <div class="task target h43" id="h7"><div class="cb" onclick="chk('h7')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-target">Work on</span>In Search of a Polio Vaccine Assignment (10 pts)<div class="t-sub">Due Sun Jun 7 · get it done before the weekend</div></div></div></div>
-    <div class="task reading g33" id="t63"><div class="cb" onclick="chk('t63')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span>Brainstorm 3+ research topics from your BGS concentrations</div></div></div>
-    <div class="task reading g43" id="t64"><div class="cb" onclick="chk('t64')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span>Brainstorm 3+ research topics from your BGS concentrations</div></div></div>
+    <div class="task reading g43" id="x11"><div class="cb" onclick="chk('x11')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> Access shared GEST 4380 course texts on Blackboard</div></div></div>
+    <div class="task reading g33" id="x12"><div class="cb" onclick="chk('x12')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> Begin reading <em>They Say/I Say</em> Ch. 1–2</div></div></div>
   </div>
 </div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">5</span>Fri</div>
-  <div class="tasks">
-    <div class="task target g33" id="t65"><div class="cb" onclick="chk('t65')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Start today</span>Draft They Say, I Say Practice #2<div class="t-sub">Due ~Sun Jun 14 — write it this weekend</div></div></div></div>
-    <div class="task target h43" id="h8"><div class="cb" onclick="chk('h8')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-target">Take today</span>Ch. 1 Quiz, Ch. 2 Quiz, Ch. 13 Quiz (15 pts each)<div class="t-sub">Due Sun Jun 7 · open-book · 2 attempts each · do them early!</div></div></div></div>
-  </div>
-</div>
-
 <div class="day-row">
   <div class="day-col"><span class="day-num">7</span>Sun</div>
   <div class="tasks">
-    <div class="task deadline g43" id="t66"><div class="cb" onclick="chk('t66')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm</span>Class Check-in<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a></div></div></div></div>
-    <div class="task deadline h43" id="h9"><div class="cb" onclick="chk('h9')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-dead">Due 11:59 pm</span>In Search of a Polio Vaccine Assignment (10 pts)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=22022" target="_blank">4300 Assignments →</a></div></div></div></div>
-    <div class="task deadline h43" id="h10"><div class="cb" onclick="chk('h10')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-dead">Due 11:59 pm</span>Ch. 1 Quiz · Ch. 2 Quiz · Ch. 13 Quiz (15 pts each — WILL NOT REOPEN)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/quizzing/quizzing.d2l?ou=22022" target="_blank">4300 Quizzes →</a></div></div></div></div>
+    <div class="task deadline g43" id="x13"><div class="cb" onclick="chk('x13')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm</span> Class Check-in<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a></div></div></div></div>
+    <div class="task deadline h43" id="x14"><div class="cb" onclick="chk('x14')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> <span class="badge b-dead">Due 11:59 pm</span> In Search of a Polio Vaccine Assignment (10 pts)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=22022" target="_blank">4300 Assignments →</a></div></div></div></div>
+    <div class="task deadline h43" id="x15"><div class="cb" onclick="chk('x15')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> <span class="badge b-dead">Due 11:59 pm</span> Ch. 1 · Ch. 2 · Ch. 13 Quizzes (15 pts each — WILL NOT REOPEN)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/quizzing/quizzing.d2l?ou=22022" target="_blank">4300 Quizzes →</a></div></div></div></div>
   </div>
 </div>
-
-<div class="wk-hdr">Week 1 — Jun 8–14 · Research Methods + Citation Style</div>
-
+<div class="wk-hdr">Week 1 — Jun 8–14 · Research Methods + Module 2</div>
 <div class="day-row">
   <div class="day-col"><span class="day-num">8</span>Mon</div>
   <div class="tasks">
-    <div class="task reading g33" id="t67"><div class="cb" onclick="chk('t67')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span>Read assigned methods chapters — quantitative vs. qualitative vs. mixed</div></div></div>
-    <div class="task reading h43" id="h11"><div class="cb" onclick="chk('h11')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span>Read Ch. 5 — Community Organizing/Building & Health Promotion Programming<div class="t-sub">Module 2 · due Sun Jun 14</div></div></div></div>
-    <div class="task target h43" id="h12"><div class="cb" onclick="chk('h12')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-target">Work on</span>Pellagra Video Assignment (10 pts)<div class="t-sub">Due Sun Jun 14 · watch video, write up response</div></div></div></div>
-    <div class="task target g33" id="t68"><div class="cb" onclick="chk('t68')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Finish today</span>They Say, I Say Practice #2<div class="t-sub">Due Sun Jun 14</div></div></div></div>
-    <div class="task target g43" id="t69"><div class="cb" onclick="chk('t69')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Work on</span>Citation style assignment<div class="t-sub">Due ~Wed Jun 11</div></div></div></div>
+    <div class="task reading g33" id="x16"><div class="cb" onclick="chk('x16')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> Read assigned methods chapters from <em>Give Methods a Chance</em></div></div></div>
+    <div class="task reading h43" id="x17"><div class="cb" onclick="chk('x17')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> Read Ch. 5 — Community Organizing & Health Promotion + Ch. 14 — Environment<div class="t-sub">Module 2 · due Sun Jun 14</div></div></div></div>
   </div>
 </div>
-
 <div class="day-row">
   <div class="day-col"><span class="day-num">10</span>Wed</div>
   <div class="tasks">
-    <div class="task deadline g43" id="t70"><div class="cb" onclick="chk('t70')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm</span>Citation style assignment<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a></div></div></div></div>
-    <div class="task reading h43" id="h13"><div class="cb" onclick="chk('h13')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span>Read Ch. 14 — Community & Public Health and the Environment</div></div></div>
-    <div class="task target h43" id="h14"><div class="cb" onclick="chk('h14')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-target">Take today</span>Ch. 5 Quiz · Ch. 14 Quiz (15 pts each)<div class="t-sub">Due Sun Jun 14 · take them mid-week, not the night before</div></div></div></div>
-    <div class="task reading g33" id="t71"><div class="cb" onclick="chk('t71')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span>Office hours: Niswonger Wed 9–11 am · <a href="mailto:Lniswonger@uca.edu">Lniswonger@uca.edu</a></div></div></div></div>
-    <div class="task target g43" id="t72"><div class="cb" onclick="chk('t72')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Schedule</span>Professor Conferences — contact Prof. Olds<div class="t-sub">Due ~Sun Jun 14</div></div></div></div>
+    <div class="task deadline g43" id="x18"><div class="cb" onclick="chk('x18')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm</span> Citation style assignment<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a></div></div></div></div>
+    <div class="task reading h43" id="x19"><div class="cb" onclick="chk('x19')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> Review Ch. 5 & 14 + take Ch. 5 Quiz and Ch. 14 Quiz this week<div class="t-sub">Open-book · 2 attempts · don't wait until Sun</div></div></div></div>
   </div>
 </div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">13</span>Sat</div>
-  <div class="tasks">
-    <div class="task target g43" id="t73"><div class="cb" onclick="chk('t73')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Draft today</span>First annotated bibliography entry (x1)<div class="t-sub">Due ~Wed Jun 18 — practice format this weekend</div></div></div></div>
-    <div class="task target h43" id="h15"><div class="cb" onclick="chk('h15')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-target">Finish today</span>Pellagra Video Assignment — submit early<div class="t-sub">Due Sun Jun 14</div></div></div></div>
-    <div class="task target h43" id="h16"><div class="cb" onclick="chk('h16')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-target">Study</span>Exam 1 review — Ch. 1, 2, 5, 13, 14<div class="t-sub">Due Sun Jun 14 · 100 pts · study this weekend</div></div></div></div>
-  </div>
-</div>
-
 <div class="day-row">
   <div class="day-col"><span class="day-num">14</span>Sun</div>
   <div class="tasks">
-    <div class="task deadline g33" id="t74"><div class="cb" onclick="chk('t74')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>They Say, I Say Practice #2<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=23423&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task deadline g43" id="t75"><div class="cb" onclick="chk('t75')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm</span>Professor Conferences<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a></div></div></div></div>
-    <div class="task deadline h43" id="h17"><div class="cb" onclick="chk('h17')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-dead">Due 11:59 pm</span>Pellagra Video Assignment (10 pts)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=22022" target="_blank">4300 Assignments →</a></div></div></div></div>
-    <div class="task deadline h43" id="h18"><div class="cb" onclick="chk('h18')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-dead">Due 11:59 pm</span>Ch. 5 Quiz · Ch. 14 Quiz (15 pts each — WILL NOT REOPEN)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/quizzing/quizzing.d2l?ou=22022" target="_blank">4300 Quizzes →</a></div></div></div></div>
-    <div class="task deadline h43" id="h19"><div class="cb" onclick="chk('h19')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-dead">Due 11:59 pm</span>EXAM 1 — Chs. 1, 2, 5, 13, 14 · 100 pts<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/quizzing/quizzing.d2l?ou=22022" target="_blank">4300 Quizzes/Exams →</a></div></div></div></div>
+    <div class="task deadline g33" id="x20"><div class="cb" onclick="chk('x20')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> They Say, I Say — Practice #2<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=23423&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g43" id="x21"><div class="cb" onclick="chk('x21')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm</span> Professor Conferences<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a></div></div></div></div>
+    <div class="task deadline h43" id="x22"><div class="cb" onclick="chk('x22')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> <span class="badge b-dead">Due 11:59 pm</span> Pellagra Video Assignment (10 pts)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=22022" target="_blank">4300 Assignments →</a></div></div></div></div>
+    <div class="task deadline h43" id="x23"><div class="cb" onclick="chk('x23')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> <span class="badge b-dead">Due 11:59 pm</span> Ch. 5 · Ch. 14 Quizzes (15 pts each — WILL NOT REOPEN)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/quizzing/quizzing.d2l?ou=22022" target="_blank">4300 Quizzes →</a></div></div></div></div>
+    <div class="task deadline h43" id="x24"><div class="cb" onclick="chk('x24')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> <span class="badge b-dead">Due 11:59 pm</span> EXAM 1 — Chs. 1, 2, 5, 13, 14 · 100 pts<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/quizzing/quizzing.d2l?ou=22022" target="_blank">4300 Exams →</a></div></div></div></div>
   </div>
 </div>
-
-<div class="wk-hdr">Week 2 — Jun 15–21 · Topic Choice + Proposals</div>
-
+<div class="wk-hdr">Week 2 — Jun 15–21 · Topic Choice + Proposals + Module 3</div>
 <div class="day-row">
   <div class="day-col"><span class="day-num">15</span>Mon</div>
   <div class="tasks">
-    <div class="task reading g33" id="t76"><div class="cb" onclick="chk('t76')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span>Read mixed methods chapters — confirm which research method fits your topic</div></div></div>
-    <div class="task reading h43" id="h20"><div class="cb" onclick="chk('h20')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span>Read Ch. 3 — Epidemiology: Disease, Injury & Death in the Community<div class="t-sub">Module 3 · due Sun Jun 21</div></div></div></div>
-    <div class="task reading h43" id="h21"><div class="cb" onclick="chk('h21')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span>Check Brightspace for Community Health Project details — released ~this week<div class="t-sub">Part 1: volunteer/observe off-campus health event · Part 2: Advocating for Change plan</div></div></div></div>
-    <div class="task reading g43" id="t77"><div class="cb" onclick="chk('t77')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span>Finalize research topic — write a clear thesis / research question</div></div></div>
+    <div class="task reading g33" id="x25"><div class="cb" onclick="chk('x25')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> Read mixed methods chapters — confirm research method fits your topic</div></div></div>
+    <div class="task reading g43" id="x26"><div class="cb" onclick="chk('x26')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> Finalize research topic and thesis/research question</div></div></div>
+    <div class="task reading h43" id="x27"><div class="cb" onclick="chk('x27')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> Read Ch. 3 — Epidemiology + Ch. 4 — Communicable & Non-Communicable Diseases<div class="t-sub">Module 3 · due Sun Jun 21</div></div></div></div>
+    <div class="task reading h43" id="x28"><div class="cb" onclick="chk('x28')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> Check Brightspace for Community Health Project details (released ~this week)<div class="t-sub">Part 1: volunteer/observe off-campus event · Part 2: Advocating for Change plan · due Jun 28</div></div></div></div>
   </div>
 </div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">16</span>Tue</div>
-  <div class="tasks">
-    <div class="task target g43" id="t78"><div class="cb" onclick="chk('t78')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Draft today</span>Research Proposal — topic, thesis, approach, initial sources<div class="t-sub">Due ~Sun Jun 21 · needs approval before Unit 2</div></div></div></div>
-    <div class="task reading h43" id="h22"><div class="cb" onclick="chk('h22')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span>Read Ch. 4 — Communicable & Non-Communicable Diseases</div></div></div>
-    <div class="task target h43" id="h23"><div class="cb" onclick="chk('h23')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-target">Work on</span>Community & Public Health Crises Assignment (10 pts)<div class="t-sub">Due Sun Jun 21 · write it this week</div></div></div></div>
-    <div class="task target g33" id="t79"><div class="cb" onclick="chk('t79')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Work on</span>Draft Peer-Reviewed Article Annotation<div class="t-sub">Due ~Sun Jun 28</div></div></div></div>
-  </div>
-</div>
-
 <div class="day-row">
   <div class="day-col"><span class="day-num">17</span>Wed</div>
   <div class="tasks">
-    <div class="task deadline g43" id="t80"><div class="cb" onclick="chk('t80')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm</span>Annotated Bibliography (x1) — first entry<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a></div></div></div></div>
-    <div class="task target h43" id="h24"><div class="cb" onclick="chk('h24')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-target">Take today</span>Ch. 3 Quiz · Ch. 4 Quiz (15 pts each)<div class="t-sub">Due Sun Jun 21 · take them mid-week</div></div></div></div>
-    <div class="task reading g33" id="t81"><div class="cb" onclick="chk('t81')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span>Office hours: Niswonger Wed 9–11 am</div></div></div></div>
+    <div class="task deadline g43" id="x29"><div class="cb" onclick="chk('x29')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm</span> Annotated Bibliography (x1) — first entry<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a></div></div></div></div>
+    <div class="task reading g33" id="x30"><div class="cb" onclick="chk('x30')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> Office hours: Niswonger Wed 9–11 am</div></div></div>
   </div>
 </div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">19</span>Fri</div>
-  <div class="tasks">
-    <div class="task target g43" id="t82"><div class="cb" onclick="chk('t82')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Submit today</span>GEST 4380 Research Proposal — send a day early<div class="t-sub">Gates all of Unit 2 — don't delay</div></div></div></div>
-    <div class="task target h43" id="h25"><div class="cb" onclick="chk('h25')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-target">Finish today</span>Community & Public Health Crises Assignment — submit early<div class="t-sub">Due Sun Jun 21 · 10 pts</div></div></div></div>
-    <div class="task target h43" id="h26"><div class="cb" onclick="chk('h26')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-target">Schedule</span>Community Health Project — identify &amp; schedule your volunteer/observation event<div class="t-sub">Due Sun Jun 28 · 50 pts · need to actually attend an event off-campus</div></div></div></div>
-  </div>
-</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">20</span>Sat</div>
-  <div class="tasks">
-    <div class="task target g33" id="t83"><div class="cb" onclick="chk('t83')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Finish today</span>Preliminary Topic Choice write-up — ready to submit<div class="t-sub">Due ~Sun Jun 28</div></div></div></div>
-  </div>
-</div>
-
 <div class="day-row">
   <div class="day-col"><span class="day-num">21</span>Sun</div>
   <div class="tasks">
-    <div class="task deadline g43" id="t84"><div class="cb" onclick="chk('t84')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm</span>Research Proposal<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a> · approval required before proceeding</div></div></div></div>
-    <div class="task deadline h43" id="h27"><div class="cb" onclick="chk('h27')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-dead">Due 11:59 pm</span>Community & Public Health Crises Assignment (10 pts)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=22022" target="_blank">4300 Assignments →</a></div></div></div></div>
-    <div class="task deadline h43" id="h28"><div class="cb" onclick="chk('h28')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-dead">Due 11:59 pm</span>Ch. 3 Quiz · Ch. 4 Quiz (15 pts each — WILL NOT REOPEN)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/quizzing/quizzing.d2l?ou=22022" target="_blank">4300 Quizzes →</a></div></div></div></div>
+    <div class="task deadline g43" id="x31"><div class="cb" onclick="chk('x31')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm</span> Research Proposal<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a> · approval required before proceeding</div></div></div></div>
+    <div class="task deadline h43" id="x32"><div class="cb" onclick="chk('x32')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> <span class="badge b-dead">Due 11:59 pm</span> Community & Public Health Crises Assignment (10 pts)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=22022" target="_blank">4300 Assignments →</a></div></div></div></div>
+    <div class="task deadline h43" id="x33"><div class="cb" onclick="chk('x33')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> <span class="badge b-dead">Due 11:59 pm</span> Ch. 3 · Ch. 4 Quizzes (15 pts each — WILL NOT REOPEN)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/quizzing/quizzing.d2l?ou=22022" target="_blank">4300 Quizzes →</a></div></div></div></div>
   </div>
 </div>
-
-<div class="wk-hdr">Week 3 — Jun 22–28 · Deep Research + Topic Submission</div>
-
+<div class="wk-hdr">Week 3 — Jun 22–28 · Deep Research + Module 4</div>
 <div class="day-row">
   <div class="day-col"><span class="day-num">22</span>Mon</div>
   <div class="tasks">
-    <div class="task reading g43" id="t85"><div class="cb" onclick="chk('t85')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span>Confirm proposal approval from Prof. Olds — email if no response</div></div></div></div>
-    <div class="task reading h43" id="h29"><div class="cb" onclick="chk('h29')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span>Read Ch. 12 — Alcohol, Tobacco & Other Drugs: A Community Concern<div class="t-sub">Module 4 · due Sun Jun 28</div></div></div></div>
-    <div class="task target h43" id="h30"><div class="cb" onclick="chk('h30')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-target">Complete this week</span>Community Health Project — attend your volunteer/observation event<div class="t-sub">Due Sun Jun 28 · 50 pts · biggest 4300 assignment</div></div></div></div>
-    <div class="task target g33" id="t86"><div class="cb" onclick="chk('t86')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Start today</span>Exploratory Research assignment<div class="t-sub">Due ~Sun Jul 5</div></div></div></div>
+    <div class="task reading g43" id="x34"><div class="cb" onclick="chk('x34')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> Confirm proposal approval from Prof. Olds — email if no response</div></div></div>
+    <div class="task reading h43" id="x35"><div class="cb" onclick="chk('x35')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> Read Ch. 12 — Alcohol/Tobacco/Drugs + Ch. 15 — Injuries + Ch. 16 — Workplace Safety<div class="t-sub">Module 4 · due Sun Jun 28</div></div></div></div>
+    <div class="task reading h43" id="x36"><div class="cb" onclick="chk('x36')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> Attend Community Health Project volunteer/observation event this week<div class="t-sub">50 pts · due Jun 28 · must attend off-campus health/community event</div></div></div></div>
   </div>
 </div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">23</span>Tue</div>
-  <div class="tasks">
-    <div class="task annot g43" id="t87"><div class="cb" onclick="chk('t87')"><span class="cb-check">✓</span></div><div class="tdot dot-annot"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-annot">Annot Bib</span>Write entries #1, #2, #3 for Annot Bib (x3)<div class="t-sub">Due ~Sun Jun 28</div></div></div></div>
-    <div class="task reading h43" id="h31"><div class="cb" onclick="chk('h31')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span>Read Ch. 15 — Injuries as a Community and Public Health Problem</div></div></div>
-    <div class="task reading h43" id="h32"><div class="cb" onclick="chk('h32')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span>Read Ch. 16 — Safety and Health in the Workplace</div></div></div>
-    <div class="task reading g33" id="t88"><div class="cb" onclick="chk('t88')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span>Search library — confirm 8–10 peer-reviewed sources exist for your topic</div></div></div></div>
-  </div>
-</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">25</span>Thu</div>
-  <div class="tasks">
-    <div class="task target g33" id="t89"><div class="cb" onclick="chk('t89')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Finish today</span>Peer-Reviewed Article Annotation<div class="t-sub">Due Sun Jun 28 · polish and done</div></div></div></div>
-    <div class="task target h43" id="h33"><div class="cb" onclick="chk('h33')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-target">Take today</span>Ch. 12 Quiz · Ch. 15 Quiz · Ch. 16 Quiz (15 pts each)<div class="t-sub">Due Sun Jun 28 · three quizzes — spread over Thu/Fri</div></div></div></div>
-    <div class="task target h43" id="h34"><div class="cb" onclick="chk('h34')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-target">Start today</span>Write up Community Health Project report<div class="t-sub">50 pts · Part 1: event summary · Part 2: Advocating for Change plan</div></div></div></div>
-    <div class="task target g43" id="t90"><div class="cb" onclick="chk('t90')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Finish today</span>Annotated Bibliography (x3) — submit early<div class="t-sub">Due ~Sun Jun 28</div></div></div></div>
-  </div>
-</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">26</span>Fri</div>
-  <div class="tasks">
-    <div class="task target g33" id="t91"><div class="cb" onclick="chk('t91')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Finish today</span>Preliminary Topic Choice — submit early<div class="t-sub">Due Sun Jun 28</div></div></div></div>
-    <div class="task target h43" id="h35"><div class="cb" onclick="chk('h35')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-target">Study</span>Exam 2 review — Ch. 3, 4, 12, 15, 16<div class="t-sub">Due Sun Jun 28 · 100 pts</div></div></div></div>
-    <div class="task target g43" id="t92"><div class="cb" onclick="chk('t92')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Start today</span>Annotated Bibliography (x6) — entries #4, 5, 6<div class="t-sub">Due ~Sun Jul 5</div></div></div></div>
-    <div class="task target g33" id="t93"><div class="cb" onclick="chk('t93')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Start today</span>Prog. Annotated Bibliography #1<div class="t-sub">Due ~Sun Jul 5</div></div></div></div>
-  </div>
-</div>
-
 <div class="day-row">
   <div class="day-col"><span class="day-num">28</span>Sun</div>
   <div class="tasks">
-    <div class="task deadline g33" id="t94"><div class="cb" onclick="chk('t94')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>Preliminary Topic Choice<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=23435&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task deadline g33" id="t95"><div class="cb" onclick="chk('t95')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>Peer-Reviewed Article Annotation<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21900&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task deadline g43" id="t96"><div class="cb" onclick="chk('t96')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm</span>Annotated Bibliography (x3)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a></div></div></div></div>
-    <div class="task deadline h43" id="h36"><div class="cb" onclick="chk('h36')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-dead">Due 11:59 pm</span>Ch. 12 Quiz · Ch. 15 Quiz · Ch. 16 Quiz (15 pts each — WILL NOT REOPEN)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/quizzing/quizzing.d2l?ou=22022" target="_blank">4300 Quizzes →</a></div></div></div></div>
-    <div class="task deadline h43" id="h37"><div class="cb" onclick="chk('h37')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-dead">Due 11:59 pm</span>EXAM 2 — Chs. 3, 4, 12, 15, 16 · 100 pts<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/quizzing/quizzing.d2l?ou=22022" target="_blank">4300 Exams →</a></div></div></div></div>
-    <div class="task deadline h43" id="h38"><div class="cb" onclick="chk('h38')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-dead">Due 11:59 pm</span>Community Health Project · 50 pts<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=22022" target="_blank">4300 Assignments →</a> · Part 1: event write-up · Part 2: Advocating for Change plan</div></div></div></div>
+    <div class="task deadline g33" id="x37"><div class="cb" onclick="chk('x37')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> Preliminary Topic Choice<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=23435&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g33" id="x38"><div class="cb" onclick="chk('x38')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> Peer-Reviewed Article Annotation<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21900&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g43" id="x39"><div class="cb" onclick="chk('x39')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm</span> Annotated Bibliography (x3)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a></div></div></div></div>
+    <div class="task deadline h43" id="x40"><div class="cb" onclick="chk('x40')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> <span class="badge b-dead">Due 11:59 pm</span> Ch. 12 · Ch. 15 · Ch. 16 Quizzes (15 pts each — WILL NOT REOPEN)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/quizzing/quizzing.d2l?ou=22022" target="_blank">4300 Quizzes →</a></div></div></div></div>
+    <div class="task deadline h43" id="x41"><div class="cb" onclick="chk('x41')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> <span class="badge b-dead">Due 11:59 pm</span> EXAM 2 — Chs. 3, 4, 12, 15, 16 · 100 pts<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/quizzing/quizzing.d2l?ou=22022" target="_blank">4300 Exams →</a></div></div></div></div>
+    <div class="task deadline h43" id="x42"><div class="cb" onclick="chk('x42')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> <span class="badge b-dead">Due 11:59 pm</span> Community Health Project · 50 pts<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=22022" target="_blank">4300 Assignments →</a></div></div></div></div>
   </div>
 </div>
-
-<!-- ════════════════════════════════════════ -->
-<!--  JULY                                    -->
-<!-- ════════════════════════════════════════ -->
 <div class="month-hdr">July 2026 · GEST 3380 + GEST 4380 · HLTH 4300 ends Jul 2</div>
-
-<div class="wk-hdr">Week 4 — Jun 29–Jul 5 · Annot Bibs Building</div>
-
+<div class="wk-hdr">Week 4 — Jun 29–Jul 5 · Annotated Bibs Building</div>
 <div class="day-row">
-  <div class="day-col"><span class="day-num">29</span>Mon Jun</div>
+  <div class="day-col"><span class="day-num">2</span>Wed — HLTH 4300 FINAL DAY</div>
   <div class="tasks">
-    <div class="task target g33" id="t97"><div class="cb" onclick="chk('t97')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Work on</span>Questions for Article Analysis<div class="t-sub">Due ~Sun Jul 5</div></div></div></div>
-    <div class="task reading h43" id="h39"><div class="cb" onclick="chk('h39')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span>Read Ch. 6 — School Health Program<div class="t-sub">Module 5 · everything due Wed Jul 2</div></div></div></div>
-    <div class="task reading h43" id="h40"><div class="cb" onclick="chk('h40')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span>Read Ch. 7 — Maternal, Infant &amp; Child Health</div></div></div>
-    <div class="task reading h43" id="h41"><div class="cb" onclick="chk('h41')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span>Read Ch. 8 — Adolescents, Young Adults &amp; Adults</div></div></div>
-    <div class="task annot g43" id="t98"><div class="cb" onclick="chk('t98')"><span class="cb-check">✓</span></div><div class="tdot dot-annot"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-annot">Annot Bib</span>Work on entries #4, 5, 6 for Annot Bib (x6)<div class="t-sub">Due ~Sun Jul 5</div></div></div></div>
+    <div class="task deadline h43" id="x43"><div class="cb" onclick="chk('x43')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> <span class="badge b-dead">Due 11:59 pm — LAST DAY</span> Living Will & Medical Power of Attorney Assignment (10 pts)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=22022" target="_blank">4300 Assignments →</a></div></div></div></div>
+    <div class="task deadline h43" id="x44"><div class="cb" onclick="chk('x44')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> <span class="badge b-dead">Due 11:59 pm — LAST DAY</span> Insurance Activity Videos & Assignment (10 pts)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=22022" target="_blank">4300 Assignments →</a></div></div></div></div>
+    <div class="task deadline h43" id="x45"><div class="cb" onclick="chk('x45')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> <span class="badge b-dead">Due 11:59 pm — LAST DAY</span> Ch. 6 · 7 · 8 · 9 · 10 · 11 Quizzes (15 pts each — WILL NOT REOPEN)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/quizzing/quizzing.d2l?ou=22022" target="_blank">4300 Quizzes →</a></div></div></div></div>
+    <div class="task deadline h43" id="x46"><div class="cb" onclick="chk('x46')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">H43</span> <span class="badge b-dead">Due 11:59 pm — LAST DAY</span> FINAL EXAM — Module 5 · 100 pts · HLTH 4300 complete<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/quizzing/quizzing.d2l?ou=22022" target="_blank">4300 Exams →</a></div></div></div></div>
   </div>
 </div>
-
 <div class="day-row">
-  <div class="day-col"><span class="day-num">30</span>Tue Jun</div>
+  <div class="day-col"><span class="day-num">4</span>Sat</div>
   <div class="tasks">
-    <div class="task journal g43" id="t99"><div class="cb" onclick="chk('t99')"><span class="cb-check">✓</span></div><div class="tdot dot-journal"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-jrnl">Reflection</span>Catch Your Breath — write today<div class="t-sub">Due Sat Jul 4 — confirmed 2026 · don't miss it over the holiday</div></div></div></div>
-    <div class="task reading h43" id="h42"><div class="cb" onclick="chk('h42')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span>Read Ch. 9 — Older Adults · Ch. 10 — Disparate Populations · Ch. 11 — Community Mental Health<div class="t-sub">⚠ Six chapters + 6 quizzes + 2 assignments + Final Exam all due Wed Jul 2</div></div></div></div>
-    <div class="task target h43" id="h43_"><div class="cb" onclick="chk('h43_')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-target">Work on today</span>Living Will &amp; Medical Power of Attorney Assignment (10 pts)<div class="t-sub">Due Wed Jul 2 — only 2 days away</div></div></div></div>
-    <div class="task target h43" id="h44"><div class="cb" onclick="chk('h44')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-target">Work on today</span>Insurance Activity Videos &amp; Assignment (10 pts)<div class="t-sub">Due Wed Jul 2</div></div></div></div>
-    <div class="task annot g33" id="t100"><div class="cb" onclick="chk('t100')"><span class="cb-check">✓</span></div><div class="tdot dot-annot"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-annot">Annot Bib</span>Finish Prog. Annotated Bibliography #1<div class="t-sub">Due ~Sun Jul 5</div></div></div></div>
+    <div class="task deadline g43" id="x47"><div class="cb" onclick="chk('x47')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm — confirmed 2026</span> Catch Your Breath (reflection)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21249&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
   </div>
 </div>
-
 <div class="day-row">
-  <div class="day-col"><span class="day-num">2</span>Thu Jul</div>
+  <div class="day-col"><span class="day-num">5</span>Sun</div>
   <div class="tasks">
-    <div class="task target g33" id="t101"><div class="cb" onclick="chk('t101')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Finish today</span>Questions for Article Analysis — submit early</div></div></div></div>
-    <div class="task target g33" id="t102"><div class="cb" onclick="chk('t102')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Finish today</span>Exploratory Research — submit early</div></div></div></div>
-    <div class="task target g43" id="t103"><div class="cb" onclick="chk('t103')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Submit today</span>Annotated Bibliography (x6) — submit before holiday<div class="t-sub">Due ~Sun Jul 5</div></div></div></div>
-    <div class="task target g33" id="t104"><div class="cb" onclick="chk('t104')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Start today</span>Prog. Annotated Bibliography #2<div class="t-sub">Due ~Wed Jul 9</div></div></div></div>
+    <div class="task deadline g33" id="x48"><div class="cb" onclick="chk('x48')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> Questions for Article Analysis<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21901&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g33" id="x49"><div class="cb" onclick="chk('x49')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> Exploratory Research<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21902&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g33" id="x50"><div class="cb" onclick="chk('x50')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> Prog. Annotated Bibliography #1<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21903&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g43" id="x51"><div class="cb" onclick="chk('x51')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm</span> Annotated Bibliography (x6)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a></div></div></div></div>
   </div>
 </div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">4</span>Sat Jul</div>
-  <div class="tasks">
-    <div class="task deadline g43" id="t105"><div class="cb" onclick="chk('t105')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm — confirmed 2026</span>Catch Your Breath (reflection)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21249&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
-  </div>
-</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">5</span>Sun Jul</div>
-  <div class="tasks">
-    <div class="task deadline g33" id="t106"><div class="cb" onclick="chk('t106')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>Questions for Article Analysis<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21901&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task deadline g33" id="t107"><div class="cb" onclick="chk('t107')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>Exploratory Research<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21902&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task deadline g33" id="t108"><div class="cb" onclick="chk('t108')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>Prog. Annotated Bibliography #1<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21903&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task deadline g43" id="t109"><div class="cb" onclick="chk('t109')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm</span>Annotated Bibliography (x6)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a></div></div></div></div>
-  </div>
-</div>
-
 <div class="wk-hdr">Week 5 — Jul 6–12 · Annot Bibs + 4380 Final Bib Due</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">6</span>Mon</div>
-  <div class="tasks">
-    <div class="task annot g33" id="t110"><div class="cb" onclick="chk('t110')"><span class="cb-check">✓</span></div><div class="tdot dot-annot"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-annot">Annot Bib</span>Finish Prog. Annotated Bibliography #2 — submit by Wednesday<div class="t-sub">Due Wed Jul 9</div></div></div></div>
-    <div class="task target h43" id="h45"><div class="cb" onclick="chk('h45')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-target">Take today</span>Ch. 6 · 7 · 8 Quiz (15 pts each)<div class="t-sub">Due Wed Jul 2 — do these today, 3 quizzes left for tomorrow</div></div></div></div>
-    <div class="task target h43" id="h46"><div class="cb" onclick="chk('h46')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-target">Take today</span>Ch. 9 · 10 · 11 Quiz (15 pts each)<div class="t-sub">Due Wed Jul 2</div></div></div></div>
-        <div class="task reading g43" id="t111"><div class="cb" onclick="chk('t111')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span>Review all 6 annotations — compile Annotated Bibliography Final Draft<div class="t-sub">Due ~Sun Jul 12 · 30% of grade</div></div></div></div>
-  </div>
-</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">7</span>Tue</div>
-  <div class="tasks">
-    <div class="task deadline h43" id="h47"><div class="cb" onclick="chk('h47')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-dead">Due 11:59 pm — LAST DAY of HLTH 4300</span>Living Will &amp; Medical Power of Attorney Assignment (10 pts)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=22022" target="_blank">4300 Assignments →</a></div></div></div></div>
-    <div class="task deadline h43" id="h48"><div class="cb" onclick="chk('h48')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-dead">Due 11:59 pm — LAST DAY</span>Insurance Activity Videos &amp; Assignment (10 pts)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=22022" target="_blank">4300 Assignments →</a></div></div></div></div>
-    <div class="task deadline h43" id="h49"><div class="cb" onclick="chk('h49')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-dead">Due 11:59 pm — LAST DAY</span>Ch. 6 · 7 · 8 · 9 · 10 · 11 Quizzes (15 pts each — WILL NOT REOPEN)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/quizzing/quizzing.d2l?ou=22022" target="_blank">4300 Quizzes →</a></div></div></div></div>
-    <div class="task deadline h43" id="h50"><div class="cb" onclick="chk('h50')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-h43">4300</span><span class="badge b-dead">Due 11:59 pm — LAST DAY</span>FINAL EXAM — Module 5 · 100 pts<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/quizzing/quizzing.d2l?ou=22022" target="_blank">4300 Exams →</a> · not cumulative · HLTH 4300 course complete</div></div></div></div>
-        <div class="task target g33" id="t112"><div class="cb" onclick="chk('t112')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Start today</span>Prog. Annotated Bibliography #3<div class="t-sub">Due Sun Jul 12</div></div></div></div>
-    <div class="task target g43" id="t113"><div class="cb" onclick="chk('t113')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Start today</span>Refined Outline — map paper sections to sources<div class="t-sub">Due ~Sun Jul 12</div></div></div></div>
-  </div>
-</div>
-
 <div class="day-row">
   <div class="day-col"><span class="day-num">8</span>Wed</div>
   <div class="tasks">
-    <div class="task deadline g33" id="t114"><div class="cb" onclick="chk('t114')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>Prog. Annotated Bibliography #2<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21906&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g33" id="x52"><div class="cb" onclick="chk('x52')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> Prog. Annotated Bibliography #2<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21906&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
   </div>
 </div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">9</span>Thu</div>
-  <div class="tasks">
-    <div class="task target g33" id="t115"><div class="cb" onclick="chk('t115')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Finish today</span>Prog. Annotated Bibliography #3 — submit early<div class="t-sub">Due Sun Jul 12</div></div></div></div>
-    <div class="task target g43" id="t116"><div class="cb" onclick="chk('t116')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Finish today</span>Annotated Bibliography Final Draft — submit early<div class="t-sub">30% of grade · due ~Sun Jul 12</div></div></div></div>
-    <div class="task target g33" id="t117"><div class="cb" onclick="chk('t117')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Start today</span>Prog. Annotated Bibliography #4<div class="t-sub">Due Sun Jul 19</div></div></div></div>
-  </div>
-</div>
-
 <div class="day-row">
   <div class="day-col"><span class="day-num">10</span>Fri</div>
   <div class="tasks">
-    <div class="task deadline g43" id="t118"><div class="cb" onclick="chk('t118')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm — confirmed 2026</span>Presentation reflection<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21245&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task target g43" id="t119"><div class="cb" onclick="chk('t119')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Finish today</span>Refined Outline — submit early<div class="t-sub">Due ~Sun Jul 12</div></div></div></div>
+    <div class="task deadline g43" id="x53"><div class="cb" onclick="chk('x53')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm — confirmed 2026</span> Presentation reflection<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21245&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
   </div>
 </div>
-
 <div class="day-row">
   <div class="day-col"><span class="day-num">12</span>Sun</div>
   <div class="tasks">
-    <div class="task deadline g33" id="t120"><div class="cb" onclick="chk('t120')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>Prog. Annotated Bibliography #3<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21907&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task deadline g43" id="t121"><div class="cb" onclick="chk('t121')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm</span>Annotated Bibliography Final Draft — 30% of grade<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a></div></div></div></div>
-    <div class="task deadline g43" id="t122"><div class="cb" onclick="chk('t122')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm</span>Refined Outline<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21248&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task deadline g43" id="t123"><div class="cb" onclick="chk('t123')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm</span>Annotated Bibliography reflection<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a></div></div></div></div>
+    <div class="task deadline g33" id="x54"><div class="cb" onclick="chk('x54')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> Prog. Annotated Bibliography #3<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21907&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g43" id="x55"><div class="cb" onclick="chk('x55')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm</span> Annotated Bibliography Final Draft — 30% of grade<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a></div></div></div></div>
+    <div class="task deadline g43" id="x56"><div class="cb" onclick="chk('x56')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm</span> Annotated Bibliography reflection<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a></div></div></div></div>
+    <div class="task deadline g43" id="x57"><div class="cb" onclick="chk('x57')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm</span> Refined Outline<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21248&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
   </div>
 </div>
-
 <div class="wk-hdr">Week 6 — Jul 13–19 · Writing Begins</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">13</span>Mon</div>
-  <div class="tasks">
-    <div class="task target g33" id="t124"><div class="cb" onclick="chk('t124')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Finish today</span>Prog. Annotated Bibliography #4<div class="t-sub">Due Sun Jul 19</div></div></div></div>
-    <div class="task reading g43" id="t125"><div class="cb" onclick="chk('t125')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span>Draft Paper Outline reflection — check Blackboard for prompt</div></div></div></div>
-  </div>
-</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">14</span>Tue</div>
-  <div class="tasks">
-    <div class="task journal g33" id="t126"><div class="cb" onclick="chk('t126')"><span class="cb-check">✓</span></div><div class="tdot dot-journal"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-jrnl">Journal</span>Research Journal (W7)<div class="t-sub">Due Sun Jul 19</div></div></div></div>
-    <div class="task target g43" id="t127"><div class="cb" onclick="chk('t127')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Write today</span>Paper Introduction with thesis statement<div class="t-sub">Due Wed Jul 15 — tomorrow!</div></div></div></div>
-  </div>
-</div>
-
 <div class="day-row">
   <div class="day-col"><span class="day-num">15</span>Wed</div>
   <div class="tasks">
-    <div class="task deadline g43" id="t128"><div class="cb" onclick="chk('t128')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm</span>Paper Introduction (due Wednesday)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21243&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task target g43" id="t129"><div class="cb" onclick="chk('t129')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Start today</span>First Body Section<div class="t-sub">Due ~Sat Jul 18</div></div></div></div>
-    <div class="task reading g33" id="t130"><div class="cb" onclick="chk('t130')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span>Office hours: Niswonger Wed 9–11 am — good mid-semester check-in</div></div></div></div>
-    <div class="task target g33" id="t131"><div class="cb" onclick="chk('t131')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Start today</span>Prog. Annotated Bibliography #5<div class="t-sub">Due Sun Jul 26 — two coming up</div></div></div></div>
+    <div class="task deadline g43" id="x58"><div class="cb" onclick="chk('x58')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm</span> Paper Introduction (due Wednesday)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21243&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
   </div>
 </div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">17</span>Fri</div>
-  <div class="tasks">
-    <div class="task target g43" id="t132"><div class="cb" onclick="chk('t132')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Finish today</span>First Body Section — submit a day early</div></div></div></div>
-    <div class="task target g33" id="t133"><div class="cb" onclick="chk('t133')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Start today</span>Prog. Annotated Bibliography #6<div class="t-sub">Due Sun Jul 26</div></div></div></div>
-  </div>
-</div>
-
 <div class="day-row">
   <div class="day-col"><span class="day-num">18</span>Sat</div>
   <div class="tasks">
-    <div class="task deadline g43" id="t134"><div class="cb" onclick="chk('t134')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm</span>First Body Section<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21244&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task target g43" id="t135"><div class="cb" onclick="chk('t135')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Start today</span>Draft remaining body sections — aim for 8–10 pages total<div class="t-sub">Due ~Sat Jul 25</div></div></div></div>
+    <div class="task deadline g43" id="x59"><div class="cb" onclick="chk('x59')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm</span> First Body Section<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21244&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
   </div>
 </div>
-
 <div class="day-row">
   <div class="day-col"><span class="day-num">19</span>Sun</div>
   <div class="tasks">
-    <div class="task deadline g33" id="t136"><div class="cb" onclick="chk('t136')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>Prog. Annotated Bibliography #4<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21908&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task deadline g33" id="t137"><div class="cb" onclick="chk('t137')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>Research Journal (W7)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21909&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task deadline g43" id="t138"><div class="cb" onclick="chk('t138')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm</span>Finals check-in reflection<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21242&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g33" id="x60"><div class="cb" onclick="chk('x60')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> Prog. Annotated Bibliography #4<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21908&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g33" id="x61"><div class="cb" onclick="chk('x61')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> Research Journal (W7)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21909&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g43" id="x62"><div class="cb" onclick="chk('x62')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm</span> Finals check-in reflection<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21242&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
   </div>
 </div>
-
-<div class="wk-hdr">Week 7 — Jul 20–26 · Heavy week — 4 deadlines each course</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">20</span>Mon</div>
-  <div class="tasks">
-    <div class="task target g33" id="t139"><div class="cb" onclick="chk('t139')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Finish today</span>Prog. Annotated Bibliography #5<div class="t-sub">Due Sun Jul 26</div></div></div></div>
-    <div class="task reading g43" id="t140"><div class="cb" onclick="chk('t140')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span>Continue drafting body sections — keep building toward 8–10 pages</div></div></div></div>
-  </div>
-</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">21</span>Tue</div>
-  <div class="tasks">
-    <div class="task target g33" id="t141"><div class="cb" onclick="chk('t141')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Finish today</span>Prog. Annotated Bibliography #6<div class="t-sub">Due Sun Jul 26</div></div></div></div>
-    <div class="task target g33" id="t142"><div class="cb" onclick="chk('t142')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Work on</span>Preliminary Synthesis Table<div class="t-sub">Due Sun Jul 26</div></div></div></div>
-  </div>
-</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">22</span>Wed</div>
-  <div class="tasks">
-    <div class="task journal g33" id="t143"><div class="cb" onclick="chk('t143')"><span class="cb-check">✓</span></div><div class="tdot dot-journal"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-jrnl">Journal</span>Research Journal (W8)<div class="t-sub">Due Sun Jul 26</div></div></div></div>
-    <div class="task target g33" id="t144"><div class="cb" onclick="chk('t144')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Start today</span>Prog. Annotated Bibliography #7<div class="t-sub">Due ~Sun Aug 2</div></div></div></div>
-  </div>
-</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">23</span>Thu</div>
-  <div class="tasks">
-    <div class="task target g33" id="t145"><div class="cb" onclick="chk('t145')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Finish today</span>Preliminary Synthesis Table — submit early</div></div></div></div>
-    <div class="task target g43" id="t146"><div class="cb" onclick="chk('t146')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Finish today</span>8–10 Pages body draft — submit a day early<div class="t-sub">Due ~Sat Jul 25</div></div></div></div>
-  </div>
-</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">24</span>Fri</div>
-  <div class="tasks">
-    <div class="task journal g43" id="t147"><div class="cb" onclick="chk('t147')"><span class="cb-check">✓</span></div><div class="tdot dot-journal"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-jrnl">Reflection</span>Completed Paper check-in<div class="t-sub">Due ~Sun Jul 26</div></div></div></div>
-    <div class="task target g33" id="t148"><div class="cb" onclick="chk('t148')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Start today</span>Prog. Annotated Bibliography #8<div class="t-sub">Due ~Sun Aug 2</div></div></div></div>
-  </div>
-</div>
-
+<div class="wk-hdr">Week 7 — Jul 20–26 · Heavy week</div>
 <div class="day-row">
   <div class="day-col"><span class="day-num">25</span>Sat</div>
   <div class="tasks">
-    <div class="task deadline g43" id="t149"><div class="cb" onclick="chk('t149')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm</span>8–10 Pages<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21241&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task target g43" id="t150"><div class="cb" onclick="chk('t150')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Start today</span>Research Paper Final Draft — begin full revision<div class="t-sub">Due ~Sat Aug 1</div></div></div></div>
+    <div class="task deadline g43" id="x63"><div class="cb" onclick="chk('x63')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm</span> 8–10 Pages<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21241&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
   </div>
 </div>
-
 <div class="day-row">
   <div class="day-col"><span class="day-num">26</span>Sun</div>
   <div class="tasks">
-    <div class="task deadline g33" id="t151"><div class="cb" onclick="chk('t151')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>Research Journal (W8)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21910&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task deadline g33" id="t152"><div class="cb" onclick="chk('t152')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>Prog. Annotated Bibliography #5<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21911&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task deadline g33" id="t153"><div class="cb" onclick="chk('t153')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>Prog. Annotated Bibliography #6<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21912&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task deadline g33" id="t154"><div class="cb" onclick="chk('t154')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>Preliminary Synthesis Table<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21916&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task deadline g43" id="t155"><div class="cb" onclick="chk('t155')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm</span>Completed Paper reflection<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21240&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g33" id="x64"><div class="cb" onclick="chk('x64')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> Research Journal (W8)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21910&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g33" id="x65"><div class="cb" onclick="chk('x65')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> Prog. Annotated Bibliography #5<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21911&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g33" id="x66"><div class="cb" onclick="chk('x66')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> Prog. Annotated Bibliography #6<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21912&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g33" id="x67"><div class="cb" onclick="chk('x67')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> Preliminary Synthesis Table<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21916&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g43" id="x68"><div class="cb" onclick="chk('x68')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm</span> Completed Paper reflection<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21240&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
   </div>
 </div>
-
-<!-- ════════════════════════════════════════ -->
-<!--  AUGUST — FINAL PUSH                    -->
-<!-- ════════════════════════════════════════ -->
 <div class="month-hdr">August 2026 · Final Push — Both GEST Courses End Aug 7</div>
-
-<div class="wk-hdr">Week 8 — Jul 27–Aug 2 · Final drafts + Journals</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">27</span>Mon Jul</div>
-  <div class="tasks">
-    <div class="task target g33" id="t156"><div class="cb" onclick="chk('t156')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Finish today</span>Prog. Annotated Bibliography #7</div></div></div></div>
-    <div class="task reading g43" id="t157"><div class="cb" onclick="chk('t157')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span>Full revision pass — every paragraph supports your thesis?</div></div></div></div>
-  </div>
-</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">28</span>Tue Jul</div>
-  <div class="tasks">
-    <div class="task target g33" id="t158"><div class="cb" onclick="chk('t158')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Finish today</span>Prog. Annotated Bibliography #8 — last annotation!</div></div></div></div>
-    <div class="task journal g33" id="t159"><div class="cb" onclick="chk('t159')"><span class="cb-check">✓</span></div><div class="tdot dot-journal"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-jrnl">Journal</span>Research Update (W9)</div></div></div></div>
-    <div class="task reading g43" id="t160"><div class="cb" onclick="chk('t160')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span>Read paper aloud — catch flow, logic, and transition issues</div></div></div></div>
-  </div>
-</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">29</span>Wed Jul</div>
-  <div class="tasks">
-    <div class="task journal g33" id="t161"><div class="cb" onclick="chk('t161')"><span class="cb-check">✓</span></div><div class="tdot dot-journal"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-jrnl">Journal</span>Research Journal Question (W9)<div class="t-sub">Due ~Sun Aug 2</div></div></div></div>
-    <div class="task target g33" id="t162"><div class="cb" onclick="chk('t162')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Start today</span>Research Question Assignment (W10)<div class="t-sub">Due ~Wed Aug 5</div></div></div></div>
-    <div class="task reading g33" id="t163"><div class="cb" onclick="chk('t163')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span>Begin drafting Final Research Proposal outline</div></div></div></div>
-  </div>
-</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">30</span>Thu Jul</div>
-  <div class="tasks">
-    <div class="task target g43" id="t164"><div class="cb" onclick="chk('t164')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Submit today</span>Research Paper Final Draft — a day early<div class="t-sub">Due ~Sat Aug 1</div></div></div></div>
-  </div>
-</div>
-
+<div class="wk-hdr">Week 8 — Jul 27–Aug 2 · Final Drafts</div>
 <div class="day-row">
   <div class="day-col"><span class="day-num">1</span>Sat Aug</div>
   <div class="tasks">
-    <div class="task deadline g43" id="t165"><div class="cb" onclick="chk('t165')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm</span>Research Paper Final Draft<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21239&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task target g33" id="t166"><div class="cb" onclick="chk('t166')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Finish today</span>Research Question Assignment (W10) — submit early<div class="t-sub">Due ~Wed Aug 5</div></div></div></div>
-    <div class="task reading g43" id="t167"><div class="cb" onclick="chk('t167')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span>Record video presentation — summarize paper &amp; major findings</div></div></div></div>
+    <div class="task deadline g43" id="x69"><div class="cb" onclick="chk('x69')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm</span> Research Paper Final Draft<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21239&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
   </div>
 </div>
-
 <div class="day-row">
   <div class="day-col"><span class="day-num">2</span>Sun Aug</div>
   <div class="tasks">
-    <div class="task deadline g33" id="t168"><div class="cb" onclick="chk('t168')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>Research Update (W9)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21913&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task deadline g33" id="t169"><div class="cb" onclick="chk('t169')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>Prog. Annotated Bibliography #7<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21914&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task deadline g33" id="t170"><div class="cb" onclick="chk('t170')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>Prog. Annotated Bibliography #8<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21915&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task deadline g33" id="t171"><div class="cb" onclick="chk('t171')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>Research Journal Question (W9)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21917&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g33" id="x70"><div class="cb" onclick="chk('x70')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> Research Update (W9)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21913&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g33" id="x71"><div class="cb" onclick="chk('x71')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> Prog. Annotated Bibliography #7<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21914&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g33" id="x72"><div class="cb" onclick="chk('x72')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> Prog. Annotated Bibliography #8<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21915&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g33" id="x73"><div class="cb" onclick="chk('x73')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> Research Journal Question (W9)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21917&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
   </div>
 </div>
-
-<div class="wk-hdr">Week 9 — Aug 3–7 · Final Week — Both courses end</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">3</span>Mon</div>
-  <div class="tasks">
-    <div class="task reading g33" id="t172"><div class="cb" onclick="chk('t172')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span>Final proofread — APA format, 1" margins, 12pt TNR, .docx</div></div></div></div>
-    <div class="task reading g43" id="t173"><div class="cb" onclick="chk('t173')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span>Final proofread — 12–16 pages, consistent citations, title page</div></div></div></div>
-  </div>
-</div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">4</span>Tue</div>
-  <div class="tasks">
-    <div class="task reading g33" id="t174"><div class="cb" onclick="chk('t174')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span>Record GEST 3380 video presentation — summarize proposal &amp; findings</div></div></div></div>
-    <div class="task reading g43" id="t175"><div class="cb" onclick="chk('t175')"><span class="cb-check">✓</span></div><div class="tdot dot-read"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span>Finalize GEST 4380 video — watch it back, check audio</div></div></div></div>
-  </div>
-</div>
-
+<div class="wk-hdr">Week 9 — Aug 3–7 · Final Week — Both Courses End</div>
 <div class="day-row">
   <div class="day-col"><span class="day-num">5</span>Wed</div>
   <div class="tasks">
-    <div class="task deadline g33" id="t176"><div class="cb" onclick="chk('t176')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm</span>Research Question Assignment (W10)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21918&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
+    <div class="task deadline g33" id="x74"><div class="cb" onclick="chk('x74')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm</span> Research Question Assignment (W10)<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21918&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a></div></div></div></div>
   </div>
 </div>
-
 <div class="day-row">
-  <div class="day-col"><span class="day-num">6</span>Thu</div>
+  <div class="day-col"><span class="day-num">7</span>Fri — LAST DAY</div>
   <div class="tasks">
-    <div class="task target g33" id="t177"><div class="cb" onclick="chk('t177')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-target">Submit today</span>Final Research Proposal + Video — a day early<div class="t-sub">Due Fri Aug 7 · late finals not accepted</div></div></div></div>
-    <div class="task target g43" id="t178"><div class="cb" onclick="chk('t178')"><span class="cb-check">✓</span></div><div class="tdot dot-target"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-target">Submit today</span>Final Paper + Video Presentation — a day early<div class="t-sub">Due Fri Aug 7 · late finals not accepted</div></div></div></div>
+    <div class="task deadline g33" id="x75"><div class="cb" onclick="chk('x75')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due 11:59 pm — LAST DAY</span> Final Research Proposal (8–12 pages) + Video Presentation<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=21309" target="_blank">3380 Assignments →</a> · .docx · through SafeAssign</div></div></div></div>
+    <div class="task deadline g33" id="x76"><div class="cb" onclick="chk('x76')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">G33</span> <span class="badge b-dead">Due — verify date</span> Final Synthesis Matrix<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21921&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a> · confirm date in Brightspace</div></div></div></div>
+    <div class="task deadline g43" id="x77"><div class="cb" onclick="chk('x77')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm — LAST DAY</span> Final Research Paper (12–16 pages) — 40% of grade<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a></div></div></div></div>
+    <div class="task deadline g43" id="x78"><div class="cb" onclick="chk('x78')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">G43</span> <span class="badge b-dead">Due 11:59 pm — LAST DAY</span> Paper Presentation (video) — 10% of grade<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21237&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
   </div>
 </div>
-
-<div class="day-row">
-  <div class="day-col"><span class="day-num">7</span>Fri</div>
-  <div class="tasks">
-    <div class="task deadline g33" id="t179"><div class="cb" onclick="chk('t179')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due 11:59 pm — LAST DAY</span>Final Research Proposal (8–12 pages) + Video Presentation<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=21309" target="_blank">3380 Assignments →</a> · .docx · through SafeAssign</div></div></div></div>
-    <div class="task deadline g43" id="t180"><div class="cb" onclick="chk('t180')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm — LAST DAY</span>Final Research Paper (12–16 pages) — 40% of grade<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/dropbox.d2l?ou=13466" target="_blank">4380 Assignments →</a></div></div></div></div>
-    <div class="task deadline g43" id="t181"><div class="cb" onclick="chk('t181')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g43">4380</span><span class="badge b-dead">Due 11:59 pm — LAST DAY</span>Paper Presentation (video) — 10% of grade<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21237&grpid=0&isprv=0&bp=0&ou=13466" target="_blank">Submit directly →</a></div></div></div></div>
-    <div class="task deadline g33" id="t182"><div class="cb" onclick="chk('t182')"><span class="cb-check">✓</span></div><div class="tdot dot-dead"></div><div class="t-body"><div class="t-text"><span class="badge b-g33">3380</span><span class="badge b-dead">Due — verify date</span>Final Synthesis Matrix<div class="t-sub"><a href="https://learn.uca.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=21921&grpid=0&isprv=0&bp=0&ou=21309" target="_blank">Submit directly →</a> · confirm date in Brightspace</div></div></div></div>
-  </div>
 </div>
-
-</div><!-- /wrap -->
-
 <script>
-const STORE = 'summer2026_master';
+const STORE = 'summer2026_master_v3';
 let done = JSON.parse(localStorage.getItem(STORE) || '[]');
-
-function save() { try { localStorage.setItem(STORE, JSON.stringify(done)); } catch(e){} }
-
+function save() { try { localStorage.setItem(STORE, JSON.stringify(done)); } catch(e) {} }
 function chk(id) {
   const el = document.getElementById(id);
   const idx = done.indexOf(id);
-  if (idx > -1) { done.splice(idx, 1); el.classList.remove('checked'); }
+  if (idx > -1) { done.splice(idx,1); el.classList.remove('checked'); }
   else { done.push(id); el.classList.add('checked'); }
   save(); updateStats();
 }
-
 function updateStats() {
-  const all = document.querySelectorAll('.task');
-  const visible = [...all].filter(el => !el.classList.contains('hide'));
-  const total = visible.length;
-  const n = visible.filter(el => el.classList.contains('checked')).length;
-  const pct = total ? Math.round(n / total * 100) : 0;
+  const all = [...document.querySelectorAll('.task')].filter(e => !e.classList.contains('hide'));
+  const n = all.filter(e => e.classList.contains('checked')).length;
+  const pct = all.length ? Math.round(n/all.length*100) : 0;
   document.getElementById('s-done').textContent = n;
-  document.getElementById('s-left').textContent = total - n;
+  document.getElementById('s-left').textContent = all.length - n;
   document.getElementById('s-pct').textContent = pct + '%';
   document.getElementById('prog').style.width = pct + '%';
 }
-
 function filter(course, btn) {
   document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
   document.querySelectorAll('.task').forEach(el => {
-    if (course === 'all') { el.classList.remove('hide'); return; }
-    el.classList.toggle('hide', !el.classList.contains(course));
+    el.classList.toggle('hide', course !== 'all' && !el.classList.contains(course));
   });
-  // hide empty day rows
   document.querySelectorAll('.day-row').forEach(row => {
-    const tasks = row.querySelector('.tasks');
-    if (!tasks) return;
-    const visible = [...tasks.querySelectorAll('.task')].filter(t => !t.classList.contains('hide'));
-    row.style.display = visible.length === 0 ? 'none' : 'grid';
+    const vis = [...row.querySelectorAll('.task')].filter(t => !t.classList.contains('hide'));
+    row.style.display = vis.length ? 'grid' : 'none';
   });
   updateStats();
 }
-
-// init
 function init() {
-  done.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.classList.add('checked');
-  });
+  done.forEach(id => { const el = document.getElementById(id); if (el) el.classList.add('checked'); });
   updateStats();
 }
 init();
