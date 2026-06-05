@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Firefighter Interview Crash Course</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 860px; margin: 0 auto; padding: 1rem; background: #fff; color: #222; }
+  .phase-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#666;margin:0 0 8px}
+  .day-card{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:10px 12px;margin-bottom:8px}
+  .day-header{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+  .day-badge{font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap}
+  .b-found{background:#EAF3DE;color:#3B6D11}
+  .b-fyv{background:#E6F1FB;color:#185FA5}
+  .b-spr{background:#FAEEDA;color:#854F0B}
+  .b-int{background:#EEEDFE;color:#3C3489}
+  .day-title{font-size:14px;font-weight:700;color:#111}
+  .day-tasks{margin:0;padding:0 0 0 16px}
+  .day-tasks li{font-size:13px;color:#444;line-height:1.8}
+  a.res{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:20px;margin-left:4px;text-decoration:none}
+  a.res.web{background:#E6F1FB;color:#185FA5}
+  a.res.vid{background:#EEEDFE;color:#3C3489}
+  a.res.pdf{background:#EAF3DE;color:#3B6D11}
+  a.res.act{background:#FAEEDA;color:#854F0B}
+  a.res.wmr{background:#FCEBEB;color:#A32D2D}
+  a.lnk{color:#185FA5;text-decoration:underline;font-size:13px}
+  hr.div{border:none;border-top:1px solid #e0e0e0;margin:16px 0}
+  .tip{background:#E6F1FB;border:1px solid #b5d4f4;border-radius:8px;padding:9px 13px;margin-bottom:8px}
+  .tip p{font-size:13px;color:#185FA5;margin:0;line-height:1.6}
+  .warn{background:#FCEBEB;border:1px solid #f7c1c1;border-radius:8px;padding:9px 13px;margin-bottom:8px}
+  .warn p{font-size:13px;color:#A32D2D;margin:0;line-height:1.6}
+  .tab-row{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+  .tab-btn{font-size:13px;padding:6px 14px;border-radius:8px;border:1px solid #ccc;background:#fff;color:#555;cursor:pointer}
+  .tab-btn.active{background:#f0f0f0;color:#111;font-weight:700;border-color:#999}
+  .tab-content{display:none}
+  .tab-content.active{display:block}
+  .dept-card{background:#fff;border:1px solid #e0e0e0;border-radius:12px;padding:1rem 1.25rem;margin-bottom:12px}
+  .stat-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+  .stat-pill{font-size:12px;padding:3px 10px;border-radius:20px;background:#f5f5f5;color:#555;border:1px solid #e0e0e0}
+  .df{font-size:13px;color:#444;line-height:1.7;margin:0 0 5px}
+  .df strong{color:#111;font-weight:700}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;padding:10px 12px;background:#f5f5f5;border-radius:8px}
+  .legend span{font-size:12px;color:#555}
+</style>
+</head>
+<body>
+
+<h1 style="font-size:20px;margin-bottom:4px">Firefighter Interview Crash Course</h1>
+<p style="font-size:13px;color:#666;margin-bottom:16px">Fayetteville FD · June 17 &nbsp;|&nbsp; Springdale FD · June 26 &nbsp;|&nbsp; Vacation June 20–25</p>
+
+<div class="tab-row">
+  <button class="tab-btn active" onclick="switchTab('schedule',event)">&#128197; Schedule</button>
+  <button class="tab-btn" onclick="switchTab('resources',event)">&#128214; All resources</button>
+  <button class="tab-btn" onclick="switchTab('fayetteville',event)">&#127968; Fayetteville FD</button>
+  <button class="tab-btn" onclick="switchTab('springdale',event)">&#127968; Springdale FD</button>
+</div>
+
+<!-- SCHEDULE TAB -->
+<div id="tab-schedule" class="tab-content active">
+
+<div class="legend">
+  <span><a class="res web" href="#">members page</a> = 111fireprep login required</span>
+  <span><a class="res vid" href="#">video</a> = YouTube direct link</span>
+  <span><a class="res wmr" href="#">webinar</a> = recorded session</span>
+</div>
+
+<p class="phase-label">Phase 1 — Foundation (June 5–9)</p>
+
+<div class="day-card">
+  <div class="day-header"><span class="day-badge b-found">June 5 · Today</span><span class="day-title">Orientation + first question</span></div>
+  <ul class="day-tasks">
+    <li>Read welcome letter + download all PDFs <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Watch Body Language video — Ron's recommended first watch <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Write your "What does customer service mean to me?" answer first, then watch <a class="res vid" href="https://youtu.be/gL0ezui-vTI">customer service video</a></li>
+    <li>Text Ron to book a June 1-on-1: <strong>253-973-5323</strong> — include name + membership plan <a class="res act" href="https://www.111fireprep.com/1-1-dates-and-times">see dates</a></li>
+  </ul>
+</div>
+
+<div class="day-card">
+  <div class="day-header"><span class="day-badge b-found">June 6</span><span class="day-title">4 core questions — part 1</span></div>
+  <ul class="day-tasks">
+    <li>Watch Member Questions Part 1 (Q1–Q3, 22 min) <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Read PDFs: "Tell us about yourself" + "Why do you want to be a firefighter" <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Draft + practice Q1 and Q3 out loud — under 3 min each, audio record yourself</li>
+  </ul>
+</div>
+
+<div class="day-card">
+  <div class="day-header"><span class="day-badge b-found">June 7</span><span class="day-title">4 core questions — part 2 + SARA</span></div>
+  <ul class="day-tasks">
+    <li>Watch Member Questions Part 2 (Q4–Q6, 12 min) <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Read PDFs: "What have you done to prepare" + "Why do you want to work for us" <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Study SARA format — Situation, Action, Result, Application <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Draft Q4 for Fayetteville FD specifically — see Fayetteville tab for facts</li>
+    <li>Record all 4 core answers — play back and self-critique</li>
+  </ul>
+</div>
+
+<div class="day-card">
+  <div class="day-header"><span class="day-badge b-found">June 8</span><span class="day-title">Values foundation</span></div>
+  <ul class="day-tasks">
+    <li>Watch Values and Examples Chart (14 min) <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Read: "Values that clients can work on UPDATED" + "Values Example" PDFs <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Work on Accountability + Integrity — unique definition + unique story each</li>
+    <li>Watch YouTube integrity examples <a class="res vid" href="https://www.youtube.com/@RonH111fireprep">Ron H channel</a></li>
+  </ul>
+</div>
+
+<div class="day-card">
+  <div class="day-header"><span class="day-badge b-found">June 9</span><span class="day-title">Behavioral + situational questions</span></div>
+  <ul class="day-tasks">
+    <li>Watch Getting ready for the interview (34 min) <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Read PDFs: "Teamwork" + "Traits you can bring" + "The Core Truth What Panels Care About" <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Watch YouTube: Three traits a firefighter should possess <a class="res vid" href="https://www.youtube.com/@RonH111fireprep">Ron H channel</a></li>
+    <li>Video record yourself answering 3 questions — review like a coach reviews film</li>
+  </ul>
+</div>
+
+<hr class="div">
+<p class="phase-label">Phase 2 — Fayetteville FD prep (June 10–16)</p>
+<div class="tip"><p>&#9432;&nbsp; Interview June 17 &middot; Fayetteville FD &middot; 9 stations &middot; ISO Class 1 &middot; 13,156 calls (2023) &middot; all-hazards agency</p></div>
+
+<div class="day-card">
+  <div class="day-header"><span class="day-badge b-fyv">June 10</span><span class="day-title">Dept research + "Why this dept?"</span></div>
+  <ul class="day-tasks">
+    <li>Read "Department information" PDF <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Review Fayetteville FD mission + Strategic Plan <a class="res web" href="https://www.fayetteville-ar.gov/4083/Fire-Department">fayetteville-ar.gov</a></li>
+    <li>Watch YouTube: Why this Dept? (3:21) <a class="res vid" href="https://www.youtube.com/@RonH111fireprep">Ron H channel</a></li>
+    <li>Watch May webinar 2026 (1:11) — includes "What do you know about our city?" <a class="res wmr" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+  </ul>
+</div>
+
+<div class="day-card">
+  <div class="day-header"><span class="day-badge b-fyv">June 11</span><span class="day-title">Difficult + ethical questions</span></div>
+  <ul class="day-tasks">
+    <li>Read PDFs: "Disobey a direct order" + "Irate customer" + "Weaknesses" + "Strongly agree vs Strongly disagree" + "Psych Interview" <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Watch April webinar 2026 (59 min) — nerves, difficult questions, pitfalls <a class="res wmr" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Practice 2 difficult questions out loud using SARA</li>
+  </ul>
+</div>
+
+<div class="day-card">
+  <div class="day-header"><span class="day-badge b-fyv">June 12</span><span class="day-title">Diversity, empathy + community</span></div>
+  <ul class="day-tasks">
+    <li>Read PDFs: "Cultural diversity" + "Social equity" + "Empathy" <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Watch YouTube: Empathy (3:00) + Soetenga Empathy (2:29) <a class="res vid" href="https://www.youtube.com/@RonH111fireprep">Ron H channel</a></li>
+    <li>Watch May tutor session #1 (46 min) <a class="res wmr" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Build diversity answer around Fayetteville's university/growing community context</li>
+  </ul>
+</div>
+
+<div class="day-card">
+  <div class="day-header"><span class="day-badge b-fyv">June 13</span><span class="day-title">Values week 2 + mock oral board</span></div>
+  <ul class="day-tasks">
+    <li>Work on Teamwork + Customer Service — unique definition, unique story, tied to fire service <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Watch YouTube: Define Customer Service (3:07) <a class="res vid" href="https://youtu.be/gL0ezui-vTI">direct link</a></li>
+    <li>Watch YouTube: Soetenga Integrity + Preparation <a class="res vid" href="https://www.youtube.com/@RonH111fireprep">Ron H channel</a></li>
+    <li>Full mock oral board: interview clothes, timer, record yourself, 8–10 questions cold</li>
+  </ul>
+</div>
+
+<div class="day-card">
+  <div class="day-header"><span class="day-badge b-fyv">June 14</span><span class="day-title">Scoresheet + self-assessment</span></div>
+  <ul class="day-tasks">
+    <li>Download + review "Updated Scoresheet May 2026" <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Read "Member Examples Links" — study how successful members answered <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Watch March webinar 2026 (49 min) <a class="res wmr" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Re-drill your 3 weakest answers from the mock</li>
+  </ul>
+</div>
+
+<div class="day-card">
+  <div class="day-header"><span class="day-badge b-fyv">June 15</span><span class="day-title">Greatest accomplishment + first impressions</span></div>
+  <ul class="day-tasks">
+    <li>Watch YouTube: Greatest accomplishment (3:09) <a class="res vid" href="https://www.youtube.com/@RonH111fireprep">Ron H channel</a></li>
+    <li>Read PDFs: "First impressions" + "Most appealing aspect" + "Define trust" <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Prepare 2–3 questions to ask the panel at the end</li>
+    <li>Final full practice session — smooth, confident, under 3 min per answer</li>
+  </ul>
+</div>
+
+<div class="day-card">
+  <div class="day-header"><span class="day-badge b-fyv">June 16 · Eve</span><span class="day-title">No cramming — logistics only</span></div>
+  <ul class="day-tasks">
+    <li>Light notes review only</li>
+    <li>Confirm route to <a class="lnk" href="https://maps.google.com/?q=303+W+Center+St+Fayetteville+AR">303 W. Center St, Fayetteville</a></li>
+    <li>Attire pressed, resume printed, early bedtime</li>
+  </ul>
+</div>
+
+<div class="day-card" style="border-color:#AFA9EC;border-width:2px">
+  <div class="day-header"><span class="day-badge b-int">June 17 · Interview day</span><span class="day-title">Fayetteville Fire Department oral board</span></div>
+  <ul class="day-tasks">
+    <li>Arrive 15–20 min early &middot; <a class="lnk" href="https://www.fayetteville-ar.gov/4083/Fire-Department">fayetteville-ar.gov/fire</a></li>
+    <li>Personalize every answer — real stories, no clone responses</li>
+    <li>Eye contact with every panel member, strong posture, energetic tone</li>
+    <li>Ask your prepared questions at the end</li>
+  </ul>
+</div>
+
+<hr class="div">
+<p class="phase-label">June 18–19 — Springdale pivot (must happen before vacation)</p>
+<div class="warn"><p>&#9888;&nbsp; Springdale interview is June 26 — the day you return. All Springdale prep must be done by June 19.</p></div>
+
+<div class="day-card">
+  <div class="day-header"><span class="day-badge b-spr">June 18</span><span class="day-title">Debrief + Springdale dept research</span></div>
+  <ul class="day-tasks">
+    <li>Write down what went well + what to improve from Fayetteville</li>
+    <li>Study Springdale FD facts — see Springdale tab &middot; <a class="lnk" href="https://www.springdalear.gov/o/sfd/page/fire-department">springdalear.gov</a></li>
+    <li>Rewrite Q4 for Springdale — Civil Service culture, training emphasis, diverse community</li>
+    <li>Re-read "Department information" PDF applied to Springdale <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+  </ul>
+</div>
+
+<div class="day-card">
+  <div class="day-header"><span class="day-badge b-spr">June 19</span><span class="day-title">Full Springdale mock oral board</span></div>
+  <ul class="day-tasks">
+    <li>Full recorded mock — Springdale context, confident reps <a class="res web" href="https://www.111fireprep.com/the-masters-program">members page</a></li>
+    <li>Join any live tutor/webinar session if available <a class="res wmr" href="https://us02web.zoom.us/j/3239523002?pwd=UWFXbDFMY0F1YlRtSmpweEhLUnU5UT09">Zoom link</a></li>
+    <li>On vacation: optional light PDF review on phone — mostly rest</li>
+  </ul>
+</div>
+
+<div class="day-card" style="border-color:#AFA9EC;border-width:2px">
+  <div class="day-header"><span class="day-badge b-int">June 26 · Interview day</span><span class="day-title">Springdale Fire Department oral board</span></div>
+  <ul class="day-tasks">
+    <li>One real interview already behind you — trust the work &middot; <a class="lnk" href="https://www.springdalear.gov/o/sfd">springdalear.gov/fire</a></li>
+    <li>Confirm route to <a class="lnk" href="https://maps.google.com/?q=417+Holcomb+St+Springdale+AR">417 Holcomb St, Springdale</a></li>
+    <li>Tailor "why this dept" to Springdale — Civil Service, training culture, diverse community</li>
+    <li>Same method: personal stories, strong delivery, no clones</li>
+  </ul>
+</div>
+
+</div>
+
+<!-- RESOURCES TAB -->
+<div id="tab-resources" class="tab-content">
+<p style="font-size:13px;color:#666;margin-bottom:14px">All 111fireprep resources with direct links. PDFs and site videos require login — one tap from the members page once logged in.</p>
+
+<p class="phase-label">Login + access</p>
+<div class="day-card">
+  <ul class="day-tasks">
+    <li>Members area (all PDFs, videos, webinars): <a class="lnk" href="https://www.111fireprep.com/the-masters-program">111fireprep.com/the-masters-program</a></li>
+    <li>1-on-1 booking + June dates: <a class="lnk" href="https://www.111fireprep.com/1-1-dates-and-times">111fireprep.com/1-1-dates-and-times</a></li>
+    <li>Webinar / tutor Zoom: <a class="lnk" href="https://us02web.zoom.us/j/3239523002?pwd=UWFXbDFMY0F1YlRtSmpweEhLUnU5UT09">zoom link</a> &middot; ID: 323 952 3002 &middot; PW: 244 206</li>
+    <li>Ron's email: <a class="lnk" href="mailto:fireinterviewprep@gmail.com">fireinterviewprep@gmail.com</a> &middot; Text: 253-973-5323</li>
+  </ul>
+</div>
+
+<p class="phase-label">YouTube — direct links</p>
+<div class="day-card">
+  <ul class="day-tasks">
+    <li>Customer Service example: <a class="lnk" href="https://youtu.be/gL0ezui-vTI">youtu.be/gL0ezui-vTI</a></li>
+    <li>Ron H full channel: <a class="lnk" href="https://www.youtube.com/@RonH111fireprep">youtube.com/@RonH111fireprep</a></li>
+    <li>Videos: Three traits &middot; Greatest accomplishment &middot; Empathy &middot; Customer Service &middot; Why this Dept &middot; Soetenga examples &middot; Integrity daily</li>
+  </ul>
+</div>
+
+<p class="phase-label">Members page — PDFs (login then tap)</p>
+<div class="day-card">
+  <ul class="day-tasks">
+    <li><strong>Start here:</strong> Values UPDATED &middot; Values Example &middot; Welcome to the program &middot; Department information &middot; The Core Truth What Panels Care About</li>
+    <li><strong>Core questions:</strong> Tell us about yourself &middot; What have you done to prepare &middot; Why firefighter &middot; Why do you want to work for us</li>
+    <li><strong>Values/character:</strong> Accountability &middot; Integrity &middot; Integrity means to me &middot; Teamwork &middot; Traits you can bring &middot; Customer service &middot; Empathy &middot; Trust &middot; First impressions &middot; Most appealing aspect</li>
+    <li><strong>Situational/difficult:</strong> Disobey a direct order &middot; Irate customer &middot; Weaknesses &middot; Strongly agree vs Strongly disagree &middot; Minority &middot; Psych Interview</li>
+    <li><strong>Community:</strong> Cultural diversity &middot; Social equity</li>
+    <li><strong>Process:</strong> Updated Scoresheet May 2026 &middot; Getting ready for the exam &middot; Resume + Cover letter &middot; Member Examples Links</li>
+    <li>All at: <a class="lnk" href="https://www.111fireprep.com/the-masters-program">111fireprep.com/the-masters-program</a></li>
+  </ul>
+</div>
+
+<p class="phase-label">Recorded webinars (members page)</p>
+<div class="day-card">
+  <ul class="day-tasks">
+    <li>May webinar 2026 (1:11:21) — city knowledge, conflict, background questions, 24-hr shift, motivation, stress</li>
+    <li>May tutor session #1 (46:26)</li>
+    <li>April webinar 2026 (59:01) — nerves, decoding questions, difficult questions, pitfalls</li>
+    <li>March webinar 2026 (49:33)</li>
+    <li>Getting ready for the interview (34:37)</li>
+    <li>Member Questions Part 1 Q1–Q3 (22:43)</li>
+    <li>Member Questions Part 2 Q4–Q6 (12:08)</li>
+    <li>Values and Examples Chart (14:04)</li>
+    <li>How to look for jobs (10:32)</li>
+    <li>All at: <a class="lnk" href="https://www.111fireprep.com/the-masters-program">111fireprep.com/the-masters-program</a></li>
+  </ul>
+</div>
+
+<p class="phase-label">Fire department links</p>
+<div class="day-card">
+  <ul class="day-tasks">
+    <li>Fayetteville FD main: <a class="lnk" href="https://www.fayetteville-ar.gov/4083/Fire-Department">fayetteville-ar.gov/4083</a></li>
+    <li>Fayetteville FD history: <a class="lnk" href="https://www.fayetteville-ar.gov/160/History-of-the-Fire-Department">fayetteville-ar.gov/160</a></li>
+    <li>Fayetteville NTN hiring posting: <a class="lnk" href="https://www.nationaltestingnetwork.com/publicsafetyjobs/fullJobDetails.cfm?agentid=440&jobid=2&agencyjobid=608">nationaltestingnetwork.com</a></li>
+    <li>Springdale FD main: <a class="lnk" href="https://www.springdalear.gov/o/sfd">springdalear.gov/sfd</a></li>
+    <li>Springdale FD about: <a class="lnk" href="https://www.springdalear.gov/o/sfd/page/fire-department">springdalear.gov/sfd/about</a></li>
+    <li>Springdale FD hiring process: <a class="lnk" href="https://www.springdalear.gov/o/sfd/page/recruitment-and-hiring-process">springdalear.gov/sfd/recruitment</a></li>
+  </ul>
+</div>
+</div>
+
+<!-- FAYETTEVILLE TAB -->
+<div id="tab-fayetteville" class="tab-content">
+<div class="dept-card">
+  <p style="font-size:15px;font-weight:700;color:#185FA5;margin:0 0 10px">Fayetteville Fire Department</p>
+  <div class="stat-row">
+    <span class="stat-pill">9 stations</span><span class="stat-pill">134 members</span><span class="stat-pill">ISO Class 1</span><span class="stat-pill">13,156 calls (2023)</span><span class="stat-pill">Founded ~1870</span>
+  </div>
+  <p class="df"><strong>Mission:</strong> Progressive all-hazards agency — fire suppression, EMS, all rescue types, code enforcement, arson investigation, public education.</p>
+  <p class="df"><strong>EMS:</strong> BLS first response (non-transport). All engines carry AEDs and basic medical gear.</p>
+  <p class="df"><strong>History:</strong> Roots to ~1870, fully career since the 1970s. Station 1 at 303 W. Center St. is on the National Register of Historic Places.</p>
+  <p class="df"><strong>Hiring contact:</strong> Battalion Chief Matt Sallee &middot; msallee@fayetteville-ar.gov</p>
+  <p class="df"><strong>Benefits:</strong> LOPFI retirement Program II, medical/dental/vision, life/LTD/AD&amp;D.</p>
+  <p class="df"><strong>Age limit:</strong> 18–35 at time of testing.</p>
+  <p class="df"><strong>Links:</strong> <a class="lnk" href="https://www.fayetteville-ar.gov/4083/Fire-Department">Dept page</a> &middot; <a class="lnk" href="https://www.fayetteville-ar.gov/160/History-of-the-Fire-Department">History</a> &middot; <a class="lnk" href="https://www.nationaltestingnetwork.com/publicsafetyjobs/fullJobDetails.cfm?agentid=440&jobid=2&agencyjobid=608">NTN posting</a> &middot; <a class="lnk" href="https://maps.google.com/?q=303+W+Center+St+Fayetteville+AR">Google Maps</a></p>
+</div>
+<div class="dept-card">
+  <p style="font-size:15px;font-weight:700;color:#185FA5;margin:0 0 10px">City of Fayetteville</p>
+  <div class="stat-row">
+    <span class="stat-pill">~101,680 residents</span><span class="stat-pill">2nd largest in AR</span><span class="stat-pill">U of A — 34,000+ students</span><span class="stat-pill">Washington County seat</span>
+  </div>
+  <p class="df"><strong>Economy:</strong> U of A generates $3B annual economic impact. NW Arkansas Fortune 500 corridor (Walmart, Tyson, J.B. Hunt). One of the fastest-growing metros in the U.S.</p>
+  <p class="df"><strong>Culture:</strong> College town, arts/music scene, outdoor recreation, diverse growing population.</p>
+  <p class="df"><strong>Say in your interview:</strong> "A growing university city with increasing call volume and diverse community needs is exactly the environment I want to serve and grow in."</p>
+</div>
+</div>
+
+<!-- SPRINGDALE TAB -->
+<div id="tab-springdale" class="tab-content">
+<div class="dept-card">
+  <p style="font-size:15px;font-weight:700;color:#854F0B;margin:0 0 10px">Springdale Fire Department</p>
+  <div class="stat-row">
+    <span class="stat-pill">8 stations</span><span class="stat-pill">133 full-time</span><span class="stat-pill">ISO Class 1/1x</span><span class="stat-pill">Civil Service</span><span class="stat-pill">Training center + burn tower</span>
+  </div>
+  <p class="df"><strong>Civil Service:</strong> Follows Arkansas Civil Service Law for hiring — formal, structured process. Mentioning this shows you've done your homework.</p>
+  <p class="df"><strong>EMS:</strong> All engines respond with EMTs or Paramedics. Paramedic Ambulances carry 1 Paramedic + 1 EMT.</p>
+  <p class="df"><strong>Staffing:</strong> Engines and ladders run 3 personnel. All stations staffed 24/7.</p>
+  <p class="df"><strong>Training culture:</strong> Dept publicly emphasizes training as a core value — reference this specifically in your interview.</p>
+  <p class="df"><strong>Links:</strong> <a class="lnk" href="https://www.springdalear.gov/o/sfd">Dept page</a> &middot; <a class="lnk" href="https://www.springdalear.gov/o/sfd/page/recruitment-and-hiring-process">Hiring process</a> &middot; <a class="lnk" href="https://maps.google.com/?q=417+Holcomb+St+Springdale+AR">Google Maps</a></p>
+</div>
+<div class="dept-card">
+  <p style="font-size:15px;font-weight:700;color:#854F0B;margin:0 0 10px">City of Springdale</p>
+  <div class="stat-row">
+    <span class="stat-pill">~90,000 residents</span><span class="stat-pill">3rd–4th largest in AR</span><span class="stat-pill">~41.6% Hispanic</span><span class="stat-pill">Tyson Foods HQ</span>
+  </div>
+  <p class="df"><strong>Diversity:</strong> One of AR's most diverse cities — cultural awareness and community connection will matter to this panel.</p>
+  <p class="df"><strong>Economy:</strong> Tyson Foods HQ, strong manufacturing base. Part of the NW Arkansas metro (622K+ residents, $40B+ GDP). Population up 95%+ since 2000.</p>
+  <p class="df"><strong>Say in your interview:</strong> "Springdale's diverse, fast-growing community is a big reason I want to serve here — every day is different and every interaction matters."</p>
+</div>
+</div>
+
+<script>
+function switchTab(name, e) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  e.target.closest('.tab-btn').classList.add('active');
+}
+</script>
+</body>
+</html>
