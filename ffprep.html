@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matt Firefighter Prep - Fayetteville FD June 17</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#C0392B;--rlt:#FADBD8;--navy:#1A2744;--navy2:#2C3E6B;--gold:#D4AC0D;--glt:#FEF9E7;--grn:#1E8449;--grnlt:#D5F5E3;--g50:#F8F9FA;--g100:#F1F3F4;--g200:#E8EAED;--g400:#9AA0A6;--g600:#5F6368;--g900:#202124;--wh:#fff;--r:8px;--sh:0 1px 3px rgba(0,0,0,.12)}
+body{font-family:'Inter',sans-serif;background:var(--g50);color:var(--g900);line-height:1.6}
+.hdr{background:var(--navy);color:var(--wh);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.hi{max-width:960px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.ht{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700}
+.hb{background:var(--red);font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;text-transform:uppercase}
+.tnav{background:var(--navy2);border-bottom:2px solid var(--red)}
+.tni{max-width:960px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none}
+.tni::-webkit-scrollbar{display:none}
+.tb{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,.6);background:none;border:none;padding:11px 16px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s}
+.tb:hover{color:rgba(255,255,255,.9)}
+.tb.active{color:var(--wh);border-bottom-color:var(--gold)}
+.main{max-width:960px;margin:0 auto;padding:24px 16px 60px}
+.tc{display:none}.tc.active{display:block}
+.sl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--g400);margin:28px 0 10px}
+.sl:first-child{margin-top:0}
+.card{background:var(--wh);border-radius:var(--r);border:1px solid var(--g200);padding:16px 18px;margin-bottom:10px;box-shadow:var(--sh)}
+.ct{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.card p{font-size:13px;color:var(--g600);line-height:1.7;margin-bottom:6px}
+.card p:last-child{margin-bottom:0}
+.card p strong{color:var(--g900);font-weight:600}
+.card ul,.card ol{padding-left:18px}
+.card li{font-size:13px;color:var(--g600);line-height:1.8;margin-bottom:2px}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:10px}
+.sb{background:var(--navy);border-radius:var(--r);padding:12px 14px;text-align:center}
+.sb .n{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;color:var(--gold);line-height:1}
+.sb .l{font-size:11px;color:rgba(255,255,255,.7);margin-top:3px;font-weight:500}
+.al{border-radius:var(--r);padding:12px 16px;margin-bottom:10px;font-size:13px;line-height:1.6}
+.alr{background:var(--rlt);border-left:4px solid var(--red);color:#7B241C}
+.alg{background:var(--glt);border-left:4px solid var(--gold);color:#6E5204}
+.algr{background:var(--grnlt);border-left:4px solid var(--grn);color:#1A5E38}
+.al strong{font-weight:700}
+.qc{background:var(--wh);border-radius:var(--r);border:1px solid var(--g200);margin-bottom:10px;box-shadow:var(--sh);overflow:hidden}
+.qq{padding:13px 16px;font-size:13px;font-weight:700;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;user-select:none;transition:background .1s}
+.qq:hover{background:var(--g50)}
+.qq .tog{font-size:18px;color:var(--g400);flex-shrink:0;transition:transform .2s}
+.qq.open .tog{transform:rotate(45deg)}
+.qa{display:none;padding:12px 16px 14px;font-size:13px;color:var(--g600);line-height:1.75;border-top:1px solid var(--g100)}
+.qa.show{display:block}
+.qa p{margin-bottom:8px}.qa p:last-child{margin-bottom:0}
+.qa strong{color:var(--g900);font-weight:600}
+.sara{background:var(--g50);border-radius:6px;padding:10px 14px;margin:8px 0;border:1px solid var(--g200)}
+.sr{font-size:12px;margin-bottom:5px;line-height:1.6}.sr:last-child{margin-bottom:0}
+.sr strong{color:var(--navy)}
+.ti{font-size:12px;color:#922B21;font-weight:600;margin-top:8px;display:block}
+.ql{list-style:none}
+.ql li{font-size:13px;color:var(--g600);padding:9px 14px;border-bottom:1px solid var(--g100);display:flex;gap:10px;align-items:flex-start}
+.ql li:last-child{border-bottom:none}
+.qn{font-size:11px;font-weight:700;color:var(--g400);min-width:22px;margin-top:1px;flex-shrink:0}
+.ch{background:var(--navy);color:var(--wh);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:8px 14px;border-radius:var(--r) var(--r) 0 0;margin-top:14px}
+.ch+.card{border-radius:0 0 var(--r) var(--r);margin-top:0}
+.tg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:600px){.tg{grid-template-columns:1fr}}
+.tc2{background:var(--wh);border:1px solid var(--g200);border-radius:var(--r);padding:14px 16px;box-shadow:var(--sh)}
+.tc2 h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.tc2 ul{padding-left:16px}
+.tc2 li{font-size:12px;color:var(--g600);line-height:1.7;margin-bottom:2px}
+.ts{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
+.tn{background:var(--red);color:var(--wh);font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tb2 h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.tb2 p{font-size:13px;color:var(--g600);line-height:1.65}
+a.lnk{color:var(--navy2);text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hi">
+    <div class="ht">Firefighter Interview Prep - Matt</div>
+    <div class="hb">June 17 - Fayetteville FD</div>
+  </div>
+  <div class="tnav">
+    <div class="tni">
+      <button class="tb active" onclick="sw('cs',this)">Cheat Sheet</button>
+      <button class="tb" onclick="sw('qa',this)">Key Q&amp;A</button>
+      <button class="tb" onclick="sw('qb',this)">Full Question Bank</button>
+      <button class="tb" onclick="sw('tp',this)">Tips &amp; Delivery</button>
+      <button class="tb" onclick="sw('st',this)">Study Tonight</button>
+    </div>
+  </div>
+</div>
+<div class="main">
+
+<!-- CHEAT SHEET -->
+<div id="tab-cs" class="tc active">
+<div class="al alr"><strong>Interview tomorrow - June 17.</strong> Read every section in this tab tonight. This is everything you need to sound prepared.</div>
+
+<div class="sl">Fayetteville Fire Department - the numbers</div>
+<div class="sg">
+  <div class="sb"><div class="n">9</div><div class="l">Fire Stations</div></div>
+  <div class="sb"><div class="n">134</div><div class="l">Sworn Members</div></div>
+  <div class="sb"><div class="n">13,156</div><div class="l">Calls in 2023</div></div>
+  <div class="sb"><div class="n">119</div><div class="l">EMTs on Staff</div></div>
+  <div class="sb"><div class="n">45</div><div class="l">Tech Rescue Members</div></div>
+  <div class="sb"><div class="n">30</div><div class="l">HazMat Technicians</div></div>
+</div>
+
+<div class="card">
+<div class="ct">Say this if asked "What do you know about Fayetteville FD?"</div>
+<p>"The Fayetteville Fire Department is a <strong>progressive, all-hazards emergency services response agency</strong> that includes fire suppression, emergency medical services, every kind of rescue, code enforcement, arson investigation, and public education." This is their official language - saying it proves you researched them.</p>
+</div>
+
+<div class="card">
+<div class="ct">Key facts to know</div>
+<p><strong>Founded:</strong> Around 1870 - one of AR's oldest departments. Went fully career in the 1970s.</p>
+<p><strong>ISO Rating:</strong> Class 1 - the best possible. Only about 4% of U.S. departments earn this.</p>
+<p><strong>Strategic Plan:</strong> 2024-2029 plan adopted April 2024. Focus: continuous improvement and CPSE accreditation. Theme: "Service is our why."</p>
+<p><strong>Fire Chief:</strong> Brad Hardin</p>
+<p><strong>HQ / Station 1:</strong> 303 W. Center Street - on the National Register of Historic Places</p>
+<p><strong>Shifts:</strong> A, B, and C Shift (24-on / 48-off schedule)</p>
+<p><strong>EMS system:</strong> FFD provides BLS first response. Washington County Regional Ambulance Authority (Central EMS) transports to hospitals. All apparatus carry AEDs.</p>
+</div>
+
+<div class="card">
+<div class="ct">Specialized teams - know at least 2 of these</div>
+<p><strong>Technical Rescue Team (TRT):</strong> 45 members. Rope rescue, confined space, trench rescue, structural collapse, heavy vehicle extrication, antenna/tower rescue. Responds regionwide across NW Arkansas.</p>
+<p><strong>HazMat Team:</strong> 30 technician-level members. 5 groups: Air Monitoring, Protective Equipment, Communications/Research, Decon, Spill Control. Partnered with the 61st Civil Support Team out of Little Rock.</p>
+<p><strong>Swift Water Rescue:</strong> Zodiac boats, wetsuits, PFDs. Critical because Fayetteville has 3 city lakes, the White River, and flood-prone areas.</p>
+<p><strong>Aircraft Rescue (ARFF):</strong> Station 8 on South School Ave covers the airport. All assigned firefighters are ARFF certified.</p>
+<p><strong>Public Education:</strong> Free CPR/AED, Stop the Bleed, and First Aid courses offered to the community - shows deep investment in prevention and public service.</p>
+<p><strong>Honor Guard:</strong> Est. 2002. Posts colors at funerals and ceremonies - shows the department's respect for tradition and fallen members.</p>
+</div>
+
+<div class="card">
+<div class="ct">City of Fayetteville - know your community</div>
+<p><strong>Population:</strong> About 101,680 - 2nd largest city in Arkansas</p>
+<p><strong>University of Arkansas:</strong> Flagship campus, 34,000+ students, $3B+ annual economic impact. Dense, young, transient population = high call volume and diverse scenarios.</p>
+<p><strong>NW Arkansas:</strong> Fortune 500 corridor - Walmart (Bentonville), Tyson Foods (Springdale), J.B. Hunt (Lowell). One of the fastest-growing metros in the U.S.</p>
+<p><strong>Geography/hazards:</strong> 3 city lakes, White River, flood-prone areas, regional airport, high-density residential near campus.</p>
+<p><strong>Culture:</strong> College town, arts scene, outdoor recreation, growing diversity. Forbes ranks it a top place to live and work.</p>
+</div>
+
+<div class="card">
+<div class="ct">Drop this if asked about the department's future direction</div>
+<p>In April 2024, the City Council adopted a 5-year strategic plan focused on <strong>continuous improvement</strong> and pursuing <strong>CPSE accreditation</strong> - which requires addressing 261 performance indicators. Built from internal staff input AND community stakeholder input.</p>
+<p><em>Say: "I know Fayetteville FD is in its 2024-2029 Strategic Plan focused on continuous improvement and CPSE accreditation. That commitment to excellence is exactly the kind of organization I want to be part of and grow in."</em></p>
+</div>
+
+<div class="sl">SARA - structure for every story-based answer</div>
+<div class="card">
+<p><strong>S - Situation:</strong> Who, what, where, why. Set the scene in 1-2 sentences.</p>
+<p><strong>A - Action:</strong> What YOU specifically did. Use "I" not "we." Be concrete.</p>
+<p><strong>R - Result:</strong> What happened because of your actions. Positive outcome.</p>
+<p><strong>A - Application:</strong> How this applies to the fire service and this role.</p>
+<p><em>Keep every answer under 3 minutes. Time yourself when you practice tonight.</em></p>
+</div>
+
+<div class="sl">Values - your personal definitions and stories</div>
+<div class="card">
+<p style="font-size:12px;color:#922B21;font-weight:600;margin-bottom:10px">Format for every value answer: Define it in your own words → tell YOUR story (SARA) → tie it to the fire service. Under 3 minutes.</p>
+
+<p><strong>INTEGRITY</strong> — Doing the right thing when no one is watching, especially when it would be easy not to.</p>
+<p style="font-size:12px;color:#5F6368;margin-bottom:2px"><em>Your story: Roofing.</em> When you are on someone's roof, they cannot see you. They have no idea if you are cutting corners, skipping steps, or doing it right. They are trusting you completely. That is integrity in its purest form — your standard does not change because no one is watching.</p>
+<p style="font-size:12px;color:#5F6368;margin-bottom:10px"><em>Tie-in:</em> "In the fire service, your crew and your community trust you the same way. When you are inside a burning building, no one is standing over you checking your work. Your integrity is the only thing holding the standard."</p>
+
+<p><strong>ACCOUNTABILITY</strong> — Owning your commitments and following through even when it is hard.</p>
+<p style="font-size:12px;color:#5F6368;margin-bottom:2px"><em>Your story: College.</em> College was not easy or enjoyable, but you knew finishing mattered — for your future and for proving to yourself you finish what you start. You held yourself accountable: attended every class, took 18 credit hours this summer to stay on track to graduate. No one forced you. You did it because you said you would.</p>
+<p style="font-size:12px;color:#5F6368;margin-bottom:10px"><em>Tie-in:</em> "Accountability in a firehouse means your crew does not have to wonder if you will show up, do your part, or follow through. I have been proving that to myself for the last few years."</p>
+
+<p><strong>TEAMWORK</strong> — Every person has a role. When one piece fails, the whole unit fails.</p>
+<p style="font-size:12px;color:#5F6368;margin-bottom:2px"><em>Your story: Football captain.</em> As captain, your job was not just to perform — it was to make sure every person on that team understood their role and felt it mattered. The line that never gets the glory, the backup who has to stay ready. Culture and communication were everything. When both were right, the team won. When either broke down, it showed up on the scoreboard.</p>
+<p style="font-size:12px;color:#5F6368;margin-bottom:10px"><em>Tie-in:</em> "On a fire scene, every role is critical — the engineer, the nozzle man, the crew outside. One person freelancing or not communicating puts everyone at risk. I understand that from football in a deep way."</p>
+
+<p><strong>CUSTOMER SERVICE</strong> — Reading the person in front of you and meeting them where they are, not where you want them to be.</p>
+<p style="font-size:12px;color:#5F6368;margin-bottom:2px"><em>Your story: 5 siblings.</em> Growing up with five siblings, every single one of them needed something different from you. Talking to Hayden about football or the future is a completely different conversation than playing with Jax, or helping Paige with her garden. You learned early that real service means adapting to the person — not giving everyone the same thing.</p>
+<p style="font-size:12px;color:#5F6368;margin-bottom:10px"><em>Tie-in:</em> "Every call is a different person in a different kind of crisis. A firefighter who shows up with the same energy and approach for every person is not doing customer service — they are going through motions. I learned to read the room before I ever knew that was a skill."</p>
+
+<p><strong>EMPATHY</strong> — Putting yourself in someone else's position so completely that your response actually fits what they need.</p>
+<p style="font-size:12px;color:#5F6368;margin-bottom:2px"><em>Your story: Big Brother.</em> Your Little has come to you with things that hurt — big losses, breakups, moments where he did not know what to do. You did not hand him a solution. You put yourself in his position first. You remembered what those things felt like at his age. That is what allowed your advice to actually land instead of just sounding like an adult talking at him.</p>
+<p style="font-size:12px;color:#5F6368;margin-bottom:10px"><em>Tie-in:</em> "On an EMS call or at a fire scene, the person in front of you is not a situation to manage — they are a human being having the worst moment of their life. Empathy is what keeps you from treating them like a call number."</p>
+
+<p><strong>TRUST</strong> — Built through consistent action over time, not words. Earned on the practice field before the game.</p>
+<p style="font-size:12px;color:#5F6368;margin-bottom:2px"><em>Your story: Football again.</em> As captain, the team did not trust you because you had the title — they trusted you because of what you did every day in practice when it did not matter. The way you handled a bad rep. The way you treated the youngest player on the roster. Trust was the scoreboard of how you showed up every single day before anyone was watching.</p>
+<p style="font-size:12px;color:#5F6368;margin-bottom:10px"><em>Tie-in:</em> "In a firehouse, trust between crew members is built the same way — long before there is an emergency. If your crew does not trust you at the dinner table, they will not trust you inside a structure fire."</p>
+</div>
+
+<div class="sl">Interview day logistics</div>
+<div class="card">
+<p><strong>Location:</strong> <a class="lnk" href="https://maps.google.com/?q=303+W+Center+St+Fayetteville+AR">303 W. Center St, Fayetteville AR 72701 (Fire Station 1)</a></p>
+<p><strong>Arrive:</strong> 15-20 minutes early. Review this page in the car if needed.</p>
+<p><strong>Dress:</strong> Button-down shirt, slacks or khakis, dress shoes. Clean and pressed. Tie is a bonus.</p>
+<p><strong>Bring:</strong> 2-3 printed resumes, notepad and pen.</p>
+<p><strong>Phone:</strong> Silenced before you walk in. Not on the table.</p>
+</div>
+
+<div class="sl">Questions to ask the panel - pick 3</div>
+<div class="card">
+<p style="font-size:12px;color:#5F6368;margin-bottom:10px">These are designed to do two things: show you are serious and thoughtful, and invite the panel to open up and connect with you personally. Listen to their answers — then respond naturally. The best interviews become conversations.</p>
+
+<p><strong>About the department and the role:</strong></p>
+<ul>
+<li>"What does success look like for a new firefighter in their first year here?"</li>
+<li>"What opportunities exist down the road to get involved in specialized teams like TRT or HazMat?"</li>
+<li>"How does the department support ongoing education and professional development for its members?"</li>
+<li>"What does the onboarding process look like for a new hire — what should someone focus on in their first few months?"</li>
+</ul>
+
+<p style="margin-top:10px"><strong>Questions that invite them to reflect and connect with you:</strong></p>
+<ul>
+<li>"What do you love most about working for Fayetteville Fire Department?" — This gets them talking about why they stayed. Listen and connect your answer back to what they say.</li>
+<li>"What qualities do you see in firefighters who really thrive here long-term — beyond the technical skills?" — Shows you are thinking about fit and culture, not just getting hired.</li>
+<li>"Is there anything about my background or answers today that I can clarify or expand on?" — Bold, confident, and rare. It shows self-awareness and gives you a chance to address anything you want to strengthen before you walk out.</li>
+<li>"What is the culture like between shifts — how does the crew interact on a day-to-day basis?" — Signals you care about the people, not just the job.</li>
+<li>"What drew you personally to the fire service?" — If the moment feels right and natural, this is the most powerful one. People love talking about their own why, and it creates a genuine human moment at the end of the interview.</li>
+</ul>
+</div>
+</div>
+
+<!-- KEY Q&A -->
+<div id="tab-qa" class="tc">
+<div class="al alg"><strong>How to use this tab:</strong> Tap a question to see the answer framework. Don't memorize word-for-word - learn the structure and fill it with YOUR real personal stories.</div>
+
+<div class="sl">The 4 questions they will almost certainly ask</div>
+
+<div class="qc">
+<div class="qq" onclick="tQ(this)"><span>Tell us about yourself.</span><span class="tog">+</span></div>
+<div class="qa">
+<p><strong>What they're really asking:</strong> Who are you as a person, not a resume bullet? Are you personable, self-aware, and a good communicator?</p>
+<div class="sara">
+<div class="sr"><strong>Open:</strong> Where you're from / what shaped your character early on</div>
+<div class="sr"><strong>Middle:</strong> Work or life experience that built relevant skills - teamwork, service, physical challenge, problem-solving</div>
+<div class="sr"><strong>Close:</strong> Why you're sitting in that chair today - connect your story to this career</div>
+</div>
+<p><strong>What NOT to do:</strong> Don't recite your resume. Don't list certifications. Don't open with "I've always wanted to be a firefighter."</p>
+<span class="ti">Start with something personal and memorable - a place, a person, a defining moment. Make them lean in.</span>
+</div>
+</div>
+
+<div class="qc">
+<div class="qq" onclick="tQ(this)"><span>Why do you want to be a firefighter?</span><span class="tog">+</span></div>
+<div class="qa">
+<p><strong>What they're really asking:</strong> Is your motivation genuine and specific - or are you one of 50 people who said "I want to help people"?</p>
+<p><strong>Don't say:</strong> "I want to help people" or "I want to serve my community." These are true but generic and forgettable.</p>
+<p><strong>Do say:</strong> Tell the specific story. What lit the fire? A call you witnessed? Someone who influenced you? A moment where you realized this was the only job you wanted?</p>
+<div class="sara">
+<div class="sr"><strong>S:</strong> The specific moment, person, or event that pointed you toward this career</div>
+<div class="sr"><strong>A:</strong> What you did AFTER that moment - how you pursued it (physical prep, certs, research, ride-alongs)</div>
+<div class="sr"><strong>R:</strong> Where that journey brought you - sitting in front of this panel</div>
+<div class="sr"><strong>A:</strong> What the fire service means to you: service, brotherhood, challenge, community impact</div>
+</div>
+<span class="ti">The panel wants to FEEL the why. Make them feel it, don't just say it.</span>
+</div>
+</div>
+
+<div class="qc">
+<div class="qq" onclick="tQ(this)"><span>What have you done to prepare for a career in the fire service?</span><span class="tog">+</span></div>
+<div class="qa">
+<p><strong>What they're really asking:</strong> Have you taken this seriously before anyone hired you? Are you investing in yourself?</p>
+<p><strong>Cover 3 areas:</strong></p>
+<div class="sara">
+<div class="sr"><strong>Physical:</strong> Your training regimen - how you have prepared your body for the demands of the job</div>
+<div class="sr"><strong>Mental:</strong> Interview prep, department research, studying the fire service - show you went beyond the surface</div>
+<div class="sr"><strong>Certs and Experience:</strong> EMT, Firefighter I/II, CPR, first aid, ride-alongs, volunteer work, relevant jobs and life experiences</div>
+</div>
+<p>Life and work experiences matter as much as certs. Any job where you worked under pressure, served others in crisis, or solved physical problems counts.</p>
+<span class="ti">Mention researching Fayetteville FD specifically - their strategic plan, specialized teams, ISO rating. Shows you went beyond a Google search.</span>
+</div>
+</div>
+
+<div class="qc">
+<div class="qq" onclick="tQ(this)"><span>Why do you want to work for the Fayetteville Fire Department specifically?</span><span class="tog">+</span></div>
+<div class="qa">
+<p><strong>What they're really asking:</strong> Did you apply here because you want THIS department, or just because it was the first posting you saw?</p>
+<div class="sara">
+<div class="sr"><strong>Community:</strong> "Fayetteville is a growing university city - the call volume and variety of scenarios is exactly the environment I want to develop in"</div>
+<div class="sr"><strong>Specializations:</strong> TRT, HazMat, Swift Water - real opportunities to grow into specialized, high-skill roles over a career</div>
+<div class="sr"><strong>Reputation:</strong> ISO Class 1 - only about 4% of departments earn this. That standard speaks to how seriously this department takes its craft.</div>
+<div class="sr"><strong>Direction:</strong> The 2024-2029 Strategic Plan and CPSE accreditation pursuit - "This is a department actively investing in being better. That is where I want to grow."</div>
+</div>
+<span class="ti">If you have a personal connection to Fayetteville or NW Arkansas, mention it. Community roots matter to panels.</span>
+</div>
+</div>
+
+<div class="sl">Values and character questions</div>
+
+<div class="qc">
+<div class="qq" onclick="tQ(this)"><span>What does integrity mean to you, and how do you display it daily?</span><span class="tog">+</span></div>
+<div class="qa">
+<p><strong>Define:</strong> Integrity is doing the right thing even when no one is watching - especially when it costs you something.</p>
+<div class="sara">
+<div class="sr"><strong>S:</strong> A real situation where you had to choose the harder right thing over the easier wrong thing</div>
+<div class="sr"><strong>A:</strong> What you did - and what it cost you (a friendship, a shortcut, a benefit)</div>
+<div class="sr"><strong>R:</strong> How it turned out - trust was earned, the outcome was better, you could hold your head up</div>
+<div class="sr"><strong>A:</strong> In the fire service, your crew trusts you with their lives. Integrity is not optional - it is the foundation of everything.</div>
+</div>
+</div>
+</div>
+
+<div class="qc">
+<div class="qq" onclick="tQ(this)"><span>What are three traits you would bring to this department?</span><span class="tog">+</span></div>
+<div class="qa">
+<p><strong>Don't just list adjectives.</strong> Pick 3 values, personally define each one, and give a quick real example for each.</p>
+<p><strong>Strong picks:</strong> Integrity, Accountability, Teamwork, Coachability, Work Ethic, Reliability, Empathy</p>
+<div class="sara">
+<div class="sr"><strong>Format per trait:</strong> "One trait I would bring is [X]. To me that means [personal definition]. For example, [1-sentence real story]. In the fire service, that matters because [tie-in]."</div>
+</div>
+<span class="ti">Match your traits to the department's values if you know them. Shows alignment and research.</span>
+</div>
+</div>
+
+<div class="qc">
+<div class="qq" onclick="tQ(this)"><span>Why is teamwork important in the fire service?</span><span class="tog">+</span></div>
+<div class="qa">
+<p><strong>Core answer:</strong> "We do everything together - and for specific reasons: safety, effectiveness, and because lives, property, and the environment depend on coordination."</p>
+<p>A firefighter working alone is a firefighter in danger. Communication, trust, and coordination are not optional - they are survival.</p>
+<div class="sara">
+<div class="sr"><strong>S:</strong> A time you worked on a real team under real pressure</div>
+<div class="sr"><strong>A:</strong> Your specific role - how you communicated, supported others, stepped up when needed</div>
+<div class="sr"><strong>R:</strong> The outcome that would not have happened without the team</div>
+<div class="sr"><strong>A:</strong> On a fire scene, crew cohesion saves lives. I learned that outside this job and I will carry it in.</div>
+</div>
+</div>
+</div>
+
+<div class="sl">Behavioral and situational questions</div>
+
+<div class="qc">
+<div class="qq" onclick="tQ(this)"><span>Describe a time you had a conflict with a coworker. How did you handle it?</span><span class="tog">+</span></div>
+<div class="qa">
+<p><strong>What they're watching for:</strong> Emotional maturity. Can you work through friction without blowing up or shutting down?</p>
+<p><strong>Don't say:</strong> "I don't really have conflicts" or "I just kept my head down." That reads as avoidant and immature.</p>
+<div class="sara">
+<div class="sr"><strong>S:</strong> A real disagreement where there was genuine friction - not trivial</div>
+<div class="sr"><strong>A:</strong> How you stepped back, approached the person directly, listened, and found common ground</div>
+<div class="sr"><strong>R:</strong> The relationship improved. The work improved. You both moved forward.</div>
+<div class="sr"><strong>A:</strong> In a firehouse, you live with your crew for 24 hours. Friction that is left to fester affects the whole team and ultimately the community you serve.</div>
+</div>
+</div>
+</div>
+
+<div class="qc">
+<div class="qq" onclick="tQ(this)"><span>You witness a fellow firefighter steal from a fire victim. What do you do?</span><span class="tog">+</span></div>
+<div class="qa">
+<p><strong>What they're really asking:</strong> Does your integrity bend under social pressure - even when the wrong person is someone on your crew?</p>
+<p><strong>The answer:</strong> You report it. No exceptions. No version of this where you look the other way.</p>
+<p>Say: "The trust the community places in us is the foundation of everything we do. I would address it directly with that firefighter first - giving them the chance to self-report. Then I would report it to my supervisor. That is not betraying a coworker. That is protecting the department, the community, and every firefighter who serves with honor."</p>
+<span class="ti">Don't waver on this. The panel is testing whether your integrity bends under social pressure. It does not.</span>
+</div>
+</div>
+
+<div class="qc">
+<div class="qq" onclick="tQ(this)"><span>Would you ever disobey a direct order?</span><span class="tog">+</span></div>
+<div class="qa">
+<p><strong>The honest answer:</strong> Almost never. The chain of command exists for life-safety reasons. Be clear and confident about this.</p>
+<p><strong>The one exception:</strong> If following the order would result in clear, immediate, and preventable loss of life - including your own. And even then, you communicate first.</p>
+<p>Say: "I believe strongly in the chain of command - it exists because coordinated, disciplined teams save more lives. I would follow orders even if I disagreed, and raise concerns through the proper channels afterward. The only exception would be if an order put someone in clear and immediate danger - and even then, my first move is to communicate that concern loudly and clearly, not just act unilaterally."</p>
+</div>
+</div>
+
+<div class="qc">
+<div class="qq" onclick="tQ(this)"><span>Tell me about a time you dealt with a difficult or irate person.</span><span class="tog">+</span></div>
+<div class="qa">
+<p><strong>What they're asking:</strong> Can you stay calm, professional, and empathetic when someone is at their worst?</p>
+<div class="sara">
+<div class="sr"><strong>S:</strong> A real encounter with an upset, scared, or aggressive person - in a job, at school, anywhere</div>
+<div class="sr"><strong>A:</strong> You stayed calm. You listened first. You did not match their energy. You acknowledged their feelings before solving the problem.</div>
+<div class="sr"><strong>R:</strong> The situation de-escalated. The person felt heard. The outcome improved.</div>
+<div class="sr"><strong>A:</strong> At an emergency scene, people are in crisis. Meeting them with patience and empathy makes every aspect of the response go better.</div>
+</div>
+</div>
+</div>
+
+<div class="qc">
+<div class="qq" onclick="tQ(this)"><span>What is a weakness you have, and what are you doing about it?</span><span class="tog">+</span></div>
+<div class="qa">
+<p><strong>Don't say:</strong> "I work too hard" or "I am a perfectionist." These are non-answers that signal a lack of self-awareness.</p>
+<p><strong>Do say:</strong> A real, honest weakness that does not disqualify you from the job, but shows self-awareness and a growth plan.</p>
+<p><strong>Examples:</strong> "Early in my career I struggled to ask for help - I thought it showed weakness. I've learned that in the fire service, knowing when to ask IS competence. I have been deliberately working on this by [specific action]."</p>
+<p>Or: "I used to get too focused on a task and lose sight of the bigger picture. I have been practicing stepping back and checking in with my team more frequently."</p>
+<span class="ti">Always end with: "Here is how I am actively working on it." Growth mindset wins panels.</span>
+</div>
+</div>
+
+<div class="sl">Questions to ask the panel at the end</div>
+<div class="card">
+<ul>
+<li>"What does success look like for a new firefighter in their first year here?"</li>
+<li>"What opportunities exist to get involved in specialized teams like TRT or HazMat over time?"</li>
+<li>"How does the department support ongoing education and professional development?"</li>
+<li>"What qualities do you see in firefighters who thrive here long-term?"</li>
+<li>"What is the culture like between shifts - what is a typical day-to-day dynamic?"</li>
+</ul>
+</div>
+</div>
+
+<!-- FULL QUESTION BANK -->
+<div id="tab-qb" class="tc">
+<div class="al alg">A comprehensive list of questions that could come up in a firefighter oral board. Use these to practice with someone tonight or to mentally walk through your answers.</div>
+
+<div class="ch">The Core 4 - will almost certainly be asked</div>
+<div class="card">
+<ul class="ql">
+<li><span class="qn">1</span>Tell us about yourself.</li>
+<li><span class="qn">2</span>Why do you want to be a firefighter?</li>
+<li><span class="qn">3</span>What have you done to prepare for a career in the fire service?</li>
+<li><span class="qn">4</span>Why do you want to work for the Fayetteville Fire Department?</li>
+</ul>
+</div>
+
+<div class="ch">Values and Character</div>
+<div class="card">
+<ul class="ql">
+<li><span class="qn">5</span>What does integrity mean to you and how do you display it daily?</li>
+<li><span class="qn">6</span>What does accountability mean to you?</li>
+<li><span class="qn">7</span>What are three traits you would bring to this department?</li>
+<li><span class="qn">8</span>What does customer service mean to you and why is it important in the fire service?</li>
+<li><span class="qn">9</span>What does trust mean to you and how is it earned in the fire service?</li>
+<li><span class="qn">10</span>What does empathy mean to you and describe a time you used it?</li>
+<li><span class="qn">11</span>What does pride and loyalty mean to you?</li>
+<li><span class="qn">12</span>What does cultural diversity mean and why is it important in the fire service?</li>
+<li><span class="qn">13</span>What does social equity mean to you?</li>
+<li><span class="qn">14</span>How do you define respect and how do you show it to others?</li>
+<li><span class="qn">15</span>What does commitment mean to you in a professional context?</li>
+</ul>
+</div>
+
+<div class="ch">Teamwork and Leadership</div>
+<div class="card">
+<ul class="ql">
+<li><span class="qn">16</span>Why is teamwork important in the fire service?</li>
+<li><span class="qn">17</span>Describe a time you worked as part of a team under pressure.</li>
+<li><span class="qn">18</span>Describe a time you took a leadership role on a team.</li>
+<li><span class="qn">19</span>Describe a time you had to follow a leader you disagreed with.</li>
+<li><span class="qn">20</span>Tell us about a time a team you were on failed. What happened and what did you learn?</li>
+<li><span class="qn">21</span>What makes a good firefighter?</li>
+<li><span class="qn">22</span>What qualities should a good officer have?</li>
+<li><span class="qn">23</span>How would your current coworkers or teammates describe you?</li>
+</ul>
+</div>
+
+<div class="ch">Behavioral - "Describe a time..." (Use SARA for all of these)</div>
+<div class="card">
+<ul class="ql">
+<li><span class="qn">24</span>Describe a time you had a conflict with a coworker and how you resolved it.</li>
+<li><span class="qn">25</span>Describe a time you made a mistake at work. What happened and what did you do?</li>
+<li><span class="qn">26</span>Tell us about a time you dealt with a difficult or irate person.</li>
+<li><span class="qn">27</span>Describe a time you received constructive criticism. How did you respond?</li>
+<li><span class="qn">28</span>Describe a time you went above and beyond what was expected of you.</li>
+<li><span class="qn">29</span>Tell us about your greatest accomplishment.</li>
+<li><span class="qn">30</span>Describe a time you had to adapt quickly to a sudden change or setback.</li>
+<li><span class="qn">31</span>Tell us about a time you worked under significant stress or pressure.</li>
+<li><span class="qn">32</span>Describe a time you showed empathy and were able to change someone's outcome.</li>
+<li><span class="qn">33</span>Tell us about a time you had to make a quick decision without all the information you needed.</li>
+<li><span class="qn">34</span>Describe a time you mentored or helped someone less experienced than you.</li>
+<li><span class="qn">35</span>Tell us about a time you had to deliver bad news to someone.</li>
+</ul>
+</div>
+
+<div class="ch">Situational - Ethical and Judgment Questions</div>
+<div class="card">
+<ul class="ql">
+<li><span class="qn">36</span>You witness a fellow firefighter steal from a fire victim's home. What do you do?</li>
+<li><span class="qn">37</span>Would you ever disobey a direct order? Under what circumstances?</li>
+<li><span class="qn">38</span>You see a fellow firefighter show up to work impaired. What do you do?</li>
+<li><span class="qn">39</span>You disagree with your captain's tactical decision on scene. What do you do?</li>
+<li><span class="qn">40</span>A fellow firefighter is not pulling their weight and the crew is frustrated. What do you do?</li>
+<li><span class="qn">41</span>You are asked to do something you think is wrong but it is not clearly illegal. What do you do?</li>
+<li><span class="qn">42</span>You overhear another crew talking negatively about the department. What do you do?</li>
+<li><span class="qn">43</span>You know a coworker lied on their time sheet. What do you do?</li>
+<li><span class="qn">44</span>Your crew disagrees with a new department policy. How do you handle it?</li>
+<li><span class="qn">45</span>You respond to a house fire and recognize the homeowner as someone who has made very poor life choices. Does that affect your response?</li>
+</ul>
+</div>
+
+<div class="ch">About the Fire Service and Fayetteville</div>
+<div class="card">
+<ul class="ql">
+<li><span class="qn">46</span>What do you know about the Fayetteville Fire Department?</li>
+<li><span class="qn">47</span>What do you know about our city and the community you would be serving?</li>
+<li><span class="qn">48</span>What does a typical 24-hour shift look like for a firefighter?</li>
+<li><span class="qn">49</span>What is the most appealing aspect of being a firefighter?</li>
+<li><span class="qn">50</span>What is the least appealing aspect of being a firefighter and how will you handle it?</li>
+<li><span class="qn">51</span>How does diversity and inclusion make a fire department stronger?</li>
+<li><span class="qn">52</span>What role does a firefighter play in the community beyond emergency response?</li>
+<li><span class="qn">53</span>What motivates you to go to work every day in a career like this?</li>
+<li><span class="qn">54</span>How do you plan to handle the emotional toll - traumatic scenes, loss of life, difficult calls?</li>
+<li><span class="qn">55</span>What is something that stresses you out and how do you manage it?</li>
+</ul>
+</div>
+
+<div class="ch">Personal and Self-Awareness</div>
+<div class="card">
+<ul class="ql">
+<li><span class="qn">56</span>What is your greatest weakness and what are you doing about it?</li>
+<li><span class="qn">57</span>What is your greatest strength and how would it benefit this department?</li>
+<li><span class="qn">58</span>Where do you see yourself in 5 years in the fire service?</li>
+<li><span class="qn">59</span>How do you handle being wrong?</li>
+<li><span class="qn">60</span>Describe your work ethic in your own words.</li>
+<li><span class="qn">61</span>How do you handle constructive criticism?</li>
+<li><span class="qn">62</span>Are you more of a leader or a follower? Give a real example of each.</li>
+<li><span class="qn">63</span>What would the people who know you best say is your biggest flaw?</li>
+<li><span class="qn">64</span>Tell me something about you that is not on your resume.</li>
+<li><span class="qn">65</span>How do you handle boredom or downtime at work?</li>
+</ul>
+</div>
+
+<div class="ch">Background Questions - Be honest, be prepared</div>
+<div class="card">
+<ul class="ql">
+<li><span class="qn">66</span>Have you ever been fired or asked to resign from a job? Explain honestly.</li>
+<li><span class="qn">67</span>Do you have any prior criminal history? Explain and own it.</li>
+<li><span class="qn">68</span>Have you ever used illegal drugs? When was the last time?</li>
+<li><span class="qn">69</span>Have you had any driving violations or DUIs?</li>
+<li><span class="qn">70</span>Is there anything in your background we might find that you would like to address proactively right now?</li>
+</ul>
+</div>
+</div>
+
+<!-- TIPS -->
+<div id="tab-tp" class="tc">
+<div class="sl">Before you walk in</div>
+<div class="tg">
+<div class="tc2">
+<h4>Mindset</h4>
+<ul>
+<li>You are being evaluated, not judged. The panel wants to find their next hire.</li>
+<li>Nerves are energy - redirect them. Breathe slowly, sit tall, let it fuel your delivery.</li>
+<li>You have lived experiences they cannot teach. That is what they are looking for.</li>
+<li>One bad answer does not sink you. Keep moving forward after every question.</li>
+</ul>
+</div>
+<div class="tc2">
+<h4>First impression</h4>
+<ul>
+<li>The interview starts in the parking lot. Assume someone is watching from the moment you arrive.</li>
+<li>Firm handshake with every panel member. Eye contact. Smile.</li>
+<li>Walk in like you belong there - confident and calm, not cocky.</li>
+<li>Introduce yourself clearly: "Good morning, I'm Matthew Jones. Thank you for the opportunity."</li>
+</ul>
+</div>
+<div class="tc2">
+<h4>Body language</h4>
+<ul>
+<li>Sit up straight from the moment you sit down. Do not slouch into comfort.</li>
+<li>Make eye contact with ALL panel members - not just whoever asked the question.</li>
+<li>Do not cross your arms. Keep hands visible and relaxed.</li>
+<li>Lean in slightly when answering - shows engagement and energy.</li>
+<li>Do not fidget, tap, or touch anything on the table.</li>
+</ul>
+</div>
+<div class="tc2">
+<h4>Voice and delivery</h4>
+<ul>
+<li>Speak louder than a normal conversation - confident, not yelling.</li>
+<li>Be energetic. Sell the emotion behind your stories. Monotone loses panels fast.</li>
+<li>Slow down. Nervous people speed up. Take a breath before each answer.</li>
+<li>It is okay to say "Can I take a moment to think about that?" before answering.</li>
+<li>Cut filler words: "um," "like," "you know," "kind of." Replace them with a pause.</li>
+</ul>
+</div>
+<div class="tc2">
+<h4>Answering well</h4>
+<ul>
+<li>Every answer needs a personal story. Define it, tell the story with SARA, tie it to fire service.</li>
+<li>Keep answers under 3 minutes. If you are still talking at 4 minutes, you have lost them.</li>
+<li>Do not use the same story twice. Have multiple real experiences ready.</li>
+<li>If you do not know something, say so - then bridge to what you DO know.</li>
+<li>End every answer strong. Do not trail off. Land the plane confidently.</li>
+</ul>
+</div>
+<div class="tc2">
+<h4>Common mistakes to avoid</h4>
+<ul>
+<li>Saying "I want to help people" as your primary why.</li>
+<li>Answering with "we" instead of "I" - they are hiring you, not your past team.</li>
+<li>Claiming you have no weaknesses or have never had a conflict.</li>
+<li>Badmouthing former employers, coaches, or coworkers.</li>
+<li>Not having questions to ask at the end - signals low interest and preparation.</li>
+<li>Forgetting to acknowledge every panel member with eye contact during your answer.</li>
+</ul>
+</div>
+</div>
+
+<div class="sl">After the interview</div>
+<div class="card">
+<p><strong>When it's over:</strong> Thank each panel member individually. Firm handshake. Walk out composed - not deflated or overly excited.</p>
+<p><strong>Debrief immediately:</strong> As soon as you get to your car, write down every question you were asked. This is gold for Springdale prep on June 26.</p>
+<p><strong>Follow-up:</strong> A brief thank-you email within 24 hours is a strong move. Keep it short - thank them for their time, restate your interest, one sentence on why you are excited about this department. Do not beg or over-explain.</p>
+<p><strong>Contact for Fayetteville FD:</strong> Battalion Chief Matt Sallee - msallee@fayetteville-ar.gov</p>
+</div>
+</div>
+
+<!-- STUDY TONIGHT -->
+<div id="tab-st" class="tc">
+<div class="al algr"><strong>You have one evening.</strong> Here is exactly how to use it. Follow this order and walk in tomorrow ready.</div>
+
+<div class="sl">The game plan for tonight</div>
+
+<div class="ts">
+<div class="tn">1</div>
+<div class="tb2">
+<h4>Read the Cheat Sheet tab start to finish (20 min)</h4>
+<p>Read it aloud. Say the department description, the stats, and the strategic plan section out loud. Saying it once aloud is worth reading it five times silently. Lock in the numbers.</p>
+</div>
+</div>
+
+<div class="ts">
+<div class="tn">2</div>
+<div class="tb2">
+<h4>Write out your 4 core answers in bullet point form (30 min)</h4>
+<p>Before practicing out loud, write a bullet outline for each one: Tell us about yourself / Why firefighter / What have you done to prepare / Why Fayetteville. Do not write a script - just the key points and your one main personal story per question. No story should repeat across answers.</p>
+</div>
+</div>
+
+<div class="ts">
+<div class="tn">3</div>
+<div class="tb2">
+<h4>Practice out loud - have someone ask you the questions (45 min)</h4>
+<p>Have Stephanie read questions from the Key Q&amp;A tab. Matt answers out loud. Time each answer - goal is under 3 minutes. Record 2-3 answers on your phone and play them back. You will catch things you did not know you were doing. This is the highest-value activity of the whole evening.</p>
+</div>
+</div>
+
+<div class="ts">
+<div class="tn">4</div>
+<div class="tb2">
+<h4>Drill the hard questions (20 min)</h4>
+<p>The questions candidates most often fumble: "What is a weakness?" / "Would you disobey an order?" / "You see a coworker steal - what do you do?" Practice these until the answer comes out confident and clear, not hesitant. The Key Q&amp;A tab has model frameworks for all three.</p>
+</div>
+</div>
+
+<div class="ts">
+<div class="tn">5</div>
+<div class="tb2">
+<h4>Lock in 3 values with personal stories (10 min)</h4>
+<p>Choose 3 values from the Cheat Sheet. For each one: write your personal definition in one sentence and identify the specific story you will use. Make sure all 3 stories are from different situations. Three values, three unique stories.</p>
+</div>
+</div>
+
+<div class="ts">
+<div class="tn">6</div>
+<div class="tb2">
+<h4>Pick and memorize 3 questions to ask the panel (5 min)</h4>
+<p>Choose 3 from the Key Q&amp;A tab. Know them without looking at a paper. Asking thoughtful, specific questions at the end of the interview is one of the highest-return moves of the whole process.</p>
+</div>
+</div>
+
+<div class="ts">
+<div class="tn">7</div>
+<div class="tb2">
+<h4>Stop by 9 or 10pm. Rest is preparation.</h4>
+<p>Cramming past midnight does more harm than good. Lay out your clothes, set your alarm with a buffer, and sleep. A rested and present Matt in that room tomorrow is worth far more than a tired Matt with a few extra facts memorized.</p>
+</div>
+</div>
+
+<div class="sl">For Stephanie - how to coach Matt tonight</div>
+<div class="card">
+<p><strong>Story bank exercise first:</strong> Ask Matt: "Tell me 5 significant moments in your life where you showed character, overcame something hard, worked on a team, or served someone." Write them down together. These are his raw material. Map each story to a question category - now he has personalized, real answers for the top questions instead of generic ones.</p>
+<p><strong>Mock oral board (15-20 min):</strong> Sit across from each other at a table like a real panel. Stephanie reads questions one at a time from the Key Q&amp;A or Full Question Bank tabs. Matt answers out loud, formally. After each answer: give 1 specific thing that worked and 1 thing to sharpen. Keep it constructive - he needs confidence going in, not a confidence crisis.</p>
+<p><strong>Flash drill for dept facts:</strong> "How many stations?" / "What is their ISO rating?" / "Name two specialized teams and what they do." / "Who is the Fire Chief?" Quick fire. This locks facts in so he does not blank under pressure.</p>
+<p><strong>Body language check:</strong> While he is answering, watch his posture, eye contact, and hands. Give him one piece of feedback. Most people do not know what they look like when they are nervous. Even 5 minutes of this is worth an hour of content drilling.</p>
+<p><strong>Confidence close:</strong> End the session by reminding him what is genuinely strong about him - his real experiences, his character, what makes him a good candidate. He needs to walk in tomorrow believing he belongs in that room. Because he does.</p>
+</div>
+</div>
+
+</div>
+<script>
+function sw(id,btn){document.querySelectorAll('.tc').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.tb').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');btn.classList.add('active')}
+function tQ(el){el.nextElementSibling.classList.toggle('show');el.classList.toggle('open')}
+</script>
+</body>
+</html>
